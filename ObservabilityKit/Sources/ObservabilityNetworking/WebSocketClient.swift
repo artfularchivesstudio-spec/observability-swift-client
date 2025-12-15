@@ -112,12 +112,8 @@ public actor WebSocketClient {
     }
 
     private func handleTextMessage(_ text: String) async {
-        do {
-            if let data = text.data(using: .utf8) {
-                try await handleDataMessage(data)
-            }
-        } catch {
-            await handleError(error)
+        if let data = text.data(using: .utf8) {
+            await handleDataMessage(data)
         }
     }
 
