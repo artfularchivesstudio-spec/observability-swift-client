@@ -160,3 +160,11 @@ Config.local.xcconfig
 *.local.json# 🍞 Bun Package Manager - Never commit cache!
 snap/bun-js/
 .bun/
+Observability/Observability/Secrets.xcconfig
+*/Secrets.xcconfig
+*.xcconfig
+*.env
+*.key
+*.pem
+*.p12
+*.mobileprovision

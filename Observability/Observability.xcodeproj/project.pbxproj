@@ -6,6 +6,17 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		CF06C09F2EF0944E00B78992 /* ObservabilityCommon in Frameworks */ = {isa = PBXBuildFile; productRef = CF06C09E2EF0944E00B78992 /* ObservabilityCommon */; };
+		CF06C0A12EF0944E00B78992 /* ObservabilityCore in Frameworks */ = {isa = PBXBuildFile; productRef = CF06C0A02EF0944E00B78992 /* ObservabilityCore */; };
+		CF06C0A32EF0944E00B78992 /* ObservabilityNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = CF06C0A22EF0944E00B78992 /* ObservabilityNetworking */; };
+		CF06C0A52EF0944E00B78992 /* ObservabilityUI in Frameworks */ = {isa = PBXBuildFile; productRef = CF06C0A42EF0944E00B78992 /* ObservabilityUI */; };
+		CF06C0D92EF097B100B78992 /* ObservabilityCommon in Frameworks */ = {isa = PBXBuildFile; productRef = CF06C0D82EF097B100B78992 /* ObservabilityCommon */; };
+		CF06C0DB2EF097B100B78992 /* ObservabilityCore in Frameworks */ = {isa = PBXBuildFile; productRef = CF06C0DA2EF097B100B78992 /* ObservabilityCore */; };
+		CF06C0DD2EF097B100B78992 /* ObservabilityNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = CF06C0DC2EF097B100B78992 /* ObservabilityNetworking */; };
+		CF06C0DF2EF097B100B78992 /* ObservabilityUI in Frameworks */ = {isa = PBXBuildFile; productRef = CF06C0DE2EF097B100B78992 /* ObservabilityUI */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		CFFD515D2EF0581C0077E4A6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -65,6 +76,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF06C0D92EF097B100B78992 /* ObservabilityCommon in Frameworks */,
+				CF06C0DB2EF097B100B78992 /* ObservabilityCore in Frameworks */,
+				CF06C0A52EF0944E00B78992 /* ObservabilityUI in Frameworks */,
+				CF06C09F2EF0944E00B78992 /* ObservabilityCommon in Frameworks */,
+				CF06C0DF2EF097B100B78992 /* ObservabilityUI in Frameworks */,
+				CF06C0A12EF0944E00B78992 /* ObservabilityCore in Frameworks */,
+				CF06C0DD2EF097B100B78992 /* ObservabilityNetworking in Frameworks */,
+				CF06C0A32EF0944E00B78992 /* ObservabilityNetworking in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,6 +144,14 @@
 			);
 			name = Observability;
 			packageProductDependencies = (
+				CF06C09E2EF0944E00B78992 /* ObservabilityCommon */,
+				CF06C0A02EF0944E00B78992 /* ObservabilityCore */,
+				CF06C0A22EF0944E00B78992 /* ObservabilityNetworking */,
+				CF06C0A42EF0944E00B78992 /* ObservabilityUI */,
+				CF06C0D82EF097B100B78992 /* ObservabilityCommon */,
+				CF06C0DA2EF097B100B78992 /* ObservabilityCore */,
+				CF06C0DC2EF097B100B78992 /* ObservabilityNetworking */,
+				CF06C0DE2EF097B100B78992 /* ObservabilityUI */,
 			);
 			productName = Observability;
 			productReference = CFFD514B2EF058190077E4A6 /* Observability.app */;
@@ -211,6 +238,9 @@
 			);
 			mainGroup = CFFD51422EF058190077E4A6;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				CF06C0D72EF097B100B78992 /* XCLocalSwiftPackageReference "../ObservabilityKit" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = CFFD514C2EF058190077E4A6 /* Products */;
 			projectDirPath = "";
@@ -671,6 +701,48 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		CF06C0D72EF097B100B78992 /* XCLocalSwiftPackageReference "../ObservabilityKit" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../ObservabilityKit;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CF06C09E2EF0944E00B78992 /* ObservabilityCommon */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ObservabilityCommon;
+		};
+		CF06C0A02EF0944E00B78992 /* ObservabilityCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ObservabilityCore;
+		};
+		CF06C0A22EF0944E00B78992 /* ObservabilityNetworking */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ObservabilityNetworking;
+		};
+		CF06C0A42EF0944E00B78992 /* ObservabilityUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ObservabilityUI;
+		};
+		CF06C0D82EF097B100B78992 /* ObservabilityCommon */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ObservabilityCommon;
+		};
+		CF06C0DA2EF097B100B78992 /* ObservabilityCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ObservabilityCore;
+		};
+		CF06C0DC2EF097B100B78992 /* ObservabilityNetworking */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ObservabilityNetworking;
+		};
+		CF06C0DE2EF097B100B78992 /* ObservabilityUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ObservabilityUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CFFD51432EF058190077E4A6 /* Project object */;
 }
