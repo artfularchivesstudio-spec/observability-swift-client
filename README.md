@@ -86,9 +86,10 @@ Shared utilities and extensions:
 git clone https://github.com/artfularchivesstudio-spec/observability-swift-client.git
 ```
 
-2. Open in Xcode:
+2. Generate the Xcode project (from the repo root) and open in Xcode:
 ```bash
-cd observability-swift-client/Observability
+cd observability-swift-client
+xcodegen generate
 open Observability.xcodeproj
 ```
 

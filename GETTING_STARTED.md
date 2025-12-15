@@ -28,9 +28,10 @@ This will:
 echo "MONITORING_API_KEY=your-api-key-here" > Observability/Observability/Secrets.xcconfig
 ```
 
-### 3. Generate Xcode Project (if using XcodeGen)
+### 3. Generate Xcode Project (with XcodeGen)
 
 ```bash
+cd observability-swift-client
 xcodegen generate
 ```
 
@@ -106,6 +107,7 @@ Run the setup script: `./scripts/setup-monitoring-api-key.sh`
 ### Build errors
 - Clean build folder: `Cmd + Shift + K`
 - Reset package cache: `File > Packages > Reset Package Caches`
+- If XcodeGen complains about invalid targets, make sure you are running it from the **repository root** (where `project.yml` lives) and not from the `Observability/` subfolder.
 
 ## 📚 Documentation
 

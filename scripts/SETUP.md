@@ -21,7 +21,7 @@ cd observability-swift-client
 # When prompted, press Enter for default API key
 # Or enter a custom one if you've changed it on the server
 
-# If using XcodeGen
+# Generate the Xcode project from the root (where project.yml lives)
 xcodegen generate
 
 # Open in Xcode

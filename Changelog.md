@@ -23,6 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - ObservabilityKit WebSocket clients now send correctly typed `"metrics"` payloads and bridge `URLSessionWebSocketTask.sendPing` through async/await to avoid missing handler crashes and improve reliability on iOS 18/macOS 15.
 - Combine-based `WebSocketCombineClient` deinitialization is now actor-safe, and reconnection logic uses explicit `URLError.Code.networkConnectionLost` matching for clearer behaviour.
 - SwiftUI dashboard components (`MetricChart`, `MetricsDashboard`, and `ServiceCard`) have been updated to avoid retain cycles in Combine sinks, correctly erase filtered publishers to `AnyPublisher`, and use semantic SwiftUI colors for better Dark Mode support.
+- XcodeGen `project.yml` target and scheme configuration now aligns iOS/macOS app and test targets (using `_iOS`/`_macOS` suffixes), resolving previous spec validation errors and enabling clean project generation.
 
 ## [0.1.0] - 2025-12-15
 

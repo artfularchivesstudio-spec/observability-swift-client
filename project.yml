@@ -98,8 +98,6 @@ targets:
       SWIFT_EMIT_LOC_STRINGS: NO
       IPHONEOS_DEPLOYMENT_TARGET: "26.1"
       MACOSX_DEPLOYMENT_TARGET: "26.0"
-      dependencies:
-      - target: Observability
 
   ObservabilityUITests:
     type: bundle.ui-testing
@@ -117,23 +115,26 @@ targets:
       IPHONEOS_DEPLOYMENT_TARGET: "26.1"
       MACOSX_DEPLOYMENT_TARGET: "26.0"
       TEST_TARGET_NAME: Observability
-    dependencies:
-      - target: Observability
 
 schemes:
   Observability:
     build:
       targets:
-        Observability: all
-        ObservabilityTests: [test]
-        ObservabilityUITests: [test]
+        Observability_iOS: all
+        Observability_macOS: all
+        ObservabilityTests_iOS: [test]
+        ObservabilityTests_macOS: [test]
+        ObservabilityUITests_iOS: [test]
+        ObservabilityUITests_macOS: [test]
     run:
       config: Debug
     test:
       config: Debug
       targets:
-        - ObservabilityTests
-        - ObservabilityUITests
+        - ObservabilityTests_iOS
+        - ObservabilityTests_macOS
+        - ObservabilityUITests_iOS
+        - ObservabilityUITests_macOS
     profile:
       config: Release
     analyze:

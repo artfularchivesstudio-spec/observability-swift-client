@@ -49,9 +49,15 @@ struct DashboardView: View {
             }
             .navigationTitle("Infrastructure Dashboard")
             .toolbar {
+                #if os(iOS)
                 ToolbarItem(placement: .navigationBarTrailing) {
                     connectionIndicator
                 }
+                #else
+                ToolbarItem(placement: .automatic) {
+                    connectionIndicator
+                }
+                #endif
             }
             .onAppear {
                 viewModel.startMonitoring()
@@ -126,7 +132,7 @@ struct DashboardView: View {
                         selectedFilter = nil
                     }
 
-                    ForEach(ServiceStatus.allCases, id: \.self) { status in
+                    ForEach(ServiceStatus.allCases, id: \.displayName) { status in
                         let count = viewModel.services.filter { service in
                             guard let health = viewModel.healthResults[service.id] else { return false }
                             return health.status == status
@@ -240,13 +246,15 @@ struct DashboardView: View {
     private var averageCPU: Double {
         let cpuMetrics = viewModel.metrics.filter { $0.label == "cpu" }
         guard !cpuMetrics.isEmpty else { return 0 }
-        return cpuMetrics.map { $0.value }.average()
+        let values = cpuMetrics.map { $0.value }
+        return values.reduce(0, +) / Double(values.count)
     }
 
     private var averageMemory: Double {
         let memoryMetrics = viewModel.metrics.filter { $0.label == "memory" }
         guard !memoryMetrics.isEmpty else { return 0 }
-        return memoryMetrics.map { $0.value }.average()
+        let values = memoryMetrics.map { $0.value }
+        return values.reduce(0, +) / Double(values.count)
     }
 
     // MARK: - Connection Indicator
@@ -299,7 +307,7 @@ struct StatCard: View {
         .padding()
         .background(
             RoundedRectangle(cornerRadius: 12)
-                .fill(Color(.systemBackground))
+                .fill(.background)
                 .shadow(color: .black.opacity(0.1), radius: 2, x: 0, y: 1)
         )
     }
@@ -307,7 +315,7 @@ struct StatCard: View {
 
 @available(macOS 14, iOS 17, *)
 struct AlertRow: View {
-    let alert: Alert
+    let alert: ObservabilityCore.Alert
 
     var body: some View {
         HStack(spacing: 12) {
@@ -347,7 +355,7 @@ struct AlertRow: View {
         .padding()
         .background(
             RoundedRectangle(cornerRadius: 8)
-                .fill(Color(.secondarySystemBackground))
+                .fill(Color.secondary.opacity(0.1))
         )
     }
 
@@ -402,7 +410,7 @@ class DashboardViewModel: ObservableObject {
     @Published var services: [ServiceInfo] = PreviewData.sampleServices
     @Published var healthResults: [UUID: HealthCheckResult] = [:]
     @Published var metrics: [MetricPoint] = []
-    @Published var recentAlerts: [Alert] = PreviewData.sampleAlerts
+    @Published var recentAlerts: [ObservabilityCore.Alert] = PreviewData.sampleAlerts
     @Published var isConnected = false
 
     private var webSocketClient = WebSocketCombineClient()
@@ -512,7 +520,7 @@ class DashboardViewModel: ObservableObject {
         if let jsonString = event.data["payload"],
            let jsonData = jsonString.data(using: .utf8) {
             do {
-                let alert = try JSONDecoder().decode(Alert.self, from: jsonData)
+                let alert = try JSONDecoder().decode(ObservabilityCore.Alert.self, from: jsonData)
 
                 // Add to recent alerts
                 recentAlerts.insert(alert, at: 0)
@@ -587,11 +595,11 @@ class DashboardViewModel: ObservableObject {
                 guard let self = self else { return }
 
                 if Double.random(in: 0...1) > 0.7 {
-                    let newAlert = Alert(
+                    let newAlert = ObservabilityCore.Alert(
                         title: "Random Alert #\(Int.random(in: 100...999))",
                         message: "This is a simulated alert",
                         severity: [.info, .warning, .error, .critical].randomElement()!,
-                        source: Alert.AlertSource(
+                        source: ObservabilityCore.Alert.AlertSource(
                             serviceName: PreviewData.sampleServices.randomElement()!.name,
                             checkType: "random_check"
                         ),
