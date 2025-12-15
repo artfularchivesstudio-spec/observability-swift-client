@@ -37,6 +37,63 @@ public protocol MetricsCollecting: Sendable {
     ) async throws -> MetricsCollection
 }
 
+/// 🎭 HTTP Probe Result - The Digital Pulse Reader 🌟
+@available(macOS 14, iOS 17, *)
+public struct HTTPProbeResult: Sendable, Codable {
+    public let statusCode: Int
+    public let responseTime: TimeInterval
+    public let success: Bool
+    public let bodySize: Int
+    public let headers: [String: String]
+
+    public init(
+        statusCode: Int = 0,
+        responseTime: TimeInterval = 0,
+        success: Bool = false,
+        bodySize: Int = 0,
+        headers: [String: String] = [:]
+    ) {
+        self.statusCode = statusCode
+        self.responseTime = responseTime
+        self.success = success
+        self.bodySize = bodySize
+        self.headers = headers
+    }
+}
+
+/// 🎭 Database Probe Result - The Connection Oracle 🔮
+@available(macOS 14, iOS 17, *)
+public struct DatabaseProbeResult: Sendable, Codable {
+    public let connected: Bool
+    public let queryTime: TimeInterval
+    public let error: String?
+
+    public init(
+        connected: Bool = false,
+        queryTime: TimeInterval = 0,
+        error: String? = nil
+    ) {
+        self.connected = connected
+        self.queryTime = queryTime
+        self.error = error
+    }
+}
+
+/// 🎭 Port Probe Result - The Network Gatekeeper 🚪
+@available(macOS 14, iOS 17, *)
+public struct PortProbeResult: Sendable, Codable {
+    public let open: Bool
+    public let responseTime: TimeInterval
+
+    public init(
+        open: Bool = false,
+        responseTime: TimeInterval = 0
+    ) {
+        self.open = open
+        self.responseTime = responseTime
+    }
+}
+
 /// 🔔 Protocol for health checking
 @available(macOS 14, iOS 17, *)
 public protocol HealthChecking: Sendable {
@@ -60,58 +117,6 @@ public protocol HealthChecking: Sendable {
         port: Int,
         timeout: TimeInterval
     ) async throws -> PortProbeResult
-
-    // MARK: - Probe Results
-    struct HTTPProbeResult: Sendable, Codable {
-        public let statusCode: Int
-        public let responseTime: TimeInterval
-        public let success: Bool
-        public let bodySize: Int
-        public let headers: [String: String]
-
-        public init(
-            statusCode: Int = 0,
-            responseTime: TimeInterval = 0,
-            success: Bool = false,
-            bodySize: Int = 0,
-            headers: [String: String] = [:]
-        ) {
-            self.statusCode = statusCode
-            self.responseTime = responseTime
-            self.success = success
-            self.bodySize = bodySize
-            self.headers = headers
-        }
-    }
-
-    struct DatabaseProbeResult: Sendable, Codable {
-        public let connected: Bool
-        public let queryTime: TimeInterval
-        public let error: String?
-
-        public init(
-            connected: Bool = false,
-            queryTime: TimeInterval = 0,
-            error: String? = nil
-        ) {
-            self.connected = connected
-            self.queryTime = queryTime
-            self.error = error
-        }
-    }
-
-    struct PortProbeResult: Sendable, Codable {
-        public let open: Bool
-        public let responseTime: TimeInterval
-
-        public init(
-            open: Bool = false,
-            responseTime: TimeInterval = 0
-        ) {
-            self.open = open
-            self.responseTime = responseTime
-        }
-    }
 }
 
 /// 🚨 Protocol for alert management
@@ -264,11 +269,11 @@ public struct AlertRule: Sendable, Codable {
 
     public struct Condition: Sendable, Codable {
         public let metric: String
-        public let operator: Operator
+        public let `operator`: Operator
         public let threshold: Double
         public let duration: TimeInterval?
 
-        public enum `Operator`: String, Sendable, Codable {
+        public enum Operator: String, Sendable, Codable {
             case greaterThan = "gt"
             case lessThan = "lt"
             case equals = "eq"

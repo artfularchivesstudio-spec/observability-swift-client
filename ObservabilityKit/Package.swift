@@ -38,9 +38,9 @@ let package = Package(
     ],
     dependencies: [
         // Modern async networking
-        .package(url: "https://github.com/apple/swift-async-algorithms.git", from: "1.0.0"),
-        .package(url: "https://github.com/apple/swift-collections.git", from: "1.1.0"),
-        .package(url: "https://github.com/apple/swift-algorithms.git", from: "1.2.0"),
+        .package(url: "https://github.com/apple/swift-async-algorithms.git", "1.0.0"..<"1.1.0"),
+        .package(url: "https://github.com/apple/swift-collections.git", "1.0.0"..<"1.2.0"),
+        .package(url: "https://github.com/apple/swift-algorithms.git", "1.1.0"..<"1.2.0"),
     ],
     targets: [
         // MARK: - Core Module

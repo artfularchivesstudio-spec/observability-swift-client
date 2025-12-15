@@ -24,14 +24,16 @@ public extension Sequence where Element: Numeric {
 
     /// 📊 Average of all elements
     func average() -> Double where Element == Double {
-        guard !isEmpty else { return 0 }
-        return sum() / Double(count)
+        let totalCount = self.reduce(0) { _, _ in 0 + 1 }
+        guard totalCount > 0 else { return 0 }
+        return sum() / Double(totalCount)
     }
 
     /// ✨ Average of all elements
     func average() -> Double where Element == Int {
-        guard !isEmpty else { return 0 }
-        return Double(sum()) / Double(count)
+        let totalCount = self.reduce(0) { _, _ in 0 + 1 }
+        guard totalCount > 0 else { return 0 }
+        return Double(sum()) / Double(totalCount)
     }
 }
 

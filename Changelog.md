@@ -16,6 +16,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - Initial project setup with file system synchronization
+- Offloaded historical Supabase backups from `/root/backups/supabase` to S3 bucket `artful-archives-studio-supabase-backups` under `server-backups/supabase/` as part of VPS disk space maintenance.
+- Verified integrity of all `storage_*.tar.gz` archives by comparing local `sha256` checksums to their corresponding `.sha256` manifests stored in S3 before deleting local copies (~12GB reclaimed).
 
 ## [0.1.0] - 2025-12-15
 

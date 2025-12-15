@@ -11,9 +11,22 @@ import Foundation
 public extension Date {
     /// 🌟 Format date for display in observability UI
     func formattedForDisplay() -> String {
-        let formatter = RelativeDateTimeFormatter()
-        formatter.unitsStyle = .abbreviated
-        return formatter.localizedString(for: self, relativeTo: Date())
+        let interval = Date().timeIntervalSince(self)
+
+        if interval < 60 {
+            return "Just now"
+        } else if interval < 3600 {
+            let minutes = Int(interval / 60)
+            return "\(minutes)\(minutes == 1 ? " min" : " mins") ago"
+        } else if interval < 86400 {
+            let hours = Int(interval / 3600)
+            return "\(hours)\(hours == 1 ? " hour" : " hours") ago"
+        } else {
+            let formatter = DateFormatter()
+            formatter.dateStyle = .medium
+            formatter.timeStyle = .short
+            return formatter.string(from: self)
+        }
     }
 
     /// 📊 Format as precise timestamp
@@ -77,10 +90,20 @@ public extension TimeInterval {
 
     /// 🎭 Format as uptime string
     func formattedAsUptime() -> String {
-        let formatter = DateComponentsFormatter()
-        formatter.allowedUnits = [.day, .hour, .minute, .second]
-        formatter.unitsStyle = .abbreviated
-        formatter.maximumUnitCount = 2
-        return formatter.string(from: self) ?? "Unknown"
+        let seconds = Int(self)
+        let days = seconds / 86400
+        let hours = (seconds % 86400) / 3600
+        let minutes = (seconds % 3600) / 60
+        let secs = seconds % 60
+
+        if days > 0 {
+            return "\(days)d \(hours)h"
+        } else if hours > 0 {
+            return "\(hours)h \(minutes)m"
+        } else if minutes > 0 {
+            return "\(minutes)m \(secs)s"
+        } else {
+            return "\(secs)s"
+        }
     }
 }

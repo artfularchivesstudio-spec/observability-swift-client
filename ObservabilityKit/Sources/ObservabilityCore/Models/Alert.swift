@@ -130,9 +130,20 @@ public struct Alert: Sendable, Codable, Identifiable, Equatable {
     }
 
     public var ageDescription: String {
-        let formatter = RelativeDateTimeFormatter()
-        formatter.unitsStyle = .abbreviated
-        return formatter.localizedString(for: timestamp, relativeTo: Date())
+        let interval = Date().timeIntervalSince(timestamp)
+
+        if interval < 60 {
+            return "Just now"
+        } else if interval < 3600 {
+            let minutes = Int(interval / 60)
+            return "\(minutes)\(minutes == 1 ? "m" : "m") ago"
+        } else if interval < 86400 {
+            let hours = Int(interval / 3600)
+            return "\(hours)\(hours == 1 ? "h" : "h") ago"
+        } else {
+            let days = Int(interval / 86400)
+            return "\(days)\(days == 1 ? "d" : "d") ago"
+        }
     }
 }
 

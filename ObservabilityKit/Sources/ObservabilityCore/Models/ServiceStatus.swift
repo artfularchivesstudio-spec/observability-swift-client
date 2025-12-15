@@ -49,8 +49,19 @@ public enum ServiceStatus: Sendable, Codable, Equatable {
         case .degraded(let responseTime, let errorRate):
             return "Performance degraded: \(Int(responseTime * 1000))ms, \(Int(errorRate * 100))% errors"
         case .down(let lastSeen, let reason):
-            let formatter = RelativeDateTimeFormatter()
-            return "Service down since \(formatter.localizedString(for: lastSeen, relativeTo: Date())): \(reason)"
+            let interval = Date().timeIntervalSince(lastSeen)
+            let timeString: String
+            if interval < 3600 {
+                let minutes = Int(interval / 60)
+                timeString = "\(minutes)\(minutes == 1 ? "m" : "m") ago"
+            } else if interval < 86400 {
+                let hours = Int(interval / 3600)
+                timeString = "\(hours)\(hours == 1 ? "h" : "h") ago"
+            } else {
+                let days = Int(interval / 86400)
+                timeString = "\(days)\(days == 1 ? "d" : "d") ago"
+            }
+            return "Service down since \(timeString): \(reason)"
         case .maintenance(let scheduledUntil):
             let formatter = DateFormatter()
             formatter.dateStyle = .medium
