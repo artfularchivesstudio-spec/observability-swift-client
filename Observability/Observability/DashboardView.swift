@@ -422,17 +422,110 @@ class DashboardViewModel: ObservableObject {
     }
 
     func startMonitoring() {
-        // Simulate WebSocket connection
-        isConnected = true
+        // Connect to live observability server with API key auth
+        guard let apiKey = Bundle.main.object(forInfoDictionaryKey: "MONITORING_API_KEY") as? String else {
+            print("❌ API Key not found in Info.plist. Run setup-monitoring-api-key.sh first!")
+            startSimulatedMonitoring()
+            return
+        }
 
-        // Start health checks
+        guard var urlComponents = URLComponents(string: "wss://api-router.cloud/monitoring/custom/") else {
+            print("❌ Invalid WebSocket URL")
+            return
+        }
+
+        // Add API key as query parameter (WebSocket doesn't support headers consistently)
+        urlComponents.queryItems = [URLQueryItem(name: "api_key", value: apiKey)]
+
+        guard let url = urlComponents.url else {
+            print("❌ Failed to construct WebSocket URL with API key")
+            return
+        }
+
+        Task {
+            do {
+                try await webSocketClient.connect(to: url)
+                isConnected = true
+                print("✅ Connected to live observability server")
+
+                // Subscribe to real-time metrics
+                webSocketClient.metricPublisher
+                    .receive(on: DispatchQueue.main)
+                    .sink { [weak self] metric in
+                        self?.metrics.append(metric)
+
+                        // Keep only last 100 points
+                        if self?.metrics.count ?? 0 > 100 {
+                            self?.metrics.removeFirst((self?.metrics.count ?? 0) - 100)
+                        }
+                    }
+                    .store(in: &cancellables)
+
+                // Subscribe to health events
+                webSocketClient.healthPublisher
+                    .receive(on: DispatchQueue.main)
+                    .sink { [weak self] health in
+                        self?.healthResults[health.serviceId] = health
+                    }
+                    .store(in: &cancellables)
+
+                // Subscribe to events
+                webSocketClient.eventPublisher
+                    .receive(on: DispatchQueue.main)
+                    .sink { [weak self] event in
+                        if event.type == "alert" {
+                            self?.handleAlertEvent(event)
+                        }
+                    }
+                    .store(in: &cancellables)
+
+            } catch {
+                print("❌ Failed to connect: \(error.localizedDescription)")
+                isConnected = false
+                // Fall back to simulated data
+                startSimulatedMonitoring()
+            }
+        }
+    }
+
+    private func startSimulatedMonitoring() {
+        // Fallback simulation if live server fails
+        print("⚠️ Using simulated data - connecting to live server failed")
+        isConnected = false
+
+        // Populate with sample services
+        services = [
+            ServiceInfo(name: "Strapi CMS", type: .strapi, port: 1337, category: .cms),
+            ServiceInfo(name: "Next.js Frontend", type: .nextjs, port: 3000, category: .frontend),
+            ServiceInfo(name: "Python API", type: .flask, port: 8000, category: .backend),
+            ServiceInfo(name: "PostgreSQL", type: .postgresql, port: 5432, category: .database),
+            ServiceInfo(name: "Redis Cache", type: .redis, port: 6379, category: .infrastructure)
+        ]
+
         startHealthChecks()
-
-        // Start metrics collection
         startMetricsCollection()
-
-        // Simulate alerts
         simulateAlerts()
+    }
+
+    private func handleAlertEvent(_ event: StreamEvent) {
+        // Try to decode alert from event data
+        if let jsonString = event.data["payload"],
+           let jsonData = jsonString.data(using: .utf8) {
+            do {
+                let alert = try JSONDecoder().decode(Alert.self, from: jsonData)
+
+                // Add to recent alerts
+                recentAlerts.insert(alert, at: 0)
+
+                // Keep only last 10 alerts
+                if recentAlerts.count > 10 {
+                    recentAlerts.removeLast(recentAlerts.count - 10)
+                }
+
+            } catch {
+                print("❌ Failed to decode alert from event: \(error)")
+            }
+        }
     }
 
     func stopMonitoring() {
