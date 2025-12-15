@@ -116,7 +116,7 @@ targets:
       SWIFT_EMIT_LOC_STRINGS: NO
       IPHONEOS_DEPLOYMENT_TARGET: "26.1"
       MACOSX_DEPLOYMENT_TARGET: "26.0"
-        TEST_TARGET_NAME: Observability
+      TEST_TARGET_NAME: Observability
     dependencies:
       - target: Observability
 
