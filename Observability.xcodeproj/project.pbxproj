@@ -1,0 +1,898 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		008108406731CB0E5A4FD3AB /* ObservabilityApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0616D899691DFE0F4BFCFA /* ObservabilityApp.swift */; };
+		031CEFB9178A187EA31928B9 /* ObservabilityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1DBEE4CFB6EE765A3DFE8E /* ObservabilityTests.swift */; };
+		0A2C0F33ABBC547092FCBCD1 /* Secrets.xcconfig.template in Resources */ = {isa = PBXBuildFile; fileRef = 902CA0C738C2A1E7413B4A48 /* Secrets.xcconfig.template */; };
+		0D8FA3819FE1BCAC4F0466E1 /* ObservabilityUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DB0C372B27C9E3BFB8FB76 /* ObservabilityUITestsLaunchTests.swift */; };
+		0F747937821FFF8F796EF0E7 /* TODO.md in Resources */ = {isa = PBXBuildFile; fileRef = 80A7C081A02796BA6FEA1238 /* TODO.md */; };
+		2A98B247D264833CEB0EF204 /* TODO.md in Resources */ = {isa = PBXBuildFile; fileRef = 80A7C081A02796BA6FEA1238 /* TODO.md */; };
+		3CF23680E1064A3D2DFFADFB /* ObservabilityUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78298C67F3DE447A483B346 /* ObservabilityUITests.swift */; };
+		65834B42D69A189579E2316E /* Observability.xcodeproj in Resources */ = {isa = PBXBuildFile; fileRef = 2495D294B4AAB64E5C3FD1B6 /* Observability.xcodeproj */; };
+		87363501B90A69BE7AF48AC4 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C4A49B4483340F6BF06A55CC /* Info.plist */; };
+		A57DEBF8A20626CB2776BA3B /* Secrets.xcconfig.template in Resources */ = {isa = PBXBuildFile; fileRef = 902CA0C738C2A1E7413B4A48 /* Secrets.xcconfig.template */; };
+		C1E12E8989E7FBC18B8093F4 /* Observability.xcodeproj in Resources */ = {isa = PBXBuildFile; fileRef = 2495D294B4AAB64E5C3FD1B6 /* Observability.xcodeproj */; };
+		CC1EF1433818F9442A34928F /* ObservabilityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1DBEE4CFB6EE765A3DFE8E /* ObservabilityTests.swift */; };
+		CF46FBD9DE321F36BF6BEDF4 /* ObservabilityApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0616D899691DFE0F4BFCFA /* ObservabilityApp.swift */; };
+		DC78B0E104D49355C0C66D14 /* ObservabilityUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DB0C372B27C9E3BFB8FB76 /* ObservabilityUITestsLaunchTests.swift */; };
+		DF0A02112801AFC4AED07D9C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A45D8945C6DD74F823B84147 /* Assets.xcassets */; };
+		E9D8DA800304A42F30C68C6D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A45D8945C6DD74F823B84147 /* Assets.xcassets */; };
+		EA035529DB284D4EA007A6F5 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1143E3F5675DD5D36501B05F /* DashboardView.swift */; };
+		F092A5F55279E5FB4EB0FC8D /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C4A49B4483340F6BF06A55CC /* Info.plist */; };
+		F6754C7D4AB3D72919469BAF /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1143E3F5675DD5D36501B05F /* DashboardView.swift */; };
+		F99AA12E943566146A23693A /* ObservabilityUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78298C67F3DE447A483B346 /* ObservabilityUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1143E3F5675DD5D36501B05F /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		1C1DBEE4CFB6EE765A3DFE8E /* ObservabilityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservabilityTests.swift; sourceTree = "<group>"; };
+		1F0616D899691DFE0F4BFCFA /* ObservabilityApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservabilityApp.swift; sourceTree = "<group>"; };
+		2485DC4AC70BF912C129F86F /* .gitkeep */ = {isa = PBXFileReference; path = .gitkeep; sourceTree = "<group>"; };
+		2495D294B4AAB64E5C3FD1B6 /* Observability.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = Observability.xcodeproj; sourceTree = "<group>"; };
+		4F504BCD895D80EB93DC8546 /* ObservabilityTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = ObservabilityTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		64E97973929D61B62A230EFD /* Observability.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Observability.entitlements; sourceTree = "<group>"; };
+		7E97798AF6D212445BFE1EEC /* .gitkeep */ = {isa = PBXFileReference; path = .gitkeep; sourceTree = "<group>"; };
+		80A7C081A02796BA6FEA1238 /* TODO.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TODO.md; sourceTree = "<group>"; };
+		83491ED49237703F47F4C4AB /* ObservabilityUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = ObservabilityUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		902CA0C738C2A1E7413B4A48 /* Secrets.xcconfig.template */ = {isa = PBXFileReference; path = Secrets.xcconfig.template; sourceTree = "<group>"; };
+		920A032AFCA42D92A099D95F /* Observability.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Observability.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9E87BBEA76D22BACDCDB7633 /* ObservabilityUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ObservabilityUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A45D8945C6DD74F823B84147 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B78298C67F3DE447A483B346 /* ObservabilityUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservabilityUITests.swift; sourceTree = "<group>"; };
+		C2CAC812B305815472E6A0C3 /* Observability.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Observability.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C4A49B4483340F6BF06A55CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		CED247A594FDFD88C53D5640 /* ObservabilityTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ObservabilityTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E163ADB018EE5CD45D32B37D /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
+		E8DB0C372B27C9E3BFB8FB76 /* ObservabilityUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservabilityUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		000074EE7C5709FA8DC3FA2F /* ObservabilityUITests */ = {
+			isa = PBXGroup;
+			children = (
+				2485DC4AC70BF912C129F86F /* .gitkeep */,
+			);
+			path = ObservabilityUITests;
+			sourceTree = "<group>";
+		};
+		4353D23E2064B610EF9901F2 /* Observability */ = {
+			isa = PBXGroup;
+			children = (
+				A45D8945C6DD74F823B84147 /* Assets.xcassets */,
+				1143E3F5675DD5D36501B05F /* DashboardView.swift */,
+				C4A49B4483340F6BF06A55CC /* Info.plist */,
+				64E97973929D61B62A230EFD /* Observability.entitlements */,
+				1F0616D899691DFE0F4BFCFA /* ObservabilityApp.swift */,
+				E163ADB018EE5CD45D32B37D /* Secrets.xcconfig */,
+				902CA0C738C2A1E7413B4A48 /* Secrets.xcconfig.template */,
+			);
+			path = Observability;
+			sourceTree = "<group>";
+		};
+		5EB41CB556F3840B40624CC1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				920A032AFCA42D92A099D95F /* Observability.app */,
+				C2CAC812B305815472E6A0C3 /* Observability.app */,
+				4F504BCD895D80EB93DC8546 /* ObservabilityTests.xctest */,
+				CED247A594FDFD88C53D5640 /* ObservabilityTests.xctest */,
+				83491ED49237703F47F4C4AB /* ObservabilityUITests.xctest */,
+				9E87BBEA76D22BACDCDB7633 /* ObservabilityUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		654DC3D0C330988626A63F32 /* ObservabilityTests */ = {
+			isa = PBXGroup;
+			children = (
+				7E97798AF6D212445BFE1EEC /* .gitkeep */,
+			);
+			path = ObservabilityTests;
+			sourceTree = "<group>";
+		};
+		68E798F6B02720870A3976A8 /* Observability */ = {
+			isa = PBXGroup;
+			children = (
+				2495D294B4AAB64E5C3FD1B6 /* Observability.xcodeproj */,
+				80A7C081A02796BA6FEA1238 /* TODO.md */,
+				4353D23E2064B610EF9901F2 /* Observability */,
+				B84630041C240C700ADC69AE /* ObservabilityTests */,
+				87D46004C0CB5E926C602E00 /* ObservabilityUITests */,
+			);
+			path = Observability;
+			sourceTree = "<group>";
+		};
+		87D46004C0CB5E926C602E00 /* ObservabilityUITests */ = {
+			isa = PBXGroup;
+			children = (
+				B78298C67F3DE447A483B346 /* ObservabilityUITests.swift */,
+				E8DB0C372B27C9E3BFB8FB76 /* ObservabilityUITestsLaunchTests.swift */,
+			);
+			path = ObservabilityUITests;
+			sourceTree = "<group>";
+		};
+		88E4382F4F2A10C1AA6C4D14 = {
+			isa = PBXGroup;
+			children = (
+				68E798F6B02720870A3976A8 /* Observability */,
+				654DC3D0C330988626A63F32 /* ObservabilityTests */,
+				000074EE7C5709FA8DC3FA2F /* ObservabilityUITests */,
+				5EB41CB556F3840B40624CC1 /* Products */,
+			);
+			indentWidth = 2;
+			sourceTree = "<group>";
+			usesTabs = 0;
+		};
+		B84630041C240C700ADC69AE /* ObservabilityTests */ = {
+			isa = PBXGroup;
+			children = (
+				1C1DBEE4CFB6EE765A3DFE8E /* ObservabilityTests.swift */,
+			);
+			path = ObservabilityTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		39921196E161B084DB3C97A1 /* ObservabilityUITests_iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 85F6F37FE3018683C86DCBED /* Build configuration list for PBXNativeTarget "ObservabilityUITests_iOS" */;
+			buildPhases = (
+				0F03909E6F52428904DAA407 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ObservabilityUITests_iOS;
+			packageProductDependencies = (
+			);
+			productName = ObservabilityUITests_iOS;
+			productReference = 83491ED49237703F47F4C4AB /* ObservabilityUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		64C675F6E67240C99B417449 /* ObservabilityTests_macOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 99E664B0DD707BA9FE7C1C25 /* Build configuration list for PBXNativeTarget "ObservabilityTests_macOS" */;
+			buildPhases = (
+				D8828CF6C50E64CFC8417F48 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ObservabilityTests_macOS;
+			packageProductDependencies = (
+			);
+			productName = ObservabilityTests_macOS;
+			productReference = CED247A594FDFD88C53D5640 /* ObservabilityTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		6658DE6790BA604A6EED3B82 /* Observability_iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2B12D860387ED44904548A6A /* Build configuration list for PBXNativeTarget "Observability_iOS" */;
+			buildPhases = (
+				2FFF797388602ACFACB98612 /* Sources */,
+				FB47F298B6A195DA689135AC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Observability_iOS;
+			packageProductDependencies = (
+			);
+			productName = Observability_iOS;
+			productReference = 920A032AFCA42D92A099D95F /* Observability.app */;
+			productType = "com.apple.product-type.application";
+		};
+		77A78E9AA5AD47C30BEEDB69 /* ObservabilityTests_iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B3155BC22FF7205C9E2A5019 /* Build configuration list for PBXNativeTarget "ObservabilityTests_iOS" */;
+			buildPhases = (
+				1E33D6D6B40281D2DEAD4ECE /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ObservabilityTests_iOS;
+			packageProductDependencies = (
+			);
+			productName = ObservabilityTests_iOS;
+			productReference = 4F504BCD895D80EB93DC8546 /* ObservabilityTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		8CED64E3270DEC1ACBBF53A1 /* Observability_macOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B3690BFB794AD9A7C6FE5E49 /* Build configuration list for PBXNativeTarget "Observability_macOS" */;
+			buildPhases = (
+				C67C3A8C05B386010D4EFC27 /* Sources */,
+				E902CC686646F1C866FAC6EB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Observability_macOS;
+			packageProductDependencies = (
+			);
+			productName = Observability_macOS;
+			productReference = C2CAC812B305815472E6A0C3 /* Observability.app */;
+			productType = "com.apple.product-type.application";
+		};
+		DC24ACFC9E23285D85A7EC51 /* ObservabilityUITests_macOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 34F2408CC0933D350846DB05 /* Build configuration list for PBXNativeTarget "ObservabilityUITests_macOS" */;
+			buildPhases = (
+				97DF7C314D548B5D079A66A1 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ObservabilityUITests_macOS;
+			packageProductDependencies = (
+			);
+			productName = ObservabilityUITests_macOS;
+			productReference = 9E87BBEA76D22BACDCDB7633 /* ObservabilityUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		30803DFC6E7EB8B23C07581F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					39921196E161B084DB3C97A1 = {
+						DevelopmentTeam = 49S7UFWWL9;
+						ProvisioningStyle = Automatic;
+					};
+					64C675F6E67240C99B417449 = {
+						DevelopmentTeam = 49S7UFWWL9;
+						ProvisioningStyle = Automatic;
+					};
+					6658DE6790BA604A6EED3B82 = {
+						DevelopmentTeam = 49S7UFWWL9;
+						ProvisioningStyle = Automatic;
+					};
+					77A78E9AA5AD47C30BEEDB69 = {
+						DevelopmentTeam = 49S7UFWWL9;
+						ProvisioningStyle = Automatic;
+					};
+					8CED64E3270DEC1ACBBF53A1 = {
+						DevelopmentTeam = 49S7UFWWL9;
+						ProvisioningStyle = Automatic;
+					};
+					DC24ACFC9E23285D85A7EC51 = {
+						DevelopmentTeam = 49S7UFWWL9;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 81994AD37DA5D1E864B8801F /* Build configuration list for PBXProject "Observability" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 88E4382F4F2A10C1AA6C4D14;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				77A78E9AA5AD47C30BEEDB69 /* ObservabilityTests_iOS */,
+				64C675F6E67240C99B417449 /* ObservabilityTests_macOS */,
+				39921196E161B084DB3C97A1 /* ObservabilityUITests_iOS */,
+				DC24ACFC9E23285D85A7EC51 /* ObservabilityUITests_macOS */,
+				6658DE6790BA604A6EED3B82 /* Observability_iOS */,
+				8CED64E3270DEC1ACBBF53A1 /* Observability_macOS */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E902CC686646F1C866FAC6EB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E9D8DA800304A42F30C68C6D /* Assets.xcassets in Resources */,
+				F092A5F55279E5FB4EB0FC8D /* Info.plist in Resources */,
+				C1E12E8989E7FBC18B8093F4 /* Observability.xcodeproj in Resources */,
+				A57DEBF8A20626CB2776BA3B /* Secrets.xcconfig.template in Resources */,
+				2A98B247D264833CEB0EF204 /* TODO.md in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FB47F298B6A195DA689135AC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DF0A02112801AFC4AED07D9C /* Assets.xcassets in Resources */,
+				87363501B90A69BE7AF48AC4 /* Info.plist in Resources */,
+				65834B42D69A189579E2316E /* Observability.xcodeproj in Resources */,
+				0A2C0F33ABBC547092FCBCD1 /* Secrets.xcconfig.template in Resources */,
+				0F747937821FFF8F796EF0E7 /* TODO.md in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0F03909E6F52428904DAA407 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1E33D6D6B40281D2DEAD4ECE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2FFF797388602ACFACB98612 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F6754C7D4AB3D72919469BAF /* DashboardView.swift in Sources */,
+				008108406731CB0E5A4FD3AB /* ObservabilityApp.swift in Sources */,
+				031CEFB9178A187EA31928B9 /* ObservabilityTests.swift in Sources */,
+				3CF23680E1064A3D2DFFADFB /* ObservabilityUITests.swift in Sources */,
+				0D8FA3819FE1BCAC4F0466E1 /* ObservabilityUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		97DF7C314D548B5D079A66A1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C67C3A8C05B386010D4EFC27 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EA035529DB284D4EA007A6F5 /* DashboardView.swift in Sources */,
+				CF46FBD9DE321F36BF6BEDF4 /* ObservabilityApp.swift in Sources */,
+				CC1EF1433818F9442A34928F /* ObservabilityTests.swift in Sources */,
+				F99AA12E943566146A23693A /* ObservabilityUITests.swift in Sources */,
+				DC78B0E104D49355C0C66D14 /* ObservabilityUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D8828CF6C50E64CFC8417F48 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1253C5FA9DE224E3A594A138 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 49S7UFWWL9;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				INFOPLIST_KEY_MONITORING_API_KEY = "$(MONITORING_API_KEY)";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.6;
+				MARKETING_VERSION = 1.0;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		1D00D3F8641C0CB169733DB2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ArtfulArchivesStudio.ObservabilityUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TEST_TARGET_NAME = Observability;
+			};
+			name = Debug;
+		};
+		36247FD8182C51CB2D7635C8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				AUTOMATION_APPLE_EVENTS = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_FILE_ACCESS_DOWNLOADS_FOLDER = readonly;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_INCOMING_NETWORK_CONNECTIONS = YES;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
+				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
+				ENABLE_RESOURCE_ACCESS_BLUETOOTH = YES;
+				ENABLE_RESOURCE_ACCESS_CALENDARS = NO;
+				ENABLE_RESOURCE_ACCESS_CAMERA = NO;
+				ENABLE_RESOURCE_ACCESS_CONTACTS = NO;
+				ENABLE_RESOURCE_ACCESS_LOCATION = NO;
+				ENABLE_RESOURCE_ACCESS_PHOTO_LIBRARY = NO;
+				ENABLE_RESOURCE_ACCESS_PRINTING = NO;
+				ENABLE_RESOURCE_ACCESS_USB = NO;
+				ENABLE_USER_SELECTED_FILES = readwrite;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Observability/Info.plist;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ArtfulArchivesStudio.Observability;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				RUNTIME_EXCEPTION_ALLOW_DYLD_ENVIRONMENT_VARIABLES = NO;
+				RUNTIME_EXCEPTION_ALLOW_JIT = YES;
+				RUNTIME_EXCEPTION_ALLOW_UNSIGNED_EXECUTABLE_MEMORY = NO;
+				RUNTIME_EXCEPTION_DEBUGGING_TOOL = NO;
+				RUNTIME_EXCEPTION_DISABLE_EXECUTABLE_PAGE_PROTECTION = NO;
+				RUNTIME_EXCEPTION_DISABLE_LIBRARY_VALIDATION = NO;
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+			};
+			name = Debug;
+		};
+		3A30B63CB1A7302A47D3D2E9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				AUTOMATION_APPLE_EVENTS = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_FILE_ACCESS_DOWNLOADS_FOLDER = readonly;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_INCOMING_NETWORK_CONNECTIONS = YES;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
+				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
+				ENABLE_RESOURCE_ACCESS_BLUETOOTH = YES;
+				ENABLE_RESOURCE_ACCESS_CALENDARS = NO;
+				ENABLE_RESOURCE_ACCESS_CAMERA = NO;
+				ENABLE_RESOURCE_ACCESS_CONTACTS = NO;
+				ENABLE_RESOURCE_ACCESS_LOCATION = NO;
+				ENABLE_RESOURCE_ACCESS_PHOTO_LIBRARY = NO;
+				ENABLE_RESOURCE_ACCESS_PRINTING = NO;
+				ENABLE_RESOURCE_ACCESS_USB = NO;
+				ENABLE_USER_SELECTED_FILES = readwrite;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Observability/Info.plist;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ArtfulArchivesStudio.Observability;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				RUNTIME_EXCEPTION_ALLOW_DYLD_ENVIRONMENT_VARIABLES = NO;
+				RUNTIME_EXCEPTION_ALLOW_JIT = YES;
+				RUNTIME_EXCEPTION_ALLOW_UNSIGNED_EXECUTABLE_MEMORY = NO;
+				RUNTIME_EXCEPTION_DEBUGGING_TOOL = NO;
+				RUNTIME_EXCEPTION_DISABLE_EXECUTABLE_PAGE_PROTECTION = NO;
+				RUNTIME_EXCEPTION_DISABLE_LIBRARY_VALIDATION = NO;
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+			};
+			name = Release;
+		};
+		417DDEEAF0753EF0A1A9CC79 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ArtfulArchivesStudio.ObservabilityTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Observability.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Observability";
+			};
+			name = Debug;
+		};
+		487B46C54565F9F8AD4D7E6B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				AUTOMATION_APPLE_EVENTS = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_FILE_ACCESS_DOWNLOADS_FOLDER = readonly;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_INCOMING_NETWORK_CONNECTIONS = YES;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
+				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
+				ENABLE_RESOURCE_ACCESS_BLUETOOTH = YES;
+				ENABLE_RESOURCE_ACCESS_CALENDARS = NO;
+				ENABLE_RESOURCE_ACCESS_CAMERA = NO;
+				ENABLE_RESOURCE_ACCESS_CONTACTS = NO;
+				ENABLE_RESOURCE_ACCESS_LOCATION = NO;
+				ENABLE_RESOURCE_ACCESS_PHOTO_LIBRARY = NO;
+				ENABLE_RESOURCE_ACCESS_PRINTING = NO;
+				ENABLE_RESOURCE_ACCESS_USB = NO;
+				ENABLE_USER_SELECTED_FILES = readwrite;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Observability/Info.plist;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ArtfulArchivesStudio.Observability;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				RUNTIME_EXCEPTION_ALLOW_DYLD_ENVIRONMENT_VARIABLES = NO;
+				RUNTIME_EXCEPTION_ALLOW_JIT = YES;
+				RUNTIME_EXCEPTION_ALLOW_UNSIGNED_EXECUTABLE_MEMORY = NO;
+				RUNTIME_EXCEPTION_DEBUGGING_TOOL = NO;
+				RUNTIME_EXCEPTION_DISABLE_EXECUTABLE_PAGE_PROTECTION = NO;
+				RUNTIME_EXCEPTION_DISABLE_LIBRARY_VALIDATION = NO;
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+			};
+			name = Debug;
+		};
+		4DAE5FA51241F6426695D033 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ArtfulArchivesStudio.ObservabilityUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TEST_TARGET_NAME = Observability;
+			};
+			name = Release;
+		};
+		5931A03479E5C117CE038420 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ArtfulArchivesStudio.ObservabilityUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TEST_TARGET_NAME = Observability;
+			};
+			name = Debug;
+		};
+		965A4C7309423A936C945769 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ArtfulArchivesStudio.ObservabilityTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Observability.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Observability";
+			};
+			name = Debug;
+		};
+		B24C224B4E45132DD10C45AE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				AUTOMATION_APPLE_EVENTS = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_FILE_ACCESS_DOWNLOADS_FOLDER = readonly;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_INCOMING_NETWORK_CONNECTIONS = YES;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
+				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
+				ENABLE_RESOURCE_ACCESS_BLUETOOTH = YES;
+				ENABLE_RESOURCE_ACCESS_CALENDARS = NO;
+				ENABLE_RESOURCE_ACCESS_CAMERA = NO;
+				ENABLE_RESOURCE_ACCESS_CONTACTS = NO;
+				ENABLE_RESOURCE_ACCESS_LOCATION = NO;
+				ENABLE_RESOURCE_ACCESS_PHOTO_LIBRARY = NO;
+				ENABLE_RESOURCE_ACCESS_PRINTING = NO;
+				ENABLE_RESOURCE_ACCESS_USB = NO;
+				ENABLE_USER_SELECTED_FILES = readwrite;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Observability/Info.plist;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ArtfulArchivesStudio.Observability;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				RUNTIME_EXCEPTION_ALLOW_DYLD_ENVIRONMENT_VARIABLES = NO;
+				RUNTIME_EXCEPTION_ALLOW_JIT = YES;
+				RUNTIME_EXCEPTION_ALLOW_UNSIGNED_EXECUTABLE_MEMORY = NO;
+				RUNTIME_EXCEPTION_DEBUGGING_TOOL = NO;
+				RUNTIME_EXCEPTION_DISABLE_EXECUTABLE_PAGE_PROTECTION = NO;
+				RUNTIME_EXCEPTION_DISABLE_LIBRARY_VALIDATION = NO;
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+			};
+			name = Release;
+		};
+		BD012F4D9C304CFCC7125709 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ArtfulArchivesStudio.ObservabilityTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Observability.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Observability";
+			};
+			name = Release;
+		};
+		BEEF224DCFD9752AB98B9084 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ArtfulArchivesStudio.ObservabilityTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Observability.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Observability";
+			};
+			name = Release;
+		};
+		F0005D74A583A2E096E20CC4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 49S7UFWWL9;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				INFOPLIST_KEY_MONITORING_API_KEY = "$(MONITORING_API_KEY)";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.6;
+				MARKETING_VERSION = 1.0;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		F261F10EB842854A7B827E2F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ArtfulArchivesStudio.ObservabilityUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TEST_TARGET_NAME = Observability;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2B12D860387ED44904548A6A /* Build configuration list for PBXNativeTarget "Observability_iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				487B46C54565F9F8AD4D7E6B /* Debug */,
+				3A30B63CB1A7302A47D3D2E9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		34F2408CC0933D350846DB05 /* Build configuration list for PBXNativeTarget "ObservabilityUITests_macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D00D3F8641C0CB169733DB2 /* Debug */,
+				F261F10EB842854A7B827E2F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		81994AD37DA5D1E864B8801F /* Build configuration list for PBXProject "Observability" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F0005D74A583A2E096E20CC4 /* Debug */,
+				1253C5FA9DE224E3A594A138 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		85F6F37FE3018683C86DCBED /* Build configuration list for PBXNativeTarget "ObservabilityUITests_iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5931A03479E5C117CE038420 /* Debug */,
+				4DAE5FA51241F6426695D033 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		99E664B0DD707BA9FE7C1C25 /* Build configuration list for PBXNativeTarget "ObservabilityTests_macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				965A4C7309423A936C945769 /* Debug */,
+				BD012F4D9C304CFCC7125709 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		B3155BC22FF7205C9E2A5019 /* Build configuration list for PBXNativeTarget "ObservabilityTests_iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				417DDEEAF0753EF0A1A9CC79 /* Debug */,
+				BEEF224DCFD9752AB98B9084 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		B3690BFB794AD9A7C6FE5E49 /* Build configuration list for PBXNativeTarget "Observability_macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				36247FD8182C51CB2D7635C8 /* Debug */,
+				B24C224B4E45132DD10C45AE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 30803DFC6E7EB8B23C07581F /* Project object */;
+}

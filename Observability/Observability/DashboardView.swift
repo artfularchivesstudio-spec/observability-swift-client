@@ -431,8 +431,11 @@ class DashboardViewModel: ObservableObject {
 
     func startMonitoring() {
         // Connect to live observability server with API key auth
-        guard let apiKey = Bundle.main.object(forInfoDictionaryKey: "MONITORING_API_KEY") as? String else {
-            print("❌ API Key not found in Info.plist. Run setup-monitoring-api-key.sh first!")
+        let apiKey = ProcessInfo.processInfo.environment["MONITORING_API_KEY"] ??
+                     (Bundle.main.object(forInfoDictionaryKey: "MONITORING_API_KEY") as? String)
+
+        guard let apiKey = apiKey else {
+            print("❌ API Key not found in environment or Info.plist. Run setup-monitoring-api-key.sh first!")
             startSimulatedMonitoring()
             return
         }
