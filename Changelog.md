@@ -19,6 +19,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Offloaded historical Supabase backups from `/root/backups/supabase` to S3 bucket `artful-archives-studio-supabase-backups` under `server-backups/supabase/` as part of VPS disk space maintenance.
 - Verified integrity of all `storage_*.tar.gz` archives by comparing local `sha256` checksums to their corresponding `.sha256` manifests stored in S3 before deleting local copies (~12GB reclaimed).
 
+### Fixed
+- ObservabilityKit WebSocket clients now send correctly typed `"metrics"` payloads and bridge `URLSessionWebSocketTask.sendPing` through async/await to avoid missing handler crashes and improve reliability on iOS 18/macOS 15.
+- Combine-based `WebSocketCombineClient` deinitialization is now actor-safe, and reconnection logic uses explicit `URLError.Code.networkConnectionLost` matching for clearer behaviour.
+- SwiftUI dashboard components (`MetricChart`, `MetricsDashboard`, and `ServiceCard`) have been updated to avoid retain cycles in Combine sinks, correctly erase filtered publishers to `AnyPublisher`, and use semantic SwiftUI colors for better Dark Mode support.
+
 ## [0.1.0] - 2025-12-15
 
 ### Added

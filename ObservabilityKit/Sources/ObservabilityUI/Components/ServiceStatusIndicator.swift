@@ -180,7 +180,7 @@ public struct ServiceCard: View {
         .padding()
         .background(
             RoundedRectangle(cornerRadius: 12)
-                .fill(Color(.systemBackground))
+                .fill(.background)
                 .shadow(color: .black.opacity(0.1), radius: 2, x: 0, y: 1)
         )
     }

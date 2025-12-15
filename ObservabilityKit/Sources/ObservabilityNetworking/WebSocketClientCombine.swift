@@ -54,7 +54,10 @@ public final class WebSocketCombineClient: ObservableObject {
 
     deinit {
         pingTimer?.invalidate()
-        disconnect()
+        // deinit is nonisolated; hop to the main actor to call @MainActor method
+        Task { @MainActor in
+            self.disconnect()
+        }
     }
 
     // MARK: - Connection Management
@@ -190,7 +193,7 @@ public final class WebSocketCombineClient: ObservableObject {
         eventSubject.send(event)
 
         // Attempt reconnection if appropriate
-        if case URLError.networkConnectionLost = error as? URLError {
+        if let urlError = error as? URLError, urlError.code == .networkConnectionLost {
             attemptReconnect()
         }
     }
@@ -202,7 +205,7 @@ public final class WebSocketCombineClient: ObservableObject {
     }
 
     public func publishMetrics(_ metrics: [String: MetricValue]) async throws {
-        let payload = MetricPayload(metrics: metrics)
+        let payload = MetricPayload(type: "metrics", metrics: metrics)
         let data = try encoder.encode(payload)
         try await send(.data(data))
     }
@@ -215,12 +218,7 @@ public final class WebSocketCombineClient: ObservableObject {
     private func sendHandshake() async throws {
         let handshake = Handshake(
             version: "1.0",
-            capabilities: ["events", "metrics", "health"],
-            clientInfo: [
-                "platform": "iOS",
-                "osVersion": ProcessInfo.processInfo.operatingSystemVersionString,
-                "appVersion": Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "unknown"
-            ]
+            capabilities: ["events", "metrics", "health"]
         )
         let data = try encoder.encode(handshake)
         try await send(.data(data))
@@ -251,7 +249,16 @@ public final class WebSocketCombineClient: ObservableObject {
         guard let task = task, isConnected else { return }
 
         do {
-            try await task.sendPing()
+            // Bridge callback-based API to async to avoid missing handler error
+            try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<Void, Error>) in
+                task.sendPing { error in
+                    if let error {
+                        continuation.resume(throwing: WebSocketError.pingFailed(error))
+                    } else {
+                        continuation.resume()
+                    }
+                }
+            }
         } catch {
             await handleError(error)
         }
@@ -317,4 +324,22 @@ private extension URLSessionWebSocketTask {
     var messages: MessageIterator {
         MessageIterator(task: self)
     }
+}
+
+// MARK: - Local payloads matching the actor-based client
+
+@available(macOS 14, iOS 17, *)
+private struct MetricPayload: Codable {
+    init(type: String, metrics: [String : MetricValue]) {
+        self.type = type
+        self.metrics = metrics
+    }
+    let type: String
+    let metrics: [String: MetricValue]
+}
+
+@available(macOS 14, iOS 17, *)
+private struct Handshake: Codable {
+    let version: String
+    let capabilities: [String]
 }

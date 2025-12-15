@@ -158,7 +158,7 @@ public actor WebSocketClient {
     }
 
     public func publishMetrics(_ metrics: [String: MetricValue]) async throws {
-        let payload = MetricPayload(metrics: metrics)
+        let payload = MetricPayload(type: "metrics", metrics: metrics)
         let data = try encoder.encode(payload)
         try await send(.data(data))
     }
@@ -195,10 +195,15 @@ public actor WebSocketClient {
             throw WebSocketError.notConnected
         }
 
-        do {
-            try await task.sendPing()
-        } catch {
-            throw WebSocketError.pingFailed(error)
+        // Bridge the callback-based ping to async/throwing
+        try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<Void, Error>) in
+            task.sendPing { error in
+                if let error {
+                    continuation.resume(throwing: WebSocketError.pingFailed(error))
+                } else {
+                    continuation.resume()
+                }
+            }
         }
     }
 }
@@ -207,6 +212,10 @@ public actor WebSocketClient {
 
 @available(macOS 14, iOS 17, *)
 private struct MetricPayload: Codable {
+    init(type: String, metrics: [String : MetricValue]) {
+        self.type = type
+        self.metrics = metrics
+    }
     let type: String
     let metrics: [String: MetricValue]
 }

@@ -220,9 +220,7 @@ public struct MetricChart: View {
     private func setupSubscription() {
         metricsPublisher
             .receive(on: DispatchQueue.main)
-            .sink { [weak self] metric in
-                guard let self = self else { return }
-
+            .sink { metric in
                 // Add new data point
                 self.dataPoints.append(metric)
 
@@ -417,14 +415,16 @@ public struct MetricsDashboard: View {
                 MetricChart(
                     title: "CPU Usage",
                     metricsPublisher: metricsPublisher
-                        .filter { $0.label == "cpu" },
+                        .filter { $0.label == "cpu" }
+                        .eraseToAnyPublisher(),
                     chartType: .line
                 )
 
                 MetricChart(
                     title: "Memory",
                     metricsPublisher: metricsPublisher
-                        .filter { $0.label == "memory" },
+                        .filter { $0.label == "memory" }
+                        .eraseToAnyPublisher(),
                     chartType: .area
                 )
             }
