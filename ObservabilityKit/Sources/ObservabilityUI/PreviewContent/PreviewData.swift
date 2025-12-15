@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 import ObservabilityCore
 
 @available(macOS 14, iOS 17, *)

@@ -118,31 +118,27 @@ public actor WebSocketClient {
     }
 
     private func handleDataMessage(_ data: Data) async {
-        do {
-            // Try to decode as different message types
-            if let event = try? decoder.decode(StreamEvent.self, from: data) {
+        // Try to decode as different message types
+        if let event = try? decoder.decode(StreamEvent.self, from: data) {
+            eventContinuation.yield(event)
+        } else if let metric = try? decoder.decode(MetricPoint.self, from: data) {
+            metricContinuation.yield(metric)
+        } else if let health = try? decoder.decode(HealthCheckResult.self, from: data) {
+            healthContinuation.yield(health)
+        } else if let generic = try? JSONSerialization.jsonObject(with: data) as? [String: Any] {
+            // Handle generic events
+            if let type = generic["type"] as? String {
+                let event = StreamEvent(
+                    type: type,
+                    data: generic.reduce(into: [:]) { result, pair in
+                        if let value = pair.value as? String {
+                            result[pair.key] = value
+                        }
+                    },
+                    source: "websocket"
+                )
                 eventContinuation.yield(event)
-            } else if let metric = try? decoder.decode(MetricPoint.self, from: data) {
-                metricContinuation.yield(metric)
-            } else if let health = try? decoder.decode(HealthCheckResult.self, from: data) {
-                healthContinuation.yield(health)
-            } else if let generic = try? JSONSerialization.jsonObject(with: data) as? [String: Any] {
-                // Handle generic events
-                if let type = generic["type"] as? String {
-                    let event = StreamEvent(
-                        type: type,
-                        data: generic.reduce(into: [:]) { result, pair in
-                            if let value = pair.value as? String {
-                                result[pair.key] = value
-                            }
-                        },
-                        source: "websocket"
-                    )
-                    eventContinuation.yield(event)
-                }
             }
-        } catch {
-            await handleError(error)
         }
     }
 
@@ -211,7 +207,7 @@ public actor WebSocketClient {
 
 @available(macOS 14, iOS 17, *)
 private struct MetricPayload: Codable {
-    let type = "metrics"
+    let type: String
     let metrics: [String: MetricValue]
 }
 
