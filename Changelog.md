@@ -68,6 +68,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- **Strapi Integration**: Backend Python API now includes `/api/v1/strapi-stories` endpoints for creating stories with author "K2"
+  - `POST /api/v1/strapi-stories/bulk` - Create multiple stories in one request
+  - `POST /api/v1/strapi-stories` - Create single story
+  - Support for bulk creation via Python script: `create_k2_stories.py`
 - XcodeGen project configuration with comprehensive Makefile
 - Multi-platform support (iOS 18.6+, macOS 15.6+, visionOS 26.1+)
 - Sandbox and hardened runtime security configurations
@@ -75,15 +79,32 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Project documentation structure
 
 ### Changed
+- **Backend Python Structure**: Moved from `/root/` to `/root/api-gateway/` for consistent project organization
 - Initial project setup with file system synchronization
-- Offloaded historical Supabase backups from `/root/backups/supabase` to S3 bucket `artful-archives-studio-supabase-backups` under `server-backups/supabase/` as part of VPS disk space maintenance.
-- Verified integrity of all `storage_*.tar.gz` archives by comparing local `sha256` checksums to their corresponding `.sha256` manifests stored in S3 before deleting local copies (~12GB reclaimed).
+- Offloaded historical Supabase backups from `/root/backups/supabase` to S3 bucket `artful-archives-studio-supabase-backups` under `server-backups/supabase/` as part of VPS disk space maintenance
+- Verified integrity of all `storage_*.tar.gz` archives by comparing local `sha256` checksums to their corresponding `.sha256` manifests stored in S3 before deleting local copies (~12GB reclaimed)
 
 ### Fixed
-- ObservabilityKit WebSocket clients now send correctly typed `"metrics"` payloads and bridge `URLSessionWebSocketTask.sendPing` through async/await to avoid missing handler crashes and improve reliability on iOS 18/macOS 15.
-- Combine-based `WebSocketCombineClient` deinitialization is now actor-safe, and reconnection logic uses explicit `URLError.Code.networkConnectionLost` matching for clearer behaviour.
-- SwiftUI dashboard components (`MetricChart`, `MetricsDashboard`, and `ServiceCard`) have been updated to avoid retain cycles in Combine sinks, correctly erase filtered publishers to `AnyPublisher`, and use semantic SwiftUI colors for better Dark Mode support.
-- XcodeGen `project.yml` target and scheme configuration now aligns iOS/macOS app and test targets (using `_iOS`/`_macOS` suffixes), resolving previous spec validation errors and enabling clean project generation.
+- **XcodeGen Path**: Resolved backend-python location issue that was causing Swift build failures
+- ObservabilityKit WebSocket clients now send correctly typed `"metrics"` payloads and bridge `URLSessionWebSocketTask.sendPing` through async/await to avoid missing handler crashes and improve reliability on iOS 18/macOS 15
+- Combine-based `WebSocketCombineClient` deinitialization is now actor-safe, and reconnection logic uses explicit `URLError.Code.networkConnectionLost` matching for clearer behaviour
+- SwiftUI dashboard components (`MetricChart`, `MetricsDashboard`, and `ServiceCard`) have been updated to avoid retain cycles in Combine sinks, correctly erase filtered publishers to `AnyPublisher`, and use semantic SwiftUI colors for better Dark Mode support
+- XcodeGen `project.yml` target and scheme configuration now aligns iOS/macOS app and test targets (using `_iOS`/`_macOS` suffixes), resolving previous spec validation errors and enabling clean project generation
+
+## [0.2.0] - 2025-12-17
+
+### Added
+- **Strapi Story Creation API**: Backend integration for creating stories with author "K2"
+  - FastAPI router at `/api/v1/strapi-stories` and `/api/v1/strapi-stories/bulk`
+  - Support for specifying story title, content, author, and tags
+  - Automatically sets stories as drafts (unpublished) for review
+  - Python script `create_k2_stories.py` in `/root/backend-python/` for bulk creation
+- Infrastructure worktree organization: moved `backend-python/` to `/root/api-gateway/` for consistency
+
+### Infrastructure
+- Added development helper script for Strapi story creation
+- Created structured process for content generation with author attribution
+- Updated project documentation to reflect new backend capabilities
 
 ## [0.1.0] - 2025-12-15
 
