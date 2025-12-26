@@ -8,6 +8,8 @@ This document outlines the comprehensive feature set of the Observability Swift 
 - **iOS**: Native iPhone and iPad experience with adaptive layouts
 - **macOS**: Universal Mac app with Catalyst and native macOS builds
 - **Cross-Platform**: Shared core logic with platform-specific UI adaptations
+- **Platform-Specific Features**: iOS-only features (haptics, Live Activities, Dynamic Island) gracefully disabled on macOS
+- **Cloud Service Monitoring**: Special handling for cloud-hosted services (Supabase, etc.) that don't use PM2
 
 ### 📊 Real-Time Metrics Collection
 - **Custom Counters**: Track event occurrences and business metrics
@@ -52,6 +54,9 @@ This document outlines the comprehensive feature set of the Observability Swift 
 - **Multiple Channels**: Push notifications, email, Slack, and webhook support
 - **Alert Escalation**: Tiered alerting with automatic escalation
 - **Alert Suppression**: Duplicate alert prevention and cooldown periods
+- **iOS Haptic Feedback**: Tactile alerts for critical service status changes (iOS only)
+- **Live Activities**: Real-time service monitoring in Dynamic Island and Lock Screen (iOS 16.1+)
+- **Connection Status**: Intelligent connection status that distinguishes API failures from service failures
 
 ### 🔒 Security and Compliance
 - **End-to-End Encryption**: AES-256 encryption for data in transit and at rest

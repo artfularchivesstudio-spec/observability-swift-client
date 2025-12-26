@@ -47,6 +47,8 @@ open Observability.xcodeproj
 - Press `Cmd + R` to build and run
 - The app will connect to the live monitoring server!
 
+**Note**: Requires iOS 18.0+ or macOS 14.0+
+
 ## 🔐 API Key Information
 
 **Default API Key**: `observability-secret-key-2025`

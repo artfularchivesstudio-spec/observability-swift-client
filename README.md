@@ -76,7 +76,7 @@ Shared utilities and extensions:
 ### Prerequisites
 
 - Xcode 15.0+
-- iOS 17.0+ / macOS 14.0+
+- iOS 18.0+ / macOS 14.0+
 - Swift 6.1+
 
 ### Setup
@@ -213,11 +213,16 @@ ObservabilityKit
 
 | Platform | Version | Status |
 |----------|---------|--------|
-| iOS | 17.0+ | ✅ Full Support |
-| iPadOS | 17.0+ | ✅ Full Support |
+| iOS | 18.0+ | ✅ Full Support |
+| iPadOS | 18.0+ | ✅ Full Support |
 | macOS | 14.0+ | ✅ Full Support |
 | watchOS | 10.0+ | ⏳ Planned |
 | tvOS | 17.0+ | ⏳ Planned |
+
+**Platform-Specific Features:**
+- **iOS**: Haptic feedback, Live Activities, Dynamic Island integration
+- **macOS**: Full dashboard experience (iOS-only features gracefully disabled)
+- **Cloud Services**: Special handling for cloud-hosted services (Supabase, etc.)
 
 ## 🧪 Testing
 
@@ -276,10 +281,13 @@ public actor WebSocketClient {
 
 ## 🔮 Future Enhancements
 
+- [x] iOS/macOS platform adaptations (haptics, Live Activities conditional compilation)
+- [x] Cloud service health check handling (Supabase, etc.)
+- [x] Improved connection status and error handling
 - [ ] Apple Watch companion app
 - [ ] macOS menu bar extra
 - [ ] Today widget for iOS
-- [ ] Push notifications for critical alerts
+- [ ] Push notifications for critical alerts (code complete, needs testing)
 - [ ] WatchOS complication support
 - [ ] Deep linking to service details
 - [ ] Export metrics data

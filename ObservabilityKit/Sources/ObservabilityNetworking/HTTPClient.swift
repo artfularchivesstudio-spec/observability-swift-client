@@ -132,24 +132,41 @@ public actor HTTPClient {
         let _: String = try await request(endpoint, method: .delete, baseURL: baseURL, headers: headers)
     }
 
-    // MARK: - Streaming Support
+    // MARK: - Streaming Support (Server-Sent Events)
     public func streamEvents(from url: URL) -> AsyncStream<StreamEvent> {
         AsyncStream { continuation in
             Task {
                 do {
-                    let (stream, response) = try await session.bytes(from: url)
+                    var request = URLRequest(url: url)
+                    request.setValue("text/event-stream", forHTTPHeaderField: "Accept")
+                    request.setValue("observability-client/1.0", forHTTPHeaderField: "User-Agent")
+                    
+                    let (stream, response) = try await session.bytes(for: request)
                     guard let httpResponse = response as? HTTPURLResponse,
                           (200...299).contains(httpResponse.statusCode) else {
                         continuation.finish()
                         return
                     }
 
-                    for try await line in stream.lines {
-                        guard !line.isEmpty else { continue }
-
-                        if let data = line.data(using: .utf8),
-                           let event = try? decoder.decode(StreamEvent.self, from: data) {
-                            continuation.yield(event)
+                    var buffer = ""
+                    for try await byte in stream {
+                        buffer.append(Character(UnicodeScalar(byte)))
+                        
+                        // Process complete lines (SSE format: "data: {...}\n\n")
+                        if buffer.contains("\n\n") {
+                            let lines = buffer.components(separatedBy: "\n\n")
+                            buffer = lines.last ?? ""
+                            
+                            for line in lines.dropLast() {
+                                if line.hasPrefix("data: ") {
+                                    let jsonString = String(line.dropFirst(6)) // Remove "data: " prefix
+                                    if let jsonData = jsonString.data(using: .utf8),
+                                       let json = try? JSONSerialization.jsonObject(with: jsonData) as? [String: Any] {
+                                        let event = parseLogEvent(json)
+                                        continuation.yield(event)
+                                    }
+                                }
+                            }
                         }
                     }
 
@@ -159,6 +176,46 @@ public actor HTTPClient {
                 }
             }
         }
+    }
+    
+    // 🌟 Parse log event from monitoring service format
+    private func parseLogEvent(_ json: [String: Any]) -> StreamEvent {
+        let id = UUID()
+        let type = json["level"] as? String ?? json["type"] as? String ?? "info"
+        let timestamp: Date
+        
+        if let timestampString = json["timestamp"] as? String {
+            let formatter = ISO8601DateFormatter()
+            timestamp = formatter.date(from: timestampString) ?? Date()
+        } else {
+            timestamp = Date()
+        }
+        
+        let source = json["source"] as? String ?? "unknown"
+        let message = json["message"] as? String ?? ""
+        
+        // Convert all values to strings for StreamEvent.data
+        var data: [String: String] = [:]
+        for (key, value) in json {
+            if let stringValue = value as? String {
+                data[key] = stringValue
+            } else {
+                data[key] = String(describing: value)
+            }
+        }
+        
+        // Ensure message is in data
+        if !data.keys.contains("message") {
+            data["message"] = message
+        }
+        
+        return StreamEvent(
+            id: id,
+            type: type,
+            timestamp: timestamp,
+            data: data,
+            source: source
+        )
     }
 }
 

@@ -3,11 +3,15 @@ options:
   bundleIdPrefix: com.ArtfulArchivesStudio
   createIntermediateGroups: true
   deploymentTarget:
-    iOS: "16.0"
+    iOS: "18.0"
     macOS: "15.6"
   developmentLanguage: en
   usesTabs: false
   indentWidth: 2
+
+packages:
+  ObservabilityKit:
+    path: ObservabilityKit
 
 configs:
   Debug: Observability/Observability/Secrets.xcconfig
@@ -36,14 +40,19 @@ targets:
     type: application
     platform: [iOS, macOS]
     sources:
-      - path: Observability
+      - path: Observability/Observability
         excludes:
           - "Info.plist"
-    info:
-      path: Observability/Info.plist
+          - "Secrets.xcconfig.template"
+    dependencies:
+      - package: ObservabilityKit
+        product: ObservabilityCore
+      - package: ObservabilityKit
+        product: ObservabilityNetworking
+      - package: ObservabilityKit
+        product: ObservabilityUI
     settings:
       GENERATE_INFOPLIST_FILE: YES
-      INFOPLIST_FILE: Observability/Info.plist
       PRODUCT_BUNDLE_IDENTIFIER: com.ArtfulArchivesStudio.Observability
       PRODUCT_NAME: "$(TARGET_NAME)"
       SUPPORTED_PLATFORMS: "iphoneos iphonesimulator macosx"
@@ -91,6 +100,11 @@ targets:
     platform: [iOS, macOS]
     sources:
       - path: ObservabilityTests
+    dependencies:
+      - package: ObservabilityKit
+        product: ObservabilityCore
+      - package: ObservabilityKit
+        product: ObservabilityNetworking
     settings:
       GENERATE_INFOPLIST_FILE: YES
       PRODUCT_BUNDLE_IDENTIFIER: com.ArtfulArchivesStudio.ObservabilityTests
@@ -101,8 +115,12 @@ targets:
       BUNDLE_LOADER: "$(TEST_HOST)"
       STRING_CATALOG_GENERATE_SYMBOLS: NO
       SWIFT_EMIT_LOC_STRINGS: NO
-      IPHONEOS_DEPLOYMENT_TARGET: "26.1"
-      MACOSX_DEPLOYMENT_TARGET: "26.0"
+      IPHONEOS_DEPLOYMENT_TARGET: "18.0"
+      MACOSX_DEPLOYMENT_TARGET: "14.0"
+      ENABLE_TESTING_SEARCH_PATHS: YES
+      "ENABLE_TESTING_SEARCH_PATHS[sdk=iphoneos*]": YES
+      "ENABLE_TESTING_SEARCH_PATHS[sdk=iphonesimulator*]": YES
+      "ENABLE_TESTING_SEARCH_PATHS[sdk=macosx*]": YES
 
   ObservabilityUITests:
     type: bundle.ui-testing
@@ -117,8 +135,8 @@ targets:
       TARGETED_DEVICE_FAMILY: "1,2,7"
       STRING_CATALOG_GENERATE_SYMBOLS: NO
       SWIFT_EMIT_LOC_STRINGS: NO
-      IPHONEOS_DEPLOYMENT_TARGET: "26.1"
-      MACOSX_DEPLOYMENT_TARGET: "26.0"
+      IPHONEOS_DEPLOYMENT_TARGET: "18.0"
+      MACOSX_DEPLOYMENT_TARGET: "14.0"
       TEST_TARGET_NAME: Observability
 
 schemes:

@@ -42,6 +42,21 @@ public enum ServiceStatus: Sendable, Codable, Equatable {
         }
     }
 
+    public var displayName: String {
+        switch self {
+        case .operational:
+            return "Operational"
+        case .degraded:
+            return "Degraded"
+        case .down:
+            return "Down"
+        case .maintenance:
+            return "Maintenance"
+        case .unknown:
+            return "Unknown"
+        }
+    }
+
     public var description: String {
         switch self {
         case .operational:

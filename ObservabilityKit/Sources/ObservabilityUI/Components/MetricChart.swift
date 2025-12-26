@@ -401,8 +401,10 @@ public struct MetricsDashboard: View {
                 }
 
                 Button(action: {
-                    onRefresh?()
-                    lastUpdate = Date()
+                    Task { @MainActor in
+                        onRefresh?()
+                        lastUpdate = Date()
+                    }
                 }) {
                     Image(systemName: "arrow.clockwise")
                         .font(.caption)
@@ -451,8 +453,14 @@ public struct MetricsDashboard: View {
     }
 
     private func setupRefreshTimer() {
+        let refreshAction = onRefresh
         refreshTimer = Timer.scheduledTimer(withTimeInterval: refreshInterval, repeats: true) { _ in
-            onRefresh?()
+            Task { @MainActor in
+                refreshAction?()
+            }
+        }
+        // Update lastUpdate separately since it's a @State property
+        Task { @MainActor in
             lastUpdate = Date()
         }
     }

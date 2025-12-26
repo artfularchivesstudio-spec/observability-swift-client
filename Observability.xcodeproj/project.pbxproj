@@ -8,49 +8,104 @@
 
 /* Begin PBXBuildFile section */
 		008108406731CB0E5A4FD3AB /* ObservabilityApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0616D899691DFE0F4BFCFA /* ObservabilityApp.swift */; };
-		031CEFB9178A187EA31928B9 /* ObservabilityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1DBEE4CFB6EE765A3DFE8E /* ObservabilityTests.swift */; };
-		0A2C0F33ABBC547092FCBCD1 /* Secrets.xcconfig.template in Resources */ = {isa = PBXBuildFile; fileRef = 902CA0C738C2A1E7413B4A48 /* Secrets.xcconfig.template */; };
-		0D8FA3819FE1BCAC4F0466E1 /* ObservabilityUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DB0C372B27C9E3BFB8FB76 /* ObservabilityUITestsLaunchTests.swift */; };
-		0F747937821FFF8F796EF0E7 /* TODO.md in Resources */ = {isa = PBXBuildFile; fileRef = 80A7C081A02796BA6FEA1238 /* TODO.md */; };
-		2A98B247D264833CEB0EF204 /* TODO.md in Resources */ = {isa = PBXBuildFile; fileRef = 80A7C081A02796BA6FEA1238 /* TODO.md */; };
-		3CF23680E1064A3D2DFFADFB /* ObservabilityUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78298C67F3DE447A483B346 /* ObservabilityUITests.swift */; };
-		65834B42D69A189579E2316E /* Observability.xcodeproj in Resources */ = {isa = PBXBuildFile; fileRef = 2495D294B4AAB64E5C3FD1B6 /* Observability.xcodeproj */; };
-		87363501B90A69BE7AF48AC4 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C4A49B4483340F6BF06A55CC /* Info.plist */; };
-		A57DEBF8A20626CB2776BA3B /* Secrets.xcconfig.template in Resources */ = {isa = PBXBuildFile; fileRef = 902CA0C738C2A1E7413B4A48 /* Secrets.xcconfig.template */; };
-		C1E12E8989E7FBC18B8093F4 /* Observability.xcodeproj in Resources */ = {isa = PBXBuildFile; fileRef = 2495D294B4AAB64E5C3FD1B6 /* Observability.xcodeproj */; };
-		CC1EF1433818F9442A34928F /* ObservabilityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1DBEE4CFB6EE765A3DFE8E /* ObservabilityTests.swift */; };
+		02AA6270960377D61DBA4C16 /* PushNotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EFDF3AEE6960733079B8F04 /* PushNotificationsManager.swift */; };
+		0902C38ACF8734F6AE3838ED /* ObservabilityCore in Frameworks */ = {isa = PBXBuildFile; productRef = 49400DD9B5E7EBE363294A5F /* ObservabilityCore */; };
+		09B9FADE568AAA00854647CD /* ObservabilityNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = 99D409CE06744769D5EF0EBD /* ObservabilityNetworking */; };
+		172CC218E2C9BD95843885CB /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8F97E31CDFBD9A769FBC6E /* DashboardViewModel.swift */; };
+		23657A1183B6E1D15DDE2A86 /* LiveActivitiesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20A181E1507F5B0328B34A0 /* LiveActivitiesManager.swift */; };
+		239B128C1DBA8617C5691FAE /* LiveActivitiesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20A181E1507F5B0328B34A0 /* LiveActivitiesManager.swift */; };
+		32D65666D8EC3A5B8887C93D /* ErrorDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDB9F1137E239C114BE017A /* ErrorDetailView.swift */; };
+		349A39F044FE934720BC8E3A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB2FE93499A6E6F2A245599 /* AppDelegate.swift */; };
+		36C9B55E08585837952C88CC /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8F97E31CDFBD9A769FBC6E /* DashboardViewModel.swift */; };
+		45455E6F2B2029A93515EF6E /* ObservabilityCore in Frameworks */ = {isa = PBXBuildFile; productRef = FD4F3ED9E6DEAC6E1E2120B1 /* ObservabilityCore */; };
+		65CC072BF8AE06BBC75B5D62 /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17865132CD9E1D4FDD12F31 /* HapticsManager.swift */; };
+		752CCA6C1A6965A36D476917 /* ObservabilityUI in Frameworks */ = {isa = PBXBuildFile; productRef = 94120FB6F5E6EF6539A1BAB7 /* ObservabilityUI */; };
+		764D962C43FD5C169531CFB5 /* ObservabilityCore in Frameworks */ = {isa = PBXBuildFile; productRef = 1F9A334365C508B6D3269156 /* ObservabilityCore */; };
+		7E8E1FDEBB6E2830858D2356 /* ObservabilityUI in Frameworks */ = {isa = PBXBuildFile; productRef = 5EA439136849C2C37FC51EE4 /* ObservabilityUI */; };
+		A0709757E6C6C5D1A69EE7F1 /* ObservabilityNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = 489A93AF7155AAADCDB9127F /* ObservabilityNetworking */; };
+		A2B5B202990DD7598A3C91EE /* ObservabilityNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = 3DFA824AC370B6BEB1B9A8C4 /* ObservabilityNetworking */; };
+		A33769EDE1C1393F42720205 /* DynamicIslandManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209CC6BFB2991DCF4CDDDDB0 /* DynamicIslandManager.swift */; };
+		A979232DDA7B8A7A76171B69 /* PushNotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EFDF3AEE6960733079B8F04 /* PushNotificationsManager.swift */; };
+		ACD0BA430047E65ABD9F930D /* ServiceDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24E6653F810B80CAEAD6478 /* ServiceDetailView.swift */; };
+		C5FD7BE133C3681AB3C60C7D /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17865132CD9E1D4FDD12F31 /* HapticsManager.swift */; };
+		C929159394C154C0F3934B50 /* ErrorDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDB9F1137E239C114BE017A /* ErrorDetailView.swift */; };
 		CF46FBD9DE321F36BF6BEDF4 /* ObservabilityApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0616D899691DFE0F4BFCFA /* ObservabilityApp.swift */; };
-		DC78B0E104D49355C0C66D14 /* ObservabilityUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DB0C372B27C9E3BFB8FB76 /* ObservabilityUITestsLaunchTests.swift */; };
+		DB0576C1095BA244F61A3AC2 /* ObservabilityCore in Frameworks */ = {isa = PBXBuildFile; productRef = 12F54EAC53B65049F468F52C /* ObservabilityCore */; };
 		DF0A02112801AFC4AED07D9C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A45D8945C6DD74F823B84147 /* Assets.xcassets */; };
 		E9D8DA800304A42F30C68C6D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A45D8945C6DD74F823B84147 /* Assets.xcassets */; };
 		EA035529DB284D4EA007A6F5 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1143E3F5675DD5D36501B05F /* DashboardView.swift */; };
-		F092A5F55279E5FB4EB0FC8D /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C4A49B4483340F6BF06A55CC /* Info.plist */; };
+		EA455295C8CFCFBA418CE419 /* ServiceDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24E6653F810B80CAEAD6478 /* ServiceDetailView.swift */; };
+		EF9FA0EB0CA76175BEB1D68C /* DynamicIslandManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209CC6BFB2991DCF4CDDDDB0 /* DynamicIslandManager.swift */; };
+		F2E580E11AEE09D41FE2FF3C /* ObservabilityNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = 24588A8114C2AAD739B0E9B9 /* ObservabilityNetworking */; };
 		F6754C7D4AB3D72919469BAF /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1143E3F5675DD5D36501B05F /* DashboardView.swift */; };
-		F99AA12E943566146A23693A /* ObservabilityUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78298C67F3DE447A483B346 /* ObservabilityUITests.swift */; };
+		FC9DDB99526F13FE52DA55CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB2FE93499A6E6F2A245599 /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1143E3F5675DD5D36501B05F /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
-		1C1DBEE4CFB6EE765A3DFE8E /* ObservabilityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservabilityTests.swift; sourceTree = "<group>"; };
+		11D97180D638C5D297EAD044 /* ObservabilityKit */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ObservabilityKit; path = ObservabilityKit; sourceTree = SOURCE_ROOT; };
+		1EFDF3AEE6960733079B8F04 /* PushNotificationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationsManager.swift; sourceTree = "<group>"; };
 		1F0616D899691DFE0F4BFCFA /* ObservabilityApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservabilityApp.swift; sourceTree = "<group>"; };
+		209CC6BFB2991DCF4CDDDDB0 /* DynamicIslandManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicIslandManager.swift; sourceTree = "<group>"; };
 		2485DC4AC70BF912C129F86F /* .gitkeep */ = {isa = PBXFileReference; path = .gitkeep; sourceTree = "<group>"; };
-		2495D294B4AAB64E5C3FD1B6 /* Observability.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = Observability.xcodeproj; sourceTree = "<group>"; };
+		4A8F97E31CDFBD9A769FBC6E /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
 		4F504BCD895D80EB93DC8546 /* ObservabilityTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = ObservabilityTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		64E97973929D61B62A230EFD /* Observability.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Observability.entitlements; sourceTree = "<group>"; };
+		6EB2FE93499A6E6F2A245599 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7E97798AF6D212445BFE1EEC /* .gitkeep */ = {isa = PBXFileReference; path = .gitkeep; sourceTree = "<group>"; };
-		80A7C081A02796BA6FEA1238 /* TODO.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TODO.md; sourceTree = "<group>"; };
 		83491ED49237703F47F4C4AB /* ObservabilityUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = ObservabilityUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		902CA0C738C2A1E7413B4A48 /* Secrets.xcconfig.template */ = {isa = PBXFileReference; path = Secrets.xcconfig.template; sourceTree = "<group>"; };
 		920A032AFCA42D92A099D95F /* Observability.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Observability.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E87BBEA76D22BACDCDB7633 /* ObservabilityUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ObservabilityUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A24E6653F810B80CAEAD6478 /* ServiceDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceDetailView.swift; sourceTree = "<group>"; };
 		A45D8945C6DD74F823B84147 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		B78298C67F3DE447A483B346 /* ObservabilityUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservabilityUITests.swift; sourceTree = "<group>"; };
 		C2CAC812B305815472E6A0C3 /* Observability.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Observability.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C4A49B4483340F6BF06A55CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		CCDB9F1137E239C114BE017A /* ErrorDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorDetailView.swift; sourceTree = "<group>"; };
 		CED247A594FDFD88C53D5640 /* ObservabilityTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ObservabilityTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D17865132CD9E1D4FDD12F31 /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
 		E163ADB018EE5CD45D32B37D /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
-		E8DB0C372B27C9E3BFB8FB76 /* ObservabilityUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservabilityUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		E20A181E1507F5B0328B34A0 /* LiveActivitiesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveActivitiesManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1A8B06D26ADD8AC0A64F8139 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB0576C1095BA244F61A3AC2 /* ObservabilityCore in Frameworks */,
+				A2B5B202990DD7598A3C91EE /* ObservabilityNetworking in Frameworks */,
+				752CCA6C1A6965A36D476917 /* ObservabilityUI in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		32B17B58CCA0A25547FEE1A9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				45455E6F2B2029A93515EF6E /* ObservabilityCore in Frameworks */,
+				A0709757E6C6C5D1A69EE7F1 /* ObservabilityNetworking in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		704213C024E9586E3D177C09 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				764D962C43FD5C169531CFB5 /* ObservabilityCore in Frameworks */,
+				F2E580E11AEE09D41FE2FF3C /* ObservabilityNetworking in Frameworks */,
+				7E8E1FDEBB6E2830858D2356 /* ObservabilityUI in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E4E9513CE1AB9C1218704DB1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0902C38ACF8734F6AE3838ED /* ObservabilityCore in Frameworks */,
+				09B9FADE568AAA00854647CD /* ObservabilityNetworking in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		000074EE7C5709FA8DC3FA2F /* ObservabilityUITests */ = {
@@ -64,15 +119,29 @@
 		4353D23E2064B610EF9901F2 /* Observability */ = {
 			isa = PBXGroup;
 			children = (
+				6EB2FE93499A6E6F2A245599 /* AppDelegate.swift */,
 				A45D8945C6DD74F823B84147 /* Assets.xcassets */,
 				1143E3F5675DD5D36501B05F /* DashboardView.swift */,
-				C4A49B4483340F6BF06A55CC /* Info.plist */,
+				4A8F97E31CDFBD9A769FBC6E /* DashboardViewModel.swift */,
+				209CC6BFB2991DCF4CDDDDB0 /* DynamicIslandManager.swift */,
+				CCDB9F1137E239C114BE017A /* ErrorDetailView.swift */,
+				D17865132CD9E1D4FDD12F31 /* HapticsManager.swift */,
+				E20A181E1507F5B0328B34A0 /* LiveActivitiesManager.swift */,
 				64E97973929D61B62A230EFD /* Observability.entitlements */,
 				1F0616D899691DFE0F4BFCFA /* ObservabilityApp.swift */,
+				1EFDF3AEE6960733079B8F04 /* PushNotificationsManager.swift */,
 				E163ADB018EE5CD45D32B37D /* Secrets.xcconfig */,
-				902CA0C738C2A1E7413B4A48 /* Secrets.xcconfig.template */,
+				A24E6653F810B80CAEAD6478 /* ServiceDetailView.swift */,
 			);
 			path = Observability;
+			sourceTree = "<group>";
+		};
+		4BDB86B11B215E3475B018C2 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				11D97180D638C5D297EAD044 /* ObservabilityKit */,
+			);
+			name = Packages;
 			sourceTree = "<group>";
 		};
 		5EB41CB556F3840B40624CC1 /* Products */ = {
@@ -99,22 +168,9 @@
 		68E798F6B02720870A3976A8 /* Observability */ = {
 			isa = PBXGroup;
 			children = (
-				2495D294B4AAB64E5C3FD1B6 /* Observability.xcodeproj */,
-				80A7C081A02796BA6FEA1238 /* TODO.md */,
 				4353D23E2064B610EF9901F2 /* Observability */,
-				B84630041C240C700ADC69AE /* ObservabilityTests */,
-				87D46004C0CB5E926C602E00 /* ObservabilityUITests */,
 			);
 			path = Observability;
-			sourceTree = "<group>";
-		};
-		87D46004C0CB5E926C602E00 /* ObservabilityUITests */ = {
-			isa = PBXGroup;
-			children = (
-				B78298C67F3DE447A483B346 /* ObservabilityUITests.swift */,
-				E8DB0C372B27C9E3BFB8FB76 /* ObservabilityUITestsLaunchTests.swift */,
-			);
-			path = ObservabilityUITests;
 			sourceTree = "<group>";
 		};
 		88E4382F4F2A10C1AA6C4D14 = {
@@ -123,19 +179,12 @@
 				68E798F6B02720870A3976A8 /* Observability */,
 				654DC3D0C330988626A63F32 /* ObservabilityTests */,
 				000074EE7C5709FA8DC3FA2F /* ObservabilityUITests */,
+				4BDB86B11B215E3475B018C2 /* Packages */,
 				5EB41CB556F3840B40624CC1 /* Products */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
 			usesTabs = 0;
-		};
-		B84630041C240C700ADC69AE /* ObservabilityTests */ = {
-			isa = PBXGroup;
-			children = (
-				1C1DBEE4CFB6EE765A3DFE8E /* ObservabilityTests.swift */,
-			);
-			path = ObservabilityTests;
-			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -162,6 +211,7 @@
 			buildConfigurationList = 99E664B0DD707BA9FE7C1C25 /* Build configuration list for PBXNativeTarget "ObservabilityTests_macOS" */;
 			buildPhases = (
 				D8828CF6C50E64CFC8417F48 /* Sources */,
+				32B17B58CCA0A25547FEE1A9 /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -169,6 +219,8 @@
 			);
 			name = ObservabilityTests_macOS;
 			packageProductDependencies = (
+				FD4F3ED9E6DEAC6E1E2120B1 /* ObservabilityCore */,
+				489A93AF7155AAADCDB9127F /* ObservabilityNetworking */,
 			);
 			productName = ObservabilityTests_macOS;
 			productReference = CED247A594FDFD88C53D5640 /* ObservabilityTests.xctest */;
@@ -180,6 +232,7 @@
 			buildPhases = (
 				2FFF797388602ACFACB98612 /* Sources */,
 				FB47F298B6A195DA689135AC /* Resources */,
+				704213C024E9586E3D177C09 /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -187,6 +240,9 @@
 			);
 			name = Observability_iOS;
 			packageProductDependencies = (
+				1F9A334365C508B6D3269156 /* ObservabilityCore */,
+				24588A8114C2AAD739B0E9B9 /* ObservabilityNetworking */,
+				5EA439136849C2C37FC51EE4 /* ObservabilityUI */,
 			);
 			productName = Observability_iOS;
 			productReference = 920A032AFCA42D92A099D95F /* Observability.app */;
@@ -197,6 +253,7 @@
 			buildConfigurationList = B3155BC22FF7205C9E2A5019 /* Build configuration list for PBXNativeTarget "ObservabilityTests_iOS" */;
 			buildPhases = (
 				1E33D6D6B40281D2DEAD4ECE /* Sources */,
+				E4E9513CE1AB9C1218704DB1 /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -204,6 +261,8 @@
 			);
 			name = ObservabilityTests_iOS;
 			packageProductDependencies = (
+				49400DD9B5E7EBE363294A5F /* ObservabilityCore */,
+				99D409CE06744769D5EF0EBD /* ObservabilityNetworking */,
 			);
 			productName = ObservabilityTests_iOS;
 			productReference = 4F504BCD895D80EB93DC8546 /* ObservabilityTests.xctest */;
@@ -215,6 +274,7 @@
 			buildPhases = (
 				C67C3A8C05B386010D4EFC27 /* Sources */,
 				E902CC686646F1C866FAC6EB /* Resources */,
+				1A8B06D26ADD8AC0A64F8139 /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -222,6 +282,9 @@
 			);
 			name = Observability_macOS;
 			packageProductDependencies = (
+				12F54EAC53B65049F468F52C /* ObservabilityCore */,
+				3DFA824AC370B6BEB1B9A8C4 /* ObservabilityNetworking */,
+				94120FB6F5E6EF6539A1BAB7 /* ObservabilityUI */,
 			);
 			productName = Observability_macOS;
 			productReference = C2CAC812B305815472E6A0C3 /* Observability.app */;
@@ -289,6 +352,9 @@
 			);
 			mainGroup = 88E4382F4F2A10C1AA6C4D14;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				BAC7398746716D096AE92475 /* XCLocalSwiftPackageReference "ObservabilityKit" */,
+			);
 			preferredProjectObjectVersion = 77;
 			projectDirPath = "";
 			projectRoot = "";
@@ -309,10 +375,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9D8DA800304A42F30C68C6D /* Assets.xcassets in Resources */,
-				F092A5F55279E5FB4EB0FC8D /* Info.plist in Resources */,
-				C1E12E8989E7FBC18B8093F4 /* Observability.xcodeproj in Resources */,
-				A57DEBF8A20626CB2776BA3B /* Secrets.xcconfig.template in Resources */,
-				2A98B247D264833CEB0EF204 /* TODO.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,10 +383,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF0A02112801AFC4AED07D9C /* Assets.xcassets in Resources */,
-				87363501B90A69BE7AF48AC4 /* Info.plist in Resources */,
-				65834B42D69A189579E2316E /* Observability.xcodeproj in Resources */,
-				0A2C0F33ABBC547092FCBCD1 /* Secrets.xcconfig.template in Resources */,
-				0F747937821FFF8F796EF0E7 /* TODO.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -349,11 +407,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				349A39F044FE934720BC8E3A /* AppDelegate.swift in Sources */,
 				F6754C7D4AB3D72919469BAF /* DashboardView.swift in Sources */,
+				36C9B55E08585837952C88CC /* DashboardViewModel.swift in Sources */,
+				EF9FA0EB0CA76175BEB1D68C /* DynamicIslandManager.swift in Sources */,
+				32D65666D8EC3A5B8887C93D /* ErrorDetailView.swift in Sources */,
+				65CC072BF8AE06BBC75B5D62 /* HapticsManager.swift in Sources */,
+				23657A1183B6E1D15DDE2A86 /* LiveActivitiesManager.swift in Sources */,
 				008108406731CB0E5A4FD3AB /* ObservabilityApp.swift in Sources */,
-				031CEFB9178A187EA31928B9 /* ObservabilityTests.swift in Sources */,
-				3CF23680E1064A3D2DFFADFB /* ObservabilityUITests.swift in Sources */,
-				0D8FA3819FE1BCAC4F0466E1 /* ObservabilityUITestsLaunchTests.swift in Sources */,
+				A979232DDA7B8A7A76171B69 /* PushNotificationsManager.swift in Sources */,
+				EA455295C8CFCFBA418CE419 /* ServiceDetailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -368,11 +431,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC9DDB99526F13FE52DA55CA /* AppDelegate.swift in Sources */,
 				EA035529DB284D4EA007A6F5 /* DashboardView.swift in Sources */,
+				172CC218E2C9BD95843885CB /* DashboardViewModel.swift in Sources */,
+				A33769EDE1C1393F42720205 /* DynamicIslandManager.swift in Sources */,
+				C929159394C154C0F3934B50 /* ErrorDetailView.swift in Sources */,
+				C5FD7BE133C3681AB3C60C7D /* HapticsManager.swift in Sources */,
+				239B128C1DBA8617C5691FAE /* LiveActivitiesManager.swift in Sources */,
 				CF46FBD9DE321F36BF6BEDF4 /* ObservabilityApp.swift in Sources */,
-				CC1EF1433818F9442A34928F /* ObservabilityTests.swift in Sources */,
-				F99AA12E943566146A23693A /* ObservabilityUITests.swift in Sources */,
-				DC78B0E104D49355C0C66D14 /* ObservabilityUITestsLaunchTests.swift in Sources */,
+				02AA6270960377D61DBA4C16 /* PushNotificationsManager.swift in Sources */,
+				ACD0BA430047E65ABD9F930D /* ServiceDetailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,7 +465,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				INFOPLIST_KEY_MONITORING_API_KEY = "$(MONITORING_API_KEY)";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 15.6;
 				MARKETING_VERSION = 1.0;
@@ -416,13 +484,13 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ArtfulArchivesStudio.ObservabilityUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -457,7 +525,7 @@
 				ENABLE_RESOURCE_ACCESS_USB = NO;
 				ENABLE_USER_SELECTED_FILES = readwrite;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Observability/Info.plist;
+				INFOPLIST_FILE = Observability/Observability/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -508,7 +576,7 @@
 				ENABLE_RESOURCE_ACCESS_USB = NO;
 				ENABLE_USER_SELECTED_FILES = readwrite;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Observability/Info.plist;
+				INFOPLIST_FILE = Observability/Observability/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -540,14 +608,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				ENABLE_TESTING_SEARCH_PATHS = YES;
+				"ENABLE_TESTING_SEARCH_PATHS[sdk=iphoneos*]" = YES;
+				"ENABLE_TESTING_SEARCH_PATHS[sdk=iphonesimulator*]" = YES;
+				"ENABLE_TESTING_SEARCH_PATHS[sdk=macosx*]" = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ArtfulArchivesStudio.ObservabilityTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -582,7 +654,7 @@
 				ENABLE_RESOURCE_ACCESS_USB = NO;
 				ENABLE_USER_SELECTED_FILES = readwrite;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Observability/Info.plist;
+				INFOPLIST_FILE = Observability/Observability/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -615,13 +687,13 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ArtfulArchivesStudio.ObservabilityUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -638,13 +710,13 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ArtfulArchivesStudio.ObservabilityUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -661,14 +733,18 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_TESTING_SEARCH_PATHS = YES;
+				"ENABLE_TESTING_SEARCH_PATHS[sdk=iphoneos*]" = YES;
+				"ENABLE_TESTING_SEARCH_PATHS[sdk=iphonesimulator*]" = YES;
+				"ENABLE_TESTING_SEARCH_PATHS[sdk=macosx*]" = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ArtfulArchivesStudio.ObservabilityTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -703,7 +779,7 @@
 				ENABLE_RESOURCE_ACCESS_USB = NO;
 				ENABLE_USER_SELECTED_FILES = readwrite;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Observability/Info.plist;
+				INFOPLIST_FILE = Observability/Observability/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -736,14 +812,18 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_TESTING_SEARCH_PATHS = YES;
+				"ENABLE_TESTING_SEARCH_PATHS[sdk=iphoneos*]" = YES;
+				"ENABLE_TESTING_SEARCH_PATHS[sdk=iphonesimulator*]" = YES;
+				"ENABLE_TESTING_SEARCH_PATHS[sdk=macosx*]" = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ArtfulArchivesStudio.ObservabilityTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -759,14 +839,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				ENABLE_TESTING_SEARCH_PATHS = YES;
+				"ENABLE_TESTING_SEARCH_PATHS[sdk=iphoneos*]" = YES;
+				"ENABLE_TESTING_SEARCH_PATHS[sdk=iphonesimulator*]" = YES;
+				"ENABLE_TESTING_SEARCH_PATHS[sdk=macosx*]" = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ArtfulArchivesStudio.ObservabilityTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -789,7 +873,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				INFOPLIST_KEY_MONITORING_API_KEY = "$(MONITORING_API_KEY)";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 15.6;
 				MARKETING_VERSION = 1.0;
@@ -808,13 +892,13 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ArtfulArchivesStudio.ObservabilityUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -893,6 +977,56 @@
 			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		BAC7398746716D096AE92475 /* XCLocalSwiftPackageReference "ObservabilityKit" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ObservabilityKit;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		12F54EAC53B65049F468F52C /* ObservabilityCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ObservabilityCore;
+		};
+		1F9A334365C508B6D3269156 /* ObservabilityCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ObservabilityCore;
+		};
+		24588A8114C2AAD739B0E9B9 /* ObservabilityNetworking */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ObservabilityNetworking;
+		};
+		3DFA824AC370B6BEB1B9A8C4 /* ObservabilityNetworking */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ObservabilityNetworking;
+		};
+		489A93AF7155AAADCDB9127F /* ObservabilityNetworking */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ObservabilityNetworking;
+		};
+		49400DD9B5E7EBE363294A5F /* ObservabilityCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ObservabilityCore;
+		};
+		5EA439136849C2C37FC51EE4 /* ObservabilityUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ObservabilityUI;
+		};
+		94120FB6F5E6EF6539A1BAB7 /* ObservabilityUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ObservabilityUI;
+		};
+		99D409CE06744769D5EF0EBD /* ObservabilityNetworking */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ObservabilityNetworking;
+		};
+		FD4F3ED9E6DEAC6E1E2120B1 /* ObservabilityCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ObservabilityCore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 30803DFC6E7EB8B23C07581F /* Project object */;
 }

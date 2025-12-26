@@ -21,9 +21,12 @@ To create a comprehensive, cross-platform observability client for Apple platfor
 - [x] Security and sandboxing configuration
 
 **Upcoming**: Apple Ecosystem Integration
+- [x] iOS/macOS platform adaptations (haptics, Live Activities conditional compilation)
+- [x] Cloud service health check handling (Supabase, etc.)
+- [x] Improved connection status and error handling
 - [ ] APNS push notifications for critical alerts
-- [ ] Live Activities for real-time metrics
-- [ ] Dynamic Island integration (iPhone 14 Pro+)
+- [ ] Live Activities for real-time metrics (iOS implementation complete, needs testing)
+- [ ] Dynamic Island integration (iPhone 14 Pro+) - code complete, needs testing
 - [ ] Apple Watch companion app
 - [ ] iOS/macOS Widgets (Home Screen/Lock Screen)
 - [ ] Siri Shortcuts for common actions

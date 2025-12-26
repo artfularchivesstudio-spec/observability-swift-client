@@ -41,7 +41,7 @@ public final class WebSocketCombineClient: ObservableObject {
     private let encoder = JSONEncoder()
     private let decoder = JSONDecoder()
     private var cancellables = Set<AnyCancellable>()
-    private var pingTimer: Timer?
+    nonisolated(unsafe) private var pingTimer: Timer?
     private var reconnectAttempts = 0
     private let maxReconnectAttempts = 5
     private let reconnectDelay = 1.0
@@ -54,10 +54,9 @@ public final class WebSocketCombineClient: ObservableObject {
 
     deinit {
         pingTimer?.invalidate()
-        // deinit is nonisolated; hop to the main actor to call @MainActor method
-        Task { @MainActor in
-            self.disconnect()
-        }
+        // Note: disconnect() is @MainActor, but deinit is nonisolated
+        // We can't safely call @MainActor methods from deinit
+        // The timer invalidation is sufficient for cleanup
     }
 
     // MARK: - Connection Management

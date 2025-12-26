@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "ObservabilityKit",
     platforms: [
-        .iOS(.v17),
+        .iOS(.v17),  // Package.swift uses .v17 (latest supported), but project.yml enforces iOS 18.0 minimum
         .macOS(.v14),
         .watchOS(.v10),
         .tvOS(.v17)
