@@ -53,12 +53,15 @@ This document outlines the comprehensive feature set of the Observability Swift 
 ### 🔔 Alerting and Notifications
 - **Real-Time Alerts**: Configurable thresholds for metrics and logs
 - **Smart Alerting**: Anomaly-based alerting with reduced false positives
+- **Local Notifications**: Immediate notifications for critical alerts, errors, warnings, and service status changes (iOS/macOS)
+- **Notification Testing**: DEBUG test button to verify notification delivery without breaking production services
 - **Multiple Channels**: Push notifications, email, Slack, and webhook support
 - **Alert Escalation**: Tiered alerting with automatic escalation
 - **Alert Suppression**: Duplicate alert prevention and cooldown periods
 - **iOS Haptic Feedback**: Tactile alerts for critical service status changes (iOS only)
 - **Live Activities**: Real-time service monitoring in Dynamic Island and Lock Screen (iOS 16.1+)
 - **Connection Status**: Intelligent connection status that distinguishes API failures from service failures
+- **Notification Categories**: Custom notification actions (acknowledge, view details) with proper categorization
 
 ### 🔒 Security and Compliance
 - **End-to-End Encryption**: AES-256 encryption for data in transit and at rest

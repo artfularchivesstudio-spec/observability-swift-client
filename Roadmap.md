@@ -25,7 +25,8 @@ To create a comprehensive, cross-platform observability client for Apple platfor
 - [x] Cloud service health check handling (Supabase, etc.)
 - [x] Improved connection status and error handling
 - [x] Apple Watch companion app (watchOS 11.0) - complete with complications, haptics, and battery-optimized monitoring
-- [ ] APNS push notifications for critical alerts
+- [x] Local notifications for critical alerts (working, testable via DEBUG test button)
+- [ ] APNS remote push notifications (requires certificate setup, device token registration, backend endpoint)
 - [ ] Live Activities for real-time metrics (iOS implementation complete, needs testing)
 - [ ] Dynamic Island integration (iPhone 14 Pro+) - code complete, needs testing
 - [ ] iOS/macOS Widgets (Home Screen/Lock Screen)

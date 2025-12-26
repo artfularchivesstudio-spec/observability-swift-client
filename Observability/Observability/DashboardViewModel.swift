@@ -126,6 +126,57 @@ class DashboardViewModel: ObservableObject {
             await pushNotificationsManager.checkAuthorizationStatus()
         }
     }
+    
+    // MARK: - Testing Helpers
+    
+    /// 🧪 Test function to verify push notifications work
+    /// Call this from UI to test notification delivery
+    func testSendNotification(type: NotificationTestType = .critical) async {
+        guard let testService = services.first else { return }
+        
+        let testAlert = ObservabilityCore.Alert(
+            id: UUID(),
+            serviceId: testService.id,
+            serviceName: testService.name,
+            title: "🧪 Test \(type.rawValue.capitalized) Alert",
+            message: "This is a test notification to verify push notifications are working correctly. If you see this, notifications are configured properly!",
+            severity: type.severity,
+            timestamp: Date(),
+            resolved: false,
+            metadata: [:]
+        )
+        
+        switch type {
+        case .critical:
+            await pushNotificationsManager.sendCriticalAlert(testAlert)
+        case .error:
+            await pushNotificationsManager.sendErrorAlert(testAlert)
+        case .warning:
+            await pushNotificationsManager.sendWarningAlert(testAlert)
+        case .statusChange:
+            await pushNotificationsManager.sendServiceStatusChange(
+                serviceName: testService.name,
+                status: .down(lastSeen: Date(), reason: "Test status change notification")
+            )
+        }
+    }
+    
+    /// 🧪 Test notification types
+    enum NotificationTestType: String {
+        case critical = "critical"
+        case error = "error"
+        case warning = "warning"
+        case statusChange = "status change"
+        
+        var severity: AlertSeverity {
+            switch self {
+            case .critical: return .critical
+            case .error: return .error
+            case .warning: return .warning
+            case .statusChange: return .critical
+            }
+        }
+    }
 
     // MARK: - Public Methods
     func startMonitoring() {

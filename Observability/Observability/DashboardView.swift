@@ -76,7 +76,36 @@ struct DashboardView: View {
         .toolbar {
             #if os(iOS)
             ToolbarItem(placement: .navigationBarTrailing) {
-                connectionIndicator
+                HStack {
+                    connectionIndicator
+                    #if DEBUG
+                    Menu {
+                        Button("Test Critical Alert") {
+                            Task {
+                                await viewModel.testSendNotification(type: DashboardViewModel.NotificationTestType.critical)
+                            }
+                        }
+                        Button("Test Error Alert") {
+                            Task {
+                                await viewModel.testSendNotification(type: DashboardViewModel.NotificationTestType.error)
+                            }
+                        }
+                        Button("Test Warning Alert") {
+                            Task {
+                                await viewModel.testSendNotification(type: DashboardViewModel.NotificationTestType.warning)
+                            }
+                        }
+                        Button("Test Status Change") {
+                            Task {
+                                await viewModel.testSendNotification(type: DashboardViewModel.NotificationTestType.statusChange)
+                            }
+                        }
+                    } label: {
+                        Image(systemName: "bell.badge")
+                            .foregroundColor(.blue)
+                    }
+                    #endif
+                }
             }
             #else
             ToolbarItem(placement: .automatic) {
