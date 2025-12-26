@@ -3,35 +3,49 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 77;
+	objectVersion = 63;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		008108406731CB0E5A4FD3AB /* ObservabilityApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0616D899691DFE0F4BFCFA /* ObservabilityApp.swift */; };
 		02AA6270960377D61DBA4C16 /* PushNotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EFDF3AEE6960733079B8F04 /* PushNotificationsManager.swift */; };
+		042A1C601D9034740544BB70 /* ServiceRowWatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0D6A4E973CF84751120C1C /* ServiceRowWatchView.swift */; };
 		0902C38ACF8734F6AE3838ED /* ObservabilityCore in Frameworks */ = {isa = PBXBuildFile; productRef = 49400DD9B5E7EBE363294A5F /* ObservabilityCore */; };
 		09B9FADE568AAA00854647CD /* ObservabilityNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = 99D409CE06744769D5EF0EBD /* ObservabilityNetworking */; };
+		0E110605FD84625E248CF74D /* ObservabilityComplications.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AFAF3F78BEBB762CE46F17 /* ObservabilityComplications.swift */; };
 		172CC218E2C9BD95843885CB /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8F97E31CDFBD9A769FBC6E /* DashboardViewModel.swift */; };
 		23657A1183B6E1D15DDE2A86 /* LiveActivitiesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20A181E1507F5B0328B34A0 /* LiveActivitiesManager.swift */; };
 		239B128C1DBA8617C5691FAE /* LiveActivitiesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20A181E1507F5B0328B34A0 /* LiveActivitiesManager.swift */; };
+		25D024266FBF7E6B71893EE4 /* MetricBadgeWatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B75A0E444C11B3D34DEB4B /* MetricBadgeWatchView.swift */; };
+		277DB42EFD33F84E3FD5E7BD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97921E543D908BF2B055BB5A /* ContentView.swift */; };
+		2B2BA96E027FAD06C9E4E055 /* ObservabilityiOS-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D14C3A58D2AB7615AA9828D2 /* ObservabilityiOS-Info.plist */; };
 		32D65666D8EC3A5B8887C93D /* ErrorDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDB9F1137E239C114BE017A /* ErrorDetailView.swift */; };
 		349A39F044FE934720BC8E3A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB2FE93499A6E6F2A245599 /* AppDelegate.swift */; };
 		36C9B55E08585837952C88CC /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8F97E31CDFBD9A769FBC6E /* DashboardViewModel.swift */; };
+		3CB19A0EAF72DE8386CC9B3A /* ObservabilityCore in Frameworks */ = {isa = PBXBuildFile; productRef = 9C49F85ABA7AC41DF851835C /* ObservabilityCore */; };
 		45455E6F2B2029A93515EF6E /* ObservabilityCore in Frameworks */ = {isa = PBXBuildFile; productRef = FD4F3ED9E6DEAC6E1E2120B1 /* ObservabilityCore */; };
+		5DDC86B34759732D3EEE5AF5 /* ObservabilityWatch-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EDED0528D7ADC1C90CB0FD47 /* ObservabilityWatch-Info.plist */; };
 		65CC072BF8AE06BBC75B5D62 /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17865132CD9E1D4FDD12F31 /* HapticsManager.swift */; };
 		752CCA6C1A6965A36D476917 /* ObservabilityUI in Frameworks */ = {isa = PBXBuildFile; productRef = 94120FB6F5E6EF6539A1BAB7 /* ObservabilityUI */; };
 		764D962C43FD5C169531CFB5 /* ObservabilityCore in Frameworks */ = {isa = PBXBuildFile; productRef = 1F9A334365C508B6D3269156 /* ObservabilityCore */; };
 		7E8E1FDEBB6E2830858D2356 /* ObservabilityUI in Frameworks */ = {isa = PBXBuildFile; productRef = 5EA439136849C2C37FC51EE4 /* ObservabilityUI */; };
+		9F91443400E96849B37DCA9C /* ServiceDetailWatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA855C31C28DC02649BB2D10 /* ServiceDetailWatchView.swift */; };
 		A0709757E6C6C5D1A69EE7F1 /* ObservabilityNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = 489A93AF7155AAADCDB9127F /* ObservabilityNetworking */; };
 		A2B5B202990DD7598A3C91EE /* ObservabilityNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = 3DFA824AC370B6BEB1B9A8C4 /* ObservabilityNetworking */; };
 		A33769EDE1C1393F42720205 /* DynamicIslandManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209CC6BFB2991DCF4CDDDDB0 /* DynamicIslandManager.swift */; };
+		A46F18CB1D7B77F0F0DEF4BC /* WatchDashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2B99ACA532567A67B0CADA /* WatchDashboardViewModel.swift */; };
 		A979232DDA7B8A7A76171B69 /* PushNotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EFDF3AEE6960733079B8F04 /* PushNotificationsManager.swift */; };
 		ACD0BA430047E65ABD9F930D /* ServiceDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24E6653F810B80CAEAD6478 /* ServiceDetailView.swift */; };
+		B0DCEB15FB56508E2436A2F4 /* ObservabilityNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = 21C2011ECD1C93B3E76725DF /* ObservabilityNetworking */; };
+		B7E2CB96C9714807AD4530CB /* ObservabilityWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F96E5E5FB7E3EF7D2DD295D /* ObservabilityWatchApp.swift */; };
+		BD05FAD04D8BA5561D00633F /* ObservabilityWatchExtension-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 35EA0DA2738B553D3C19007B /* ObservabilityWatchExtension-Info.plist */; };
 		C5FD7BE133C3681AB3C60C7D /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17865132CD9E1D4FDD12F31 /* HapticsManager.swift */; };
 		C929159394C154C0F3934B50 /* ErrorDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDB9F1137E239C114BE017A /* ErrorDetailView.swift */; };
 		CF46FBD9DE321F36BF6BEDF4 /* ObservabilityApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0616D899691DFE0F4BFCFA /* ObservabilityApp.swift */; };
+		D38ADD1926269CBC6707D1C8 /* ObservabilityCommon in Frameworks */ = {isa = PBXBuildFile; productRef = E14D960BAB31CD7228838932 /* ObservabilityCommon */; };
 		DB0576C1095BA244F61A3AC2 /* ObservabilityCore in Frameworks */ = {isa = PBXBuildFile; productRef = 12F54EAC53B65049F468F52C /* ObservabilityCore */; };
 		DF0A02112801AFC4AED07D9C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A45D8945C6DD74F823B84147 /* Assets.xcassets */; };
+		E59513EEE90E981D0873D89B /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA1EF4D5ABCA82093C8B623 /* ExtensionDelegate.swift */; };
 		E9D8DA800304A42F30C68C6D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A45D8945C6DD74F823B84147 /* Assets.xcassets */; };
 		EA035529DB284D4EA007A6F5 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1143E3F5675DD5D36501B05F /* DashboardView.swift */; };
 		EA455295C8CFCFBA418CE419 /* ServiceDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24E6653F810B80CAEAD6478 /* ServiceDetailView.swift */; };
@@ -43,27 +57,39 @@
 
 /* Begin PBXFileReference section */
 		1143E3F5675DD5D36501B05F /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
-		11D97180D638C5D297EAD044 /* ObservabilityKit */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ObservabilityKit; path = ObservabilityKit; sourceTree = SOURCE_ROOT; };
+		11D97180D638C5D297EAD044 /* ObservabilityKit */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ObservabilityKit; sourceTree = SOURCE_ROOT; };
 		1EFDF3AEE6960733079B8F04 /* PushNotificationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationsManager.swift; sourceTree = "<group>"; };
 		1F0616D899691DFE0F4BFCFA /* ObservabilityApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservabilityApp.swift; sourceTree = "<group>"; };
 		209CC6BFB2991DCF4CDDDDB0 /* DynamicIslandManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicIslandManager.swift; sourceTree = "<group>"; };
-		2485DC4AC70BF912C129F86F /* .gitkeep */ = {isa = PBXFileReference; path = .gitkeep; sourceTree = "<group>"; };
+		238B4CF0D55DC4023D67DE53 /* ObservabilityWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ObservabilityWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2485DC4AC70BF912C129F86F /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		35EA0DA2738B553D3C19007B /* ObservabilityWatchExtension-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "ObservabilityWatchExtension-Info.plist"; sourceTree = "<group>"; };
 		4A8F97E31CDFBD9A769FBC6E /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
-		4F504BCD895D80EB93DC8546 /* ObservabilityTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = ObservabilityTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F504BCD895D80EB93DC8546 /* ObservabilityTests_iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ObservabilityTests_iOS.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		64E97973929D61B62A230EFD /* Observability.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Observability.entitlements; sourceTree = "<group>"; };
+		6E0D6A4E973CF84751120C1C /* ServiceRowWatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceRowWatchView.swift; sourceTree = "<group>"; };
 		6EB2FE93499A6E6F2A245599 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7E97798AF6D212445BFE1EEC /* .gitkeep */ = {isa = PBXFileReference; path = .gitkeep; sourceTree = "<group>"; };
-		83491ED49237703F47F4C4AB /* ObservabilityUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = ObservabilityUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		920A032AFCA42D92A099D95F /* Observability.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Observability.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		9E87BBEA76D22BACDCDB7633 /* ObservabilityUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ObservabilityUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F96E5E5FB7E3EF7D2DD295D /* ObservabilityWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservabilityWatchApp.swift; sourceTree = "<group>"; };
+		7E97798AF6D212445BFE1EEC /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		83491ED49237703F47F4C4AB /* ObservabilityUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = file; name = ObservabilityUITests.xctest; path = ObservabilityUITests_iOS.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		920A032AFCA42D92A099D95F /* Observability.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; name = Observability.app; path = Observability_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		97921E543D908BF2B055BB5A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		9E87BBEA76D22BACDCDB7633 /* ObservabilityUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = ObservabilityUITests.xctest; path = ObservabilityUITests_macOS.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A24E6653F810B80CAEAD6478 /* ServiceDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceDetailView.swift; sourceTree = "<group>"; };
 		A45D8945C6DD74F823B84147 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		C2CAC812B305815472E6A0C3 /* Observability.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Observability.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2CAC812B305815472E6A0C3 /* Observability.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = Observability.app; path = Observability_macOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CAA1EF4D5ABCA82093C8B623 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		CCDB9F1137E239C114BE017A /* ErrorDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorDetailView.swift; sourceTree = "<group>"; };
-		CED247A594FDFD88C53D5640 /* ObservabilityTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ObservabilityTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CED247A594FDFD88C53D5640 /* ObservabilityTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = ObservabilityTests.xctest; path = ObservabilityTests_macOS.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D14C3A58D2AB7615AA9828D2 /* ObservabilityiOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "ObservabilityiOS-Info.plist"; sourceTree = "<group>"; };
 		D17865132CD9E1D4FDD12F31 /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
+		DA855C31C28DC02649BB2D10 /* ServiceDetailWatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceDetailWatchView.swift; sourceTree = "<group>"; };
+		DC2B99ACA532567A67B0CADA /* WatchDashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchDashboardViewModel.swift; sourceTree = "<group>"; };
 		E163ADB018EE5CD45D32B37D /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
 		E20A181E1507F5B0328B34A0 /* LiveActivitiesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveActivitiesManager.swift; sourceTree = "<group>"; };
+		E2B75A0E444C11B3D34DEB4B /* MetricBadgeWatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricBadgeWatchView.swift; sourceTree = "<group>"; };
+		EDED0528D7ADC1C90CB0FD47 /* ObservabilityWatch-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "ObservabilityWatch-Info.plist"; sourceTree = "<group>"; };
+		F8AFAF3F78BEBB762CE46F17 /* ObservabilityComplications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservabilityComplications.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +109,16 @@
 			files = (
 				45455E6F2B2029A93515EF6E /* ObservabilityCore in Frameworks */,
 				A0709757E6C6C5D1A69EE7F1 /* ObservabilityNetworking in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		388CDA1A9CF651C062D4AD26 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3CB19A0EAF72DE8386CC9B3A /* ObservabilityCore in Frameworks */,
+				B0DCEB15FB56508E2436A2F4 /* ObservabilityNetworking in Frameworks */,
+				D38ADD1926269CBC6707D1C8 /* ObservabilityCommon in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,10 +185,11 @@
 			children = (
 				920A032AFCA42D92A099D95F /* Observability.app */,
 				C2CAC812B305815472E6A0C3 /* Observability.app */,
-				4F504BCD895D80EB93DC8546 /* ObservabilityTests.xctest */,
+				4F504BCD895D80EB93DC8546 /* ObservabilityTests_iOS.xctest */,
 				CED247A594FDFD88C53D5640 /* ObservabilityTests.xctest */,
 				83491ED49237703F47F4C4AB /* ObservabilityUITests.xctest */,
 				9E87BBEA76D22BACDCDB7633 /* ObservabilityUITests.xctest */,
+				238B4CF0D55DC4023D67DE53 /* ObservabilityWatch.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -179,12 +216,39 @@
 				68E798F6B02720870A3976A8 /* Observability */,
 				654DC3D0C330988626A63F32 /* ObservabilityTests */,
 				000074EE7C5709FA8DC3FA2F /* ObservabilityUITests */,
+				AA561E0828890C1FCF03B2DF /* ObservabilityWatch */,
 				4BDB86B11B215E3475B018C2 /* Packages */,
 				5EB41CB556F3840B40624CC1 /* Products */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
 			usesTabs = 0;
+		};
+		AA561E0828890C1FCF03B2DF /* ObservabilityWatch */ = {
+			isa = PBXGroup;
+			children = (
+				97921E543D908BF2B055BB5A /* ContentView.swift */,
+				CAA1EF4D5ABCA82093C8B623 /* ExtensionDelegate.swift */,
+				E2B75A0E444C11B3D34DEB4B /* MetricBadgeWatchView.swift */,
+				D14C3A58D2AB7615AA9828D2 /* ObservabilityiOS-Info.plist */,
+				EDED0528D7ADC1C90CB0FD47 /* ObservabilityWatch-Info.plist */,
+				6F96E5E5FB7E3EF7D2DD295D /* ObservabilityWatchApp.swift */,
+				35EA0DA2738B553D3C19007B /* ObservabilityWatchExtension-Info.plist */,
+				DA855C31C28DC02649BB2D10 /* ServiceDetailWatchView.swift */,
+				6E0D6A4E973CF84751120C1C /* ServiceRowWatchView.swift */,
+				DC2B99ACA532567A67B0CADA /* WatchDashboardViewModel.swift */,
+				BC3DDDE23D5CB0D6CEF8C59F /* Complications */,
+			);
+			path = ObservabilityWatch;
+			sourceTree = "<group>";
+		};
+		BC3DDDE23D5CB0D6CEF8C59F /* Complications */ = {
+			isa = PBXGroup;
+			children = (
+				F8AFAF3F78BEBB762CE46F17 /* ObservabilityComplications.swift */,
+			);
+			path = Complications;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -205,6 +269,28 @@
 			productName = ObservabilityUITests_iOS;
 			productReference = 83491ED49237703F47F4C4AB /* ObservabilityUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		45F6BEF68BEDF274401D2A8A /* ObservabilityWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7C806618CAB7E2C8C06612CC /* Build configuration list for PBXNativeTarget "ObservabilityWatch" */;
+			buildPhases = (
+				1219D0BD32325ED9B4221480 /* Sources */,
+				12A32CAE45E8FC8AA3A74205 /* Resources */,
+				388CDA1A9CF651C062D4AD26 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ObservabilityWatch;
+			packageProductDependencies = (
+				9C49F85ABA7AC41DF851835C /* ObservabilityCore */,
+				21C2011ECD1C93B3E76725DF /* ObservabilityNetworking */,
+				E14D960BAB31CD7228838932 /* ObservabilityCommon */,
+			);
+			productName = ObservabilityWatch;
+			productReference = 238B4CF0D55DC4023D67DE53 /* ObservabilityWatch.app */;
+			productType = "com.apple.product-type.application";
 		};
 		64C675F6E67240C99B417449 /* ObservabilityTests_macOS */ = {
 			isa = PBXNativeTarget;
@@ -265,7 +351,7 @@
 				99D409CE06744769D5EF0EBD /* ObservabilityNetworking */,
 			);
 			productName = ObservabilityTests_iOS;
-			productReference = 4F504BCD895D80EB93DC8546 /* ObservabilityTests.xctest */;
+			productReference = 4F504BCD895D80EB93DC8546 /* ObservabilityTests_iOS.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		8CED64E3270DEC1ACBBF53A1 /* Observability_macOS */ = {
@@ -320,6 +406,10 @@
 						DevelopmentTeam = 49S7UFWWL9;
 						ProvisioningStyle = Automatic;
 					};
+					45F6BEF68BEDF274401D2A8A = {
+						DevelopmentTeam = 49S7UFWWL9;
+						ProvisioningStyle = Automatic;
+					};
 					64C675F6E67240C99B417449 = {
 						DevelopmentTeam = 49S7UFWWL9;
 						ProvisioningStyle = Automatic;
@@ -355,7 +445,6 @@
 			packageReferences = (
 				BAC7398746716D096AE92475 /* XCLocalSwiftPackageReference "ObservabilityKit" */,
 			);
-			preferredProjectObjectVersion = 77;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -363,6 +452,7 @@
 				64C675F6E67240C99B417449 /* ObservabilityTests_macOS */,
 				39921196E161B084DB3C97A1 /* ObservabilityUITests_iOS */,
 				DC24ACFC9E23285D85A7EC51 /* ObservabilityUITests_macOS */,
+				45F6BEF68BEDF274401D2A8A /* ObservabilityWatch */,
 				6658DE6790BA604A6EED3B82 /* Observability_iOS */,
 				8CED64E3270DEC1ACBBF53A1 /* Observability_macOS */,
 			);
@@ -370,6 +460,16 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		12A32CAE45E8FC8AA3A74205 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5DDC86B34759732D3EEE5AF5 /* ObservabilityWatch-Info.plist in Resources */,
+				BD05FAD04D8BA5561D00633F /* ObservabilityWatchExtension-Info.plist in Resources */,
+				2B2BA96E027FAD06C9E4E055 /* ObservabilityiOS-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E902CC686646F1C866FAC6EB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -393,6 +493,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1219D0BD32325ED9B4221480 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				277DB42EFD33F84E3FD5E7BD /* ContentView.swift in Sources */,
+				E59513EEE90E981D0873D89B /* ExtensionDelegate.swift in Sources */,
+				25D024266FBF7E6B71893EE4 /* MetricBadgeWatchView.swift in Sources */,
+				0E110605FD84625E248CF74D /* ObservabilityComplications.swift in Sources */,
+				B7E2CB96C9714807AD4530CB /* ObservabilityWatchApp.swift in Sources */,
+				9F91443400E96849B37DCA9C /* ServiceDetailWatchView.swift in Sources */,
+				042A1C601D9034740544BB70 /* ServiceRowWatchView.swift in Sources */,
+				A46F18CB1D7B77F0F0DEF4BC /* WatchDashboardViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -475,6 +590,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
+				WATCHOS_DEPLOYMENT_TARGET = 11.0;
 			};
 			name = Release;
 		};
@@ -625,6 +741,7 @@
 				SDKROOT = iphoneos;
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Observability.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Observability";
@@ -756,6 +873,48 @@
 			};
 			name = Debug;
 		};
+		9F0CA56F1311AF40DAFB8BF5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_MONITORING_API_KEY = "$(MONITORING_API_KEY)";
+				INFOPLIST_KEY_MONITORING_HTTP_URL = "$(MONITORING_HTTP_URL)";
+				INFOPLIST_KEY_MONITORING_WEBSOCKET_URL = "$(MONITORING_WEBSOCKET_URL)";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.ArtfulArchivesStudio.Observability;
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ArtfulArchivesStudio.Observability.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 11.0;
+			};
+			name = Debug;
+		};
+		AB9A4752096AA7E99AD89866 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_MONITORING_API_KEY = "$(MONITORING_API_KEY)";
+				INFOPLIST_KEY_MONITORING_HTTP_URL = "$(MONITORING_HTTP_URL)";
+				INFOPLIST_KEY_MONITORING_WEBSOCKET_URL = "$(MONITORING_WEBSOCKET_URL)";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.ArtfulArchivesStudio.Observability;
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ArtfulArchivesStudio.Observability.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 11.0;
+			};
+			name = Release;
+		};
 		B24C224B4E45132DD10C45AE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -856,6 +1015,7 @@
 				SDKROOT = iphoneos;
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Observability.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Observability";
@@ -883,6 +1043,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
+				WATCHOS_DEPLOYMENT_TARGET = 11.0;
 			};
 			name = Debug;
 		};
@@ -927,6 +1088,15 @@
 			buildConfigurations = (
 				1D00D3F8641C0CB169733DB2 /* Debug */,
 				F261F10EB842854A7B827E2F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		7C806618CAB7E2C8C06612CC /* Build configuration list for PBXNativeTarget "ObservabilityWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9F0CA56F1311AF40DAFB8BF5 /* Debug */,
+				AB9A4752096AA7E99AD89866 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
@@ -994,6 +1164,10 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = ObservabilityCore;
 		};
+		21C2011ECD1C93B3E76725DF /* ObservabilityNetworking */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ObservabilityNetworking;
+		};
 		24588A8114C2AAD739B0E9B9 /* ObservabilityNetworking */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = ObservabilityNetworking;
@@ -1021,6 +1195,14 @@
 		99D409CE06744769D5EF0EBD /* ObservabilityNetworking */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = ObservabilityNetworking;
+		};
+		9C49F85ABA7AC41DF851835C /* ObservabilityCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ObservabilityCore;
+		};
+		E14D960BAB31CD7228838932 /* ObservabilityCommon */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ObservabilityCommon;
 		};
 		FD4F3ED9E6DEAC6E1E2120B1 /* ObservabilityCore */ = {
 			isa = XCSwiftPackageProductDependency;

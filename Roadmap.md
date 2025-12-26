@@ -24,13 +24,13 @@ To create a comprehensive, cross-platform observability client for Apple platfor
 - [x] iOS/macOS platform adaptations (haptics, Live Activities conditional compilation)
 - [x] Cloud service health check handling (Supabase, etc.)
 - [x] Improved connection status and error handling
+- [x] Apple Watch companion app (watchOS 11.0) - complete with complications, haptics, and battery-optimized monitoring
 - [ ] APNS push notifications for critical alerts
 - [ ] Live Activities for real-time metrics (iOS implementation complete, needs testing)
 - [ ] Dynamic Island integration (iPhone 14 Pro+) - code complete, needs testing
-- [ ] Apple Watch companion app
 - [ ] iOS/macOS Widgets (Home Screen/Lock Screen)
 - [ ] Siri Shortcuts for common actions
-- [ ] Handoff between devices
+- [ ] Handoff between devices (iOS ↔ watchOS)
 
 ### Phase 2: Core Features (Q2 2025)
 

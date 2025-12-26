@@ -7,8 +7,10 @@ This document outlines the comprehensive feature set of the Observability Swift 
 ### 🚀 Multi-Platform Support
 - **iOS**: Native iPhone and iPad experience with adaptive layouts
 - **macOS**: Universal Mac app with Catalyst and native macOS builds
+- **watchOS**: Native Apple Watch companion app (watchOS 11.0+) with complications and haptic alerts
 - **Cross-Platform**: Shared core logic with platform-specific UI adaptations
 - **Platform-Specific Features**: iOS-only features (haptics, Live Activities, Dynamic Island) gracefully disabled on macOS
+- **Watch Optimizations**: Battery-efficient monitoring (30-second intervals), compact UI, limited metric storage
 - **Cloud Service Monitoring**: Special handling for cloud-hosted services (Supabase, etc.) that don't use PM2
 
 ### 📊 Real-Time Metrics Collection

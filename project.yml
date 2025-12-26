@@ -5,6 +5,7 @@ options:
   deploymentTarget:
     iOS: "18.0"
     macOS: "15.6"
+    watchOS: "11.0"
   developmentLanguage: en
   usesTabs: false
   indentWidth: 2
@@ -138,6 +139,31 @@ targets:
       IPHONEOS_DEPLOYMENT_TARGET: "18.0"
       MACOSX_DEPLOYMENT_TARGET: "14.0"
       TEST_TARGET_NAME: Observability
+
+  ObservabilityWatch:
+    type: application
+    platform: watchOS
+    sources:
+      - path: ObservabilityWatch
+    dependencies:
+      - package: ObservabilityKit
+        product: ObservabilityCore
+      - package: ObservabilityKit
+        product: ObservabilityNetworking
+      - package: ObservabilityKit
+        product: ObservabilityCommon
+    settings:
+      GENERATE_INFOPLIST_FILE: YES
+      PRODUCT_BUNDLE_IDENTIFIER: com.ArtfulArchivesStudio.Observability.watchkitapp
+      PRODUCT_NAME: "$(TARGET_NAME)"
+      WATCHOS_DEPLOYMENT_TARGET: "11.0"
+      ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+      ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+      INFOPLIST_KEY_MONITORING_API_KEY: $(MONITORING_API_KEY)
+      INFOPLIST_KEY_MONITORING_HTTP_URL: $(MONITORING_HTTP_URL)
+      INFOPLIST_KEY_MONITORING_WEBSOCKET_URL: $(MONITORING_WEBSOCKET_URL)
+      INFOPLIST_KEY_WKCompanionAppBundleIdentifier: com.ArtfulArchivesStudio.Observability
+      ENABLE_PREVIEWS: YES
 
 schemes:
   Observability:
