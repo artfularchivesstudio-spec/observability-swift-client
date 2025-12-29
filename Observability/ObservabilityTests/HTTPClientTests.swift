@@ -5,26 +5,19 @@
 //  🧪 HTTP Client Tests - Where Network Calls Are Validated ✨
 //
 
-#if canImport(Testing)
-import Testing
-#else
 import XCTest
-#endif
 import Foundation
-import ObservabilityNetworking
+@testable import ObservabilityNetworking
 
 @available(macOS 14, iOS 17, *)
-@Suite("HTTPClient Tests")
-struct HTTPClientTests {
+final class HTTPClientTests: XCTestCase {
     
-    @Test("HTTPClient initialization")
     func testInitialization() async {
         let client = await HTTPClient()
         // Just verify it initializes without crashing
-        #expect(true)
+        XCTAssertNotNil(client)
     }
     
-    @Test("URL building")
     func testURLBuilding() async throws {
         let client = await HTTPClient()
         let baseURL = URL(string: "https://api.example.com")!
@@ -32,7 +25,9 @@ struct HTTPClientTests {
         
         // This tests internal URL building logic
         // In a real test, we'd expose this or test via public methods
-        #expect(true)
+        XCTAssertNotNil(client)
+        XCTAssertNotNil(baseURL)
+        XCTAssertFalse(endpoint.isEmpty)
     }
 }
 

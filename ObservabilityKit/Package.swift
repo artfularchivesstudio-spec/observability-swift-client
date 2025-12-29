@@ -41,6 +41,8 @@ let package = Package(
         .package(url: "https://github.com/apple/swift-async-algorithms.git", "1.0.0"..<"1.1.0"),
         .package(url: "https://github.com/apple/swift-collections.git", "1.0.0"..<"1.2.0"),
         .package(url: "https://github.com/apple/swift-algorithms.git", "1.1.0"..<"1.2.0"),
+        // Snapshot testing
+        .package(url: "https://github.com/pointfreeco/swift-snapshot-testing.git", from: "1.15.0"),
     ],
     targets: [
         // MARK: - Core Module
@@ -99,7 +101,8 @@ let package = Package(
                 "ObservabilityCore",
                 "ObservabilityNetworking",
                 "ObservabilityUI",
-                "ObservabilityCommon"
+                "ObservabilityCommon",
+                .product(name: "SnapshotTesting", package: "swift-snapshot-testing")
             ]
         )
     ]

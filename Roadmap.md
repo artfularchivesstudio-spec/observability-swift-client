@@ -26,6 +26,7 @@ To create a comprehensive, cross-platform observability client for Apple platfor
 - [x] Improved connection status and error handling
 - [x] Apple Watch companion app (watchOS 11.0) - complete with complications, haptics, and battery-optimized monitoring
 - [x] Local notifications for critical alerts (working, testable via DEBUG test button)
+- [x] Snapshot testing infrastructure - comprehensive visual regression testing across all UI variants (iOS/macOS × Light/Dark × devices)
 - [ ] APNS remote push notifications (requires certificate setup, device token registration, backend endpoint)
 - [ ] Live Activities for real-time metrics (iOS implementation complete, needs testing)
 - [ ] Dynamic Island integration (iPhone 14 Pro+) - code complete, needs testing

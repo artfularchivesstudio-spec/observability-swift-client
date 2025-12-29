@@ -136,11 +136,15 @@ class DashboardViewModel: ObservableObject {
         
         let testAlert = ObservabilityCore.Alert(
             id: UUID(),
-            serviceId: testService.id,
-            serviceName: testService.name,
             title: "🧪 Test \(type.rawValue.capitalized) Alert",
             message: "This is a test notification to verify push notifications are working correctly. If you see this, notifications are configured properly!",
             severity: type.severity,
+            source: ObservabilityCore.Alert.AlertSource(
+                serviceId: testService.id,
+                serviceName: testService.name,
+                checkType: "test",
+                location: nil
+            ),
             timestamp: Date(),
             resolved: false,
             metadata: [:]

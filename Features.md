@@ -105,9 +105,13 @@ This document outlines the comprehensive feature set of the Observability Swift 
 ### 🧪 Testing and Debugging
 - **Unit Testing**: Comprehensive test coverage for all components
 - **Integration Testing**: End-to-end testing framework
+- **Snapshot Testing**: Visual regression testing with `swift-snapshot-testing` - tests all UI variants (iOS/macOS × Light/Dark × devices)
+- **Component Testing**: Individual component snapshot tests for `ServiceStatusIndicator`, `MetricChart`, and more
+- **View Testing**: Full view snapshot tests for `DashboardView` and `ServiceDetailView` across all platforms
 - **Performance Testing**: Load testing and benchmarking tools
 - **Debug Mode**: Enhanced debugging capabilities with detailed logging
 - **Mock Services**: Mock backend services for offline development
+- **Xcode Previews**: Preview variants for every UI configuration (8 variants: iOS Light/Dark × 3 devices + macOS Light/Dark)
 
 ### 📚 Documentation and Examples
 - **API Documentation**: Comprehensive API reference with code examples

@@ -12,7 +12,7 @@ import ObservabilityNetworking
 import ObservabilityUI
 
 @available(macOS 14, iOS 17, *)
-struct DashboardView: View {
+public struct DashboardView: View {
     // MARK: - State
     @StateObject private var viewModel = DashboardViewModel()
     @State private var selectedService: ServiceInfo?
@@ -21,8 +21,10 @@ struct DashboardView: View {
     // MARK: - Filter State
     @State private var selectedFilter: ServiceStatus?
     @State private var searchText = ""
+    
+    public init() {}
 
-    var body: some View {
+    public var body: some View {
         #if os(macOS)
         NavigationStack {
             mainContent

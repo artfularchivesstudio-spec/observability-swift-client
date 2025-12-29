@@ -13,6 +13,9 @@ options:
 packages:
   ObservabilityKit:
     path: ObservabilityKit
+  SwiftSnapshotTesting:
+    url: https://github.com/pointfreeco/swift-snapshot-testing.git
+    from: 1.15.0
 
 configs:
   Debug: Observability/Observability/Secrets.xcconfig
@@ -52,6 +55,8 @@ targets:
         product: ObservabilityNetworking
       - package: ObservabilityKit
         product: ObservabilityUI
+      - package: ObservabilityKit
+        product: ObservabilityCommon
     settings:
       GENERATE_INFOPLIST_FILE: YES
       PRODUCT_BUNDLE_IDENTIFIER: com.ArtfulArchivesStudio.Observability
@@ -100,20 +105,26 @@ targets:
     type: bundle.unit-test
     platform: [iOS, macOS]
     sources:
-      - path: ObservabilityTests
+      - path: Observability/ObservabilityTests
     dependencies:
       - package: ObservabilityKit
         product: ObservabilityCore
       - package: ObservabilityKit
         product: ObservabilityNetworking
+      - package: ObservabilityKit
+        product: ObservabilityUI
+      - package: ObservabilityKit
+        product: ObservabilityCommon
+      - package: SwiftSnapshotTesting
+        product: SnapshotTesting
     settings:
       GENERATE_INFOPLIST_FILE: YES
       PRODUCT_BUNDLE_IDENTIFIER: com.ArtfulArchivesStudio.ObservabilityTests
       PRODUCT_NAME: "$(TARGET_NAME)"
       SUPPORTED_PLATFORMS: "iphoneos iphonesimulator macosx"
       TARGETED_DEVICE_FAMILY: "1,2,7"
-      TEST_HOST: "$(BUILT_PRODUCTS_DIR)/Observability.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Observability"
-      BUNDLE_LOADER: "$(TEST_HOST)"
+      # Snapshot tests don't need a test host - they test views directly
+      # TEST_HOST and BUNDLE_LOADER removed for unit tests
       STRING_CATALOG_GENERATE_SYMBOLS: NO
       SWIFT_EMIT_LOC_STRINGS: NO
       IPHONEOS_DEPLOYMENT_TARGET: "18.0"

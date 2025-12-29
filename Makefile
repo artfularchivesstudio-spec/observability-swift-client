@@ -112,6 +112,17 @@ test-ui: generate ## Run UI tests only
 	@echo "$(BLUE)Running UI tests...$(RESET)"
 	@xcodebuild test -project $(PROJECT_FILE) -scheme $(SCHEME_NAME) -destination "platform=iOS Simulator,name=$(SIMULATOR_NAME)" -only-testing:ObservabilityUITests
 
+.PHONY: test-snapshots
+test-snapshots: generate ## Run snapshot tests
+	@echo "$(BLUE)Running snapshot tests...$(RESET)"
+	@xcodebuild test -project $(PROJECT_FILE) -scheme $(SCHEME_NAME) -destination "platform=iOS Simulator,name=$(SIMULATOR_NAME)" -only-testing:ObservabilityTests/SnapshotTests
+
+.PHONY: snapshot-dashboard
+snapshot-dashboard: ## Generate snapshot test dashboard HTML
+	@echo "$(BLUE)Generating snapshot dashboard...$(RESET)"
+	@./scripts/generate-snapshot-dashboard.sh
+	@echo "$(GREEN)✓ Dashboard generated at snapshot-dashboard/index.html$(RESET)"
+
 .PHONY: clean
 clean: ## Clean build artifacts
 	@echo "$(BLUE)Cleaning build artifacts...$(RESET)"
