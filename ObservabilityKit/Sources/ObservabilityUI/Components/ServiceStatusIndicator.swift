@@ -93,6 +93,7 @@ public struct ServiceStatusIndicator: View {
 }
 
 /// 🎨 Service card with status and quick actions
+/// Now with collapsible endpoints - because screen real estate is precious! 📦
 @available(macOS 14, iOS 17, *)
 public struct ServiceCard: View {
     public let service: ServiceInfo
@@ -100,6 +101,7 @@ public struct ServiceCard: View {
     public let onTap: (() -> Void)?
 
     @State private var isPressed = false
+    @State private var endpointsExpanded = false  // 🎭 Collapsed by default - less clutter!
 
     public init(
         service: ServiceInfo,
@@ -175,41 +177,51 @@ public struct ServiceCard: View {
             }
             .buttonStyle(ServiceCardButtonStyle())
             
-            // Endpoints section - NOT part of the button, so it won't trigger card tap
+            // Endpoints section - collapsible for a cleaner look 📦
             if !service.endpoints.isEmpty {
                 Divider()
-                
+
                 VStack(alignment: .leading, spacing: 8) {
-                    HStack {
-                        Image(systemName: "link")
-                            .font(.caption)
-                            .foregroundColor(.blue)
-                        
-                        Text("Endpoints (\(service.endpoints.count))")
-                            .font(.caption)
-                            .fontWeight(.semibold)
-                            .foregroundColor(.primary)
-                    }
-                    .padding(.horizontal)
-                    .padding(.top, 8)
-                    
-                    VStack(alignment: .leading, spacing: 6) {
-                        ForEach(service.endpoints.prefix(5), id: \.id) { endpoint in
-                            EndpointRow(endpoint: endpoint, service: service)
+                    // Tappable header to expand/collapse
+                    Button(action: {
+                        withAnimation(.easeInOut(duration: 0.2)) {
+                            endpointsExpanded.toggle()
                         }
+                    }) {
+                        HStack {
+                            Image(systemName: "link")
+                                .font(.caption)
+                                .foregroundColor(.blue)
+
+                            Text("Endpoints (\(service.endpoints.count))")
+                                .font(.caption)
+                                .fontWeight(.semibold)
+                                .foregroundColor(.primary)
+
+                            Spacer()
+
+                            // Chevron indicator - rotates when expanded 🔄
+                            Image(systemName: "chevron.right")
+                                .font(.caption2)
+                                .foregroundColor(.secondary)
+                                .rotationEffect(.degrees(endpointsExpanded ? 90 : 0))
+                        }
+                        .padding(.horizontal)
+                        .padding(.vertical, 8)
+                        .contentShape(Rectangle())
                     }
-                    .padding(.horizontal)
-                    
-                    if service.endpoints.count > 5 {
-                        Text("+ \(service.endpoints.count - 5) more endpoints")
-                            .font(.caption2)
-                            .foregroundColor(.secondary)
-                            .italic()
-                            .padding(.horizontal)
-                            .padding(.bottom, 8)
-                    } else {
-                        Spacer()
-                            .frame(height: 8)
+                    .buttonStyle(.plain)
+
+                    // Expandable endpoints list
+                    if endpointsExpanded {
+                        VStack(alignment: .leading, spacing: 6) {
+                            ForEach(service.endpoints, id: \.id) { endpoint in
+                                EndpointRow(endpoint: endpoint, service: service)
+                            }
+                        }
+                        .padding(.horizontal)
+                        .padding(.bottom, 8)
+                        .transition(.opacity.combined(with: .move(edge: .top)))
                     }
                 }
             }

@@ -21,7 +21,11 @@ public struct DashboardView: View {
     // MARK: - Filter State
     @State private var selectedFilter: ServiceStatus?
     @State private var searchText = ""
-    
+
+    // MARK: - Collapsible Section State 📦
+    @State private var statsExpanded = false      // Stats bar collapsed by default
+    @State private var metricsExpanded = false    // Live Metrics collapsed by default
+
     public init() {}
 
     public var body: some View {
@@ -149,74 +153,74 @@ public struct DashboardView: View {
                 .font(.subheadline)
                 .foregroundColor(.secondary)
 
-            Divider()
+            // Collapsible Stats Bar 📊
+            VStack(spacing: 0) {
+                // Compact header bar - always visible
+                Button(action: {
+                    withAnimation(.easeInOut(duration: 0.2)) {
+                        statsExpanded.toggle()
+                    }
+                }) {
+                    HStack(spacing: 16) {
+                        // Compact inline stats
+                        HStack(spacing: 12) {
+                            MiniStatBadge(value: viewModel.services.count, icon: "server.rack", color: .blue)
+                            MiniStatBadge(value: viewModel.healthyCount, icon: "checkmark.circle.fill", color: .green)
+                            MiniStatBadge(value: viewModel.issueCount, icon: "exclamationmark.triangle.fill", color: .orange)
+                            MiniStatBadge(value: viewModel.activeAlertsCount, icon: "bell.badge.fill", color: .red)
+                        }
 
-            #if os(macOS)
-            LazyVGrid(columns: [
-                GridItem(.flexible(), spacing: 16),
-                GridItem(.flexible(), spacing: 16),
-                GridItem(.flexible(), spacing: 16),
-                GridItem(.flexible(), spacing: 16)
-            ], spacing: 16) {
-                StatCard(
-                    title: "Services",
-                    value: "\(viewModel.services.count)",
-                    icon: "server.rack",
-                    color: .blue
-                )
+                        Spacer()
 
-                StatCard(
-                    title: "Healthy",
-                    value: "\(viewModel.healthyCount)",
-                    icon: "checkmark.circle.fill",
-                    color: .green
-                )
+                        // Expand/collapse indicator
+                        HStack(spacing: 4) {
+                            Text(statsExpanded ? "Less" : "More")
+                                .font(.caption)
+                                .foregroundColor(.secondary)
+                            Image(systemName: "chevron.right")
+                                .font(.caption2)
+                                .foregroundColor(.secondary)
+                                .rotationEffect(.degrees(statsExpanded ? 90 : 0))
+                        }
+                    }
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 10)
+                    .background(
+                        RoundedRectangle(cornerRadius: 10)
+                            .fill(Color.secondary.opacity(0.1))
+                    )
+                    .contentShape(Rectangle())
+                }
+                .buttonStyle(.plain)
 
-                StatCard(
-                    title: "Issues",
-                    value: "\(viewModel.issueCount)",
-                    icon: "exclamationmark.triangle.fill",
-                    color: .orange
-                )
-
-                StatCard(
-                    title: "Alerts",
-                    value: "\(viewModel.activeAlertsCount)",
-                    icon: "bell.badge.fill",
-                    color: .red
-                )
+                // Expanded stats cards
+                if statsExpanded {
+                    #if os(macOS)
+                    LazyVGrid(columns: [
+                        GridItem(.flexible(), spacing: 16),
+                        GridItem(.flexible(), spacing: 16),
+                        GridItem(.flexible(), spacing: 16),
+                        GridItem(.flexible(), spacing: 16)
+                    ], spacing: 16) {
+                        StatCard(title: "Services", value: "\(viewModel.services.count)", icon: "server.rack", color: .blue)
+                        StatCard(title: "Healthy", value: "\(viewModel.healthyCount)", icon: "checkmark.circle.fill", color: .green)
+                        StatCard(title: "Issues", value: "\(viewModel.issueCount)", icon: "exclamationmark.triangle.fill", color: .orange)
+                        StatCard(title: "Alerts", value: "\(viewModel.activeAlertsCount)", icon: "bell.badge.fill", color: .red)
+                    }
+                    .padding(.top, 12)
+                    .transition(.opacity.combined(with: .move(edge: .top)))
+                    #else
+                    HStack(spacing: 20) {
+                        StatCard(title: "Services", value: "\(viewModel.services.count)", icon: "server.rack", color: .blue)
+                        StatCard(title: "Healthy", value: "\(viewModel.healthyCount)", icon: "checkmark.circle.fill", color: .green)
+                        StatCard(title: "Issues", value: "\(viewModel.issueCount)", icon: "exclamationmark.triangle.fill", color: .orange)
+                        StatCard(title: "Alerts", value: "\(viewModel.activeAlertsCount)", icon: "bell.badge.fill", color: .red)
+                    }
+                    .padding(.top, 12)
+                    .transition(.opacity.combined(with: .move(edge: .top)))
+                    #endif
+                }
             }
-            #else
-            HStack(spacing: 20) {
-                StatCard(
-                    title: "Services",
-                    value: "\(viewModel.services.count)",
-                    icon: "server.rack",
-                    color: .blue
-                )
-
-                StatCard(
-                    title: "Healthy",
-                    value: "\(viewModel.healthyCount)",
-                    icon: "checkmark.circle.fill",
-                    color: .green
-                )
-
-                StatCard(
-                    title: "Issues",
-                    value: "\(viewModel.issueCount)",
-                    icon: "exclamationmark.triangle.fill",
-                    color: .orange
-                )
-
-                StatCard(
-                    title: "Alerts",
-                    value: "\(viewModel.activeAlertsCount)",
-                    icon: "bell.badge.fill",
-                    color: .red
-                )
-            }
-            #endif
         }
     }
 
@@ -309,61 +313,106 @@ public struct DashboardView: View {
         }
     }
 
-    // MARK: - Metrics Section
+    // MARK: - Metrics Section (Collapsible) 📈
     private var metricsSection: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            Text("Live Metrics")
-                .font(.title2)
-                .fontWeight(.semibold)
+        VStack(alignment: .leading, spacing: 0) {
+            // Collapsible header bar with inline CPU/Memory preview
+            Button(action: {
+                withAnimation(.easeInOut(duration: 0.2)) {
+                    metricsExpanded.toggle()
+                }
+            }) {
+                HStack(spacing: 12) {
+                    Image(systemName: "chart.line.uptrend.xyaxis")
+                        .font(.body)
+                        .foregroundColor(.cyan)
 
-            #if os(macOS)
-            HStack(spacing: 16) {
-                MetricGauge(
-                    title: "CPU",
-                    value: averageCPU,
-                    minValue: 0,
-                    maxValue: 100,
-                    unit: "%"
-                )
-                .frame(maxWidth: .infinity)
+                    Text("Live Metrics")
+                        .font(.headline)
+                        .fontWeight(.semibold)
+                        .foregroundColor(.primary)
 
-                MetricGauge(
-                    title: "Memory",
-                    value: averageMemory,
-                    minValue: 0,
-                    maxValue: 100,
-                    unit: "%"
+                    // Inline mini metrics preview
+                    HStack(spacing: 16) {
+                        HStack(spacing: 4) {
+                            Text("CPU")
+                                .font(.caption2)
+                                .foregroundColor(.secondary)
+                            Text("\(Int(averageCPU))%")
+                                .font(.caption.monospaced())
+                                .fontWeight(.semibold)
+                                .foregroundColor(averageCPU > 80 ? .red : averageCPU > 50 ? .orange : .green)
+                        }
+
+                        HStack(spacing: 4) {
+                            Text("MEM")
+                                .font(.caption2)
+                                .foregroundColor(.secondary)
+                            Text("\(Int(averageMemory))%")
+                                .font(.caption.monospaced())
+                                .fontWeight(.semibold)
+                                .foregroundColor(averageMemory > 80 ? .red : averageMemory > 50 ? .orange : .yellow)
+                        }
+                    }
+                    .padding(.horizontal, 10)
+                    .padding(.vertical, 4)
+                    .background(
+                        Capsule()
+                            .fill(Color.secondary.opacity(0.1))
+                    )
+
+                    Spacer()
+
+                    // Expand/collapse indicator
+                    HStack(spacing: 4) {
+                        Text(metricsExpanded ? "Less" : "More")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                        Image(systemName: "chevron.right")
+                            .font(.caption2)
+                            .foregroundColor(.secondary)
+                            .rotationEffect(.degrees(metricsExpanded ? 90 : 0))
+                    }
+                }
+                .padding(.horizontal, 12)
+                .padding(.vertical, 10)
+                .background(
+                    RoundedRectangle(cornerRadius: 10)
+                        .fill(Color.secondary.opacity(0.1))
                 )
-                .frame(maxWidth: .infinity)
+                .contentShape(Rectangle())
             }
-            #else
-            LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 16) {
-                MetricGauge(
-                    title: "CPU",
-                    value: averageCPU,
-                    minValue: 0,
-                    maxValue: 100,
-                    unit: "%"
-                )
+            .buttonStyle(.plain)
 
-                MetricGauge(
-                    title: "Memory",
-                    value: averageMemory,
-                    minValue: 0,
-                    maxValue: 100,
-                    unit: "%"
-                )
+            // Expanded metrics content
+            if metricsExpanded {
+                VStack(alignment: .leading, spacing: 12) {
+                    #if os(macOS)
+                    HStack(spacing: 16) {
+                        MetricGauge(title: "CPU", value: averageCPU, minValue: 0, maxValue: 100, unit: "%")
+                            .frame(maxWidth: .infinity)
+                        MetricGauge(title: "Memory", value: averageMemory, minValue: 0, maxValue: 100, unit: "%")
+                            .frame(maxWidth: .infinity)
+                    }
+                    #else
+                    LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 16) {
+                        MetricGauge(title: "CPU", value: averageCPU, minValue: 0, maxValue: 100, unit: "%")
+                        MetricGauge(title: "Memory", value: averageMemory, minValue: 0, maxValue: 100, unit: "%")
+                    }
+                    #endif
+
+                    // Line Chart
+                    MetricChart(
+                        title: "CPU Trend",
+                        metricsPublisher: Just(
+                            viewModel.metrics.last ?? MetricPoint(value: 0, label: "cpu")
+                        ).eraseToAnyPublisher(),
+                        chartType: .line
+                    )
+                }
+                .padding(.top, 12)
+                .transition(.opacity.combined(with: .move(edge: .top)))
             }
-            #endif
-
-            // Line Chart
-            MetricChart(
-                title: "CPU Trend",
-                metricsPublisher: Just(
-                    viewModel.metrics.last ?? MetricPoint(value: 0, label: "cpu")
-                ).eraseToAnyPublisher(),
-                chartType: .line
-            )
         }
     }
 
@@ -482,10 +531,13 @@ public struct DashboardView: View {
                 .frame(maxWidth: .infinity)
                 .padding()
             } else {
-                // Log list
+                // Log list - each row is tappable to show details 🔍
                 LazyVStack(spacing: 4) {
                     ForEach(viewModel.serverLogs.entries.prefix(20)) { entry in
-                        ServerLogRow(entry: entry)
+                        NavigationLink(destination: LogDetailView(logEntry: entry)) {
+                            ServerLogRow(entry: entry)
+                        }
+                        .buttonStyle(.plain)
                     }
                 }
                 .padding()
@@ -694,6 +746,33 @@ struct StatCard: View {
             RoundedRectangle(cornerRadius: 12)
                 .fill(.background)
                 .shadow(color: .black.opacity(0.1), radius: 2, x: 0, y: 1)
+        )
+    }
+}
+
+/// 📊 MiniStatBadge - Compact stat display for collapsed header bar
+/// Shows icon + value in a tiny space - perfect for the "at a glance" vibe 👀
+@available(macOS 14, iOS 17, *)
+struct MiniStatBadge: View {
+    let value: Int
+    let icon: String
+    let color: Color
+
+    var body: some View {
+        HStack(spacing: 4) {
+            Image(systemName: icon)
+                .font(.caption)
+                .foregroundColor(color)
+            Text("\(value)")
+                .font(.caption.monospaced())
+                .fontWeight(.semibold)
+                .foregroundColor(.primary)
+        }
+        .padding(.horizontal, 8)
+        .padding(.vertical, 4)
+        .background(
+            Capsule()
+                .fill(color.opacity(0.1))
         )
     }
 }
