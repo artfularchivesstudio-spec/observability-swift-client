@@ -5,6 +5,86 @@ All notable changes to the Observability Swift Client project will be documented
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## December 30, 2025 (Late Night Session) - "The Cosmic Log Revival: Monospaced Dreams & Technicolor Whispers" 🌌📜✨
+
+### What We Did (The Vinyl-Pressing of Infrastructure)
+
+**ServerLogRow: The Log Entry Boutique** 📝🎨
+- Crafted a beautiful new `ServerLogRow` component - each log entry is now a work of art
+- Color-coded level indicators: the mood ring of your infrastructure 🔮
+  - Debug: Gray (the quiet wisdom of verbose output)
+  - Info: Blue (calm seas of normal operations)
+  - Warning: Orange (autumn leaves of caution)
+  - Error/Critical: Red (the urgent poetry of failure)
+- Source badges with service-specific colors - NGINX gets green, Strapi gets purple, like a craft brewery label
+- HTTP status code badges: green for 2xx success, orange for 4xx client issues, red for 5xx server tantrums
+- Monospaced timestamps because we're not animals
+
+**Server Logs Section Resurrected** 📜🔄
+- The Server Logs section was lost in a merge conflict (RIP) - now restored in full glory
+- 500 error badge showing count of server errors at a glance
+- Refresh button with loading state - no more wondering if logs are fetching
+- Empty state with helpful placeholder text - for those zen moments of no logs
+- Stats summary showing total logs, error count, and last update time
+
+**NGINX Config Subsection** 🌐💜
+- Nested beautifully inside Server Logs where it belongs
+- Purple-themed UI because NGINX is royalty
+- Monospaced font with text selection enabled - copy that config!
+- Refresh button for when you've updated NGINX and need to verify
+- Max height of 300px with scrolling - no infinite config sprawl
+
+**Service Endpoints Finally Revealed** 🎯🚀
+- Added comprehensive endpoints to ALL services (they were empty before!)
+- **Strapi CMS**: 5 endpoints - artworks, exhibitions, artists, uploads
+- **Website**: 5 endpoints - home, gallery, exhibitions, about, health
+- **Python API**: 4 endpoints - health, analyze, generate, translate
+- **Supabase**: 4 endpoints - REST queries, auth, storage
+- **Monitoring Service**: 5 endpoints - status, PM2, logs stream, NGINX config
+- Each endpoint shows full URL, HTTP method badge, and description
+- Copy button for quick URL copying - productivity optimized
+
+**LogDetailView Compatibility Fix** 🔧
+- Fixed `LogDetailView.swift` to work with our simpler `ServerLogEntry` model
+- Removed references to nonexistent properties (clientIP, userAgent, rawLine, etc.)
+- Added computed properties for `isError`, `is500Error`, and `rawLogLine`
+- Renamed `InfoRow` to `LogInfoRow` to avoid duplicate struct conflict
+- String-based level handling (no enum required - keeping it simple)
+
+### What Remains TODO (The Unroasted Beans)
+
+- [ ] Make log rows clickable to open `LogDetailView`
+- [ ] Add log filtering by level/source
+- [ ] Persist NGINX config for offline viewing
+- [ ] WebSocket stability improvements
+
+### Reflections from the Artisanal Code Collective
+
+**Timeline of Tonight's Journey** ⏰
+
+*Late Night Revival* (11:00 PM - 12:30 AM)
+User noticed features were missing after the earlier merge conflicts: "what happened to the service endpoints, clicking them, and our logs!" Classic post-merge archaeology. Discovered the Server Logs section and endpoints had been yeeted during conflict resolution.
+
+Started by reading the current state - serverLogsSection referenced in mainContent but ServerLogRow didn't exist. Added the ServerLogRow component with all the beautiful color-coding. Then noticed services had empty endpoints arrays - added meaningful endpoints to all 5 services.
+
+Build failed - LogDetailView.swift was expecting a fancier ServerLogEntry model. Rewrote it to work with our simpler model. Then hit a duplicate `InfoRow` struct conflict. Renamed to `LogInfoRow`. Build succeeded!
+
+**Key Insights** 💡
+1. **Merge conflicts are sneaky** - they can silently remove features you didn't know were gone
+2. **Empty arrays are easy to miss** - `endpoints: []` looks harmless but means no endpoints shown
+3. **Model mismatches cause cascading failures** - one struct change ripples through all views
+4. **Color-coding is UX gold** - users immediately know log severity from a glance
+
+**The Aesthetic Philosophy** 🎨
+There's something deeply satisfying about seeing logs stream in with their colored indicators. Each log entry is a snapshot of your infrastructure's soul - the greens of success, the oranges of caution, the reds of distress. The monospaced font isn't just functional, it's a statement: this is serious data, rendered with respect.
+
+The nested NGINX config inside Server Logs feels like finding a secret room in a mansion. It belongs there, it always belonged there, we just hadn't built the door yet.
+
+**What's Next** 🔮
+User absolutely LOVED the logs UI ("I LOVE THE LOGS UI!!!!!!"). That's the kind of feedback that makes late-night coding sessions worth it. Next up: making those log rows tappable, adding filtering, and tackling the WebSocket stability dragon.
+
+---
+
 ## December 30, 2025 (Evening Session) - "The Live Streaming Artisanal Experience: Farm-to-Table Logs" 🎭☕️✨
 
 ### What We Did (The Craft Brew Journey)

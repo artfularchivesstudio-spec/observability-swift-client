@@ -23,31 +23,26 @@ struct LogDetailView: View {
     let logEntry: ServerLogEntry
     @Environment(\.dismiss) private var dismiss
     @State private var copiedField: String?
-    
+
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 24) {
                 // Header Section
                 headerSection
-                
+
                 // Message Section (Full, untruncated)
                 messageSection
-                
-                // Request Details (if available)
-                if logEntry.requestMethod != nil || logEntry.requestPath != nil {
-                    requestSection
+
+                // Status Code Section (if available)
+                if logEntry.statusCode != nil {
+                    statusCodeSection
                 }
-                
-                // Network Information
-                if logEntry.clientIP != nil || logEntry.userAgent != nil {
-                    networkSection
-                }
-                
+
                 // Metadata Section
                 metadataSection
-                
-                // Raw Log Line
-                rawLogSection
+
+                // Raw Message Section
+                rawMessageSection
             }
             .padding()
         }
@@ -68,7 +63,7 @@ struct LogDetailView: View {
         }
         #endif
     }
-    
+
     // MARK: - Header Section
     private var headerSection: some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -82,15 +77,15 @@ struct LogDetailView: View {
                         Circle()
                             .fill(levelColor.opacity(0.1))
                     )
-                
+
                 VStack(alignment: .leading, spacing: 4) {
                     HStack(spacing: 8) {
-                        Text(logEntry.level.displayName)
+                        Text(logEntry.level.capitalized)
                             .font(.title2)
                             .fontWeight(.bold)
                             .foregroundColor(levelColor)
-                        
-                        if logEntry.is500Error {
+
+                        if is500Error {
                             Text("500")
                                 .font(.caption.monospaced())
                                 .fontWeight(.bold)
@@ -101,15 +96,15 @@ struct LogDetailView: View {
                                 .cornerRadius(4)
                         }
                     }
-                    
+
                     Text(logEntry.source.capitalized)
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                 }
-                
+
                 Spacer()
             }
-            
+
             // Timestamp
             HStack(spacing: 8) {
                 Image(systemName: "clock")
@@ -126,14 +121,14 @@ struct LogDetailView: View {
                 .fill(Color.secondary.opacity(0.05))
         )
     }
-    
+
     // MARK: - Message Section
     private var messageSection: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text("Message")
                 .font(.headline)
                 .fontWeight(.semibold)
-            
+
             Text(logEntry.message)
                 .font(.body.monospaced())
                 .foregroundColor(.primary)
@@ -146,102 +141,54 @@ struct LogDetailView: View {
                 )
         }
     }
-    
-    // MARK: - Request Section
-    private var requestSection: some View {
+
+    // MARK: - Status Code Section
+    private var statusCodeSection: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("Request Details")
+            Text("HTTP Status")
                 .font(.headline)
                 .fontWeight(.semibold)
-            
-            VStack(alignment: .leading, spacing: 8) {
-                if let method = logEntry.requestMethod {
-                    CopyableInfoRow(
-                        label: "Method",
-                        value: method,
-                        copiedField: $copiedField
-                    )
+
+            if let statusCode = logEntry.statusCode {
+                HStack {
+                    Text("Status Code")
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+
+                    Spacer()
+
+                    Text("\(statusCode)")
+                        .font(.subheadline.monospaced())
+                        .fontWeight(.semibold)
+                        .foregroundColor(.white)
+                        .padding(.horizontal, 8)
+                        .padding(.vertical, 4)
+                        .background(statusCodeColor(statusCode))
+                        .cornerRadius(4)
                 }
-                
-                if let path = logEntry.requestPath {
-                    CopyableInfoRow(
-                        label: "Path",
-                        value: path,
-                        copiedField: $copiedField
-                    )
-                }
-                
-                if let statusCode = logEntry.statusCode {
-                    HStack {
-                        Text("Status Code")
-                            .font(.subheadline)
-                            .foregroundColor(.secondary)
-                        
-                        Spacer()
-                        
-                        Text("\(statusCode)")
-                            .font(.subheadline.monospaced())
-                            .fontWeight(.semibold)
-                            .foregroundColor(.white)
-                            .padding(.horizontal, 8)
-                            .padding(.vertical, 4)
-                            .background(statusCodeColor(statusCode))
-                            .cornerRadius(4)
-                    }
-                }
+                .padding()
+                .background(
+                    RoundedRectangle(cornerRadius: 8)
+                        .fill(Color.secondary.opacity(0.05))
+                )
             }
-            .padding()
-            .background(
-                RoundedRectangle(cornerRadius: 8)
-                    .fill(Color.secondary.opacity(0.05))
-            )
         }
     }
-    
-    // MARK: - Network Section
-    private var networkSection: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            Text("Network Information")
-                .font(.headline)
-                .fontWeight(.semibold)
-            
-            VStack(alignment: .leading, spacing: 8) {
-                if let clientIP = logEntry.clientIP {
-                    CopyableInfoRow(
-                        label: "Client IP",
-                        value: clientIP,
-                        copiedField: $copiedField
-                    )
-                }
-                
-                if let userAgent = logEntry.userAgent {
-                    CopyableInfoRow(
-                        label: "User Agent",
-                        value: userAgent,
-                        copiedField: $copiedField
-                    )
-                }
-            }
-            .padding()
-            .background(
-                RoundedRectangle(cornerRadius: 8)
-                    .fill(Color.secondary.opacity(0.05))
-            )
-        }
-    }
-    
+
     // MARK: - Metadata Section
     private var metadataSection: some View {
         VStack(alignment: .leading, spacing: 12) {
             Text("Metadata")
                 .font(.headline)
                 .fontWeight(.semibold)
-            
+
             VStack(alignment: .leading, spacing: 8) {
-                InfoRow(label: "Source", value: logEntry.source, icon: "server.rack")
-                InfoRow(label: "Level", value: logEntry.level.displayName, icon: levelIcon)
-                InfoRow(label: "Is Error", value: logEntry.isError ? "Yes" : "No", icon: logEntry.isError ? "exclamationmark.triangle.fill" : "checkmark.circle.fill")
-                InfoRow(label: "Is 500 Error", value: logEntry.is500Error ? "Yes" : "No", icon: logEntry.is500Error ? "xmark.octagon.fill" : "checkmark.circle.fill")
+                LogInfoRow(label: "Source", value: logEntry.source, icon: "server.rack")
+                LogInfoRow(label: "Level", value: logEntry.level.capitalized, icon: levelIcon)
+                LogInfoRow(label: "Is Error", value: isError ? "Yes" : "No", icon: isError ? "exclamationmark.triangle.fill" : "checkmark.circle.fill")
+                if let statusCode = logEntry.statusCode {
+                    LogInfoRow(label: "Is 500 Error", value: statusCode >= 500 ? "Yes" : "No", icon: statusCode >= 500 ? "xmark.octagon.fill" : "checkmark.circle.fill")
+                }
             }
             .padding()
             .background(
@@ -250,20 +197,25 @@ struct LogDetailView: View {
             )
         }
     }
-    
-    // MARK: - Raw Log Section
-    private var rawLogSection: some View {
+
+    // MARK: - Raw Message Section
+    private var rawMessageSection: some View {
         VStack(alignment: .leading, spacing: 12) {
             HStack {
-                Text("Raw Log Line")
+                Text("Raw Log Entry")
                     .font(.headline)
                     .fontWeight(.semibold)
-                
+
                 Spacer()
-                
+
                 Button(action: {
-                    copyToClipboard(logEntry.rawLine)
+                    copyToClipboard(rawLogLine)
                     copiedField = "raw"
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                        if copiedField == "raw" {
+                            copiedField = nil
+                        }
+                    }
                 }) {
                     HStack(spacing: 4) {
                         if copiedField == "raw" {
@@ -279,9 +231,9 @@ struct LogDetailView: View {
                 }
                 .buttonStyle(.plain)
             }
-            
+
             ScrollView(.horizontal, showsIndicators: true) {
-                Text(logEntry.rawLine)
+                Text(rawLogLine)
                     .font(.system(.caption, design: .monospaced))
                     .foregroundColor(.primary)
                     .textSelection(.enabled)
@@ -294,38 +246,69 @@ struct LogDetailView: View {
             )
         }
     }
-    
+
     // MARK: - Computed Properties
+
+    /// 🎨 Construct raw log line from available data
+    private var rawLogLine: String {
+        var parts: [String] = []
+        parts.append("[\(logEntry.timestamp.formatted(date: .abbreviated, time: .complete))]")
+        parts.append("[\(logEntry.level.uppercased())]")
+        parts.append("[\(logEntry.source)]")
+        if let code = logEntry.statusCode {
+            parts.append("[\(code)]")
+        }
+        parts.append(logEntry.message)
+        return parts.joined(separator: " ")
+    }
+
+    /// 🚨 Check if this is an error log
+    private var isError: Bool {
+        logEntry.level.lowercased() == "error" || logEntry.level.lowercased() == "critical"
+    }
+
+    /// 🔥 Check if this is a 500 error
+    private var is500Error: Bool {
+        if let code = logEntry.statusCode {
+            return code >= 500
+        }
+        return logEntry.message.contains("500")
+    }
+
     private var levelColor: Color {
-        switch logEntry.level {
-        case .debug:
+        switch logEntry.level.lowercased() {
+        case "debug":
             return .gray
-        case .info:
+        case "info":
             return .blue
-        case .warning:
+        case "warning":
             return .orange
-        case .error:
+        case "error":
             return .red
-        case .critical:
+        case "critical":
             return .red
+        default:
+            return .secondary
         }
     }
-    
+
     private var levelIcon: String {
-        switch logEntry.level {
-        case .debug:
+        switch logEntry.level.lowercased() {
+        case "debug":
             return "magnifyingglass"
-        case .info:
+        case "info":
             return "info.circle.fill"
-        case .warning:
+        case "warning":
             return "exclamationmark.triangle.fill"
-        case .error:
+        case "error":
             return "xmark.circle.fill"
-        case .critical:
+        case "critical":
             return "exclamationmark.octagon.fill"
+        default:
+            return "questionmark.circle"
         }
     }
-    
+
     private func statusCodeColor(_ code: Int) -> Color {
         switch code {
         case 200...299:
@@ -340,7 +323,7 @@ struct LogDetailView: View {
             return .gray
         }
     }
-    
+
     private var toolbarPlacement: ToolbarItemPlacement {
         #if os(macOS)
         return .cancellationAction
@@ -348,7 +331,7 @@ struct LogDetailView: View {
         return .navigationBarTrailing
         #endif
     }
-    
+
     private func copyToClipboard(_ text: String) {
         #if os(macOS)
         NSPasteboard.general.clearContents()
@@ -359,28 +342,55 @@ struct LogDetailView: View {
     }
 }
 
+/// 📊 Simple info row component for displaying log metadata
+@available(macOS 14, iOS 17, *)
+struct LogInfoRow: View {
+    let label: String
+    let value: String
+    let icon: String
+
+    var body: some View {
+        HStack {
+            Image(systemName: icon)
+                .font(.caption)
+                .foregroundColor(.secondary)
+                .frame(width: 20)
+
+            Text(label)
+                .font(.subheadline)
+                .foregroundColor(.secondary)
+
+            Spacer()
+
+            Text(value)
+                .font(.subheadline.monospaced())
+                .foregroundColor(.primary)
+        }
+    }
+}
+
 /// 📋 Copyable info row component
 @available(macOS 14, iOS 17, *)
 struct CopyableInfoRow: View {
     let label: String
     let value: String
     @Binding var copiedField: String?
-    
+
     var body: some View {
         HStack {
             Text(label)
                 .font(.subheadline)
                 .foregroundColor(.secondary)
-            
+
             Spacer()
-            
+
             Text(value)
                 .font(.subheadline.monospaced())
                 .foregroundColor(.primary)
                 .textSelection(.enabled)
                 .lineLimit(nil)
                 .fixedSize(horizontal: false, vertical: true)
-            
+
             Button(action: {
                 copyToClipboard(value)
                 copiedField = label
@@ -398,7 +408,7 @@ struct CopyableInfoRow: View {
             .help("Copy \(label)")
         }
     }
-    
+
     private func copyToClipboard(_ text: String) {
         #if os(macOS)
         NSPasteboard.general.clearContents()

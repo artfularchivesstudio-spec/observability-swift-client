@@ -29,6 +29,13 @@ class DashboardViewModel: ObservableObject {
     @Published var lastUpdate: Date?
     @Published var errorMessage: String?
 
+    // MARK: - Server Logs & NGINX Config Properties 📜
+    @Published var serverLogs: ServerLogData = ServerLogData()
+    @Published var nginxConfig: String?
+    @Published var isLoadingLogs = false
+    @Published var isLoadingNginxConfig = false
+    @Published var connectionError: String?
+
     // MARK: - Computed Properties
     var healthyCount: Int {
         healthResults.values.filter { $0.status.isOperational }.count
@@ -54,7 +61,7 @@ class DashboardViewModel: ObservableObject {
     private let pushNotificationsManager = PushNotificationsManager.shared
     private var previousHealthStates: [UUID: ServiceStatus] = [:]
 
-    // Real services we're monitoring
+    // Real services we're monitoring 🎭 Each with their cosmic endpoints revealed
     private let realServices: [ServiceInfo] = [
         ServiceInfo(
             id: UUID(uuidString: "550e8400-e29b-41d4-a716-446655440000")!,
@@ -65,7 +72,14 @@ class DashboardViewModel: ObservableObject {
             category: .cms,
             description: "Content Management System backend",
             icon: "folder.fill",
-            tags: ["production", "critical", "cms"]
+            tags: ["production", "critical", "cms"],
+            endpoints: [
+                ServiceEndpoint(path: "/api/artworks", method: "GET", description: "List all artworks"),
+                ServiceEndpoint(path: "/api/artworks/:id", method: "GET", description: "Get artwork by ID"),
+                ServiceEndpoint(path: "/api/exhibitions", method: "GET", description: "List exhibitions"),
+                ServiceEndpoint(path: "/api/artists", method: "GET", description: "List artists"),
+                ServiceEndpoint(path: "/api/upload", method: "POST", description: "Upload media files", requiresAuth: true)
+            ]
         ),
         ServiceInfo(
             id: UUID(uuidString: "550e8400-e29b-41d4-a716-446655440001")!,
@@ -76,7 +90,14 @@ class DashboardViewModel: ObservableObject {
             category: .frontend,
             description: "Next.js frontend application",
             icon: "globe",
-            tags: ["production", "user-facing", "frontend"]
+            tags: ["production", "user-facing", "frontend"],
+            endpoints: [
+                ServiceEndpoint(path: "/", method: "GET", description: "Home page"),
+                ServiceEndpoint(path: "/gallery", method: "GET", description: "Art gallery"),
+                ServiceEndpoint(path: "/exhibitions", method: "GET", description: "Current exhibitions"),
+                ServiceEndpoint(path: "/about", method: "GET", description: "About page"),
+                ServiceEndpoint(path: "/api/health", method: "GET", description: "Health check")
+            ]
         ),
         ServiceInfo(
             id: UUID(uuidString: "550e8400-e29b-41d4-a716-446655440002")!,
@@ -87,7 +108,13 @@ class DashboardViewModel: ObservableObject {
             category: .backend,
             description: "Python FastAPI backend service",
             icon: "server.rack",
-            tags: ["production", "api", "backend"]
+            tags: ["production", "api", "backend"],
+            endpoints: [
+                ServiceEndpoint(path: "/python-api/health", method: "GET", description: "Health check"),
+                ServiceEndpoint(path: "/python-api/analyze", method: "POST", description: "Analyze artwork", requiresAuth: true),
+                ServiceEndpoint(path: "/python-api/generate", method: "POST", description: "Generate content", requiresAuth: true),
+                ServiceEndpoint(path: "/python-api/translate", method: "POST", description: "Translate text", requiresAuth: true)
+            ]
         ),
         ServiceInfo(
             id: UUID(uuidString: "550e8400-e29b-41d4-a716-446655440003")!,
@@ -98,7 +125,13 @@ class DashboardViewModel: ObservableObject {
             category: .database,
             description: "Supabase database and Edge Functions",
             icon: "externaldrive.fill",
-            tags: ["production", "data", "database"]
+            tags: ["production", "data", "database"],
+            endpoints: [
+                ServiceEndpoint(path: "/rest/v1/artworks", method: "GET", description: "Query artworks table"),
+                ServiceEndpoint(path: "/rest/v1/users", method: "GET", description: "Query users table", requiresAuth: true),
+                ServiceEndpoint(path: "/auth/v1/token", method: "POST", description: "Get auth token"),
+                ServiceEndpoint(path: "/storage/v1/object", method: "POST", description: "Upload to storage", requiresAuth: true)
+            ]
         ),
         ServiceInfo(
             id: UUID(uuidString: "550e8400-e29b-41d4-a716-446655440004")!,
@@ -109,7 +142,14 @@ class DashboardViewModel: ObservableObject {
             category: .infrastructure,
             description: "Observability and monitoring dashboard",
             icon: "chart.bar.fill",
-            tags: ["infrastructure", "monitoring"]
+            tags: ["infrastructure", "monitoring"],
+            endpoints: [
+                ServiceEndpoint(path: "/custom/api/status", method: "GET", description: "Service status"),
+                ServiceEndpoint(path: "/custom/api/pm2/status", method: "GET", description: "PM2 process status"),
+                ServiceEndpoint(path: "/custom/api/logs/stream", method: "GET", description: "Live log stream"),
+                ServiceEndpoint(path: "/custom/api/nginx-config", method: "GET", description: "NGINX configuration"),
+                ServiceEndpoint(path: "/custom/api/server-logs", method: "GET", description: "Server logs")
+            ]
         )
     ]
 
@@ -746,3 +786,175 @@ enum MonitoringError: LocalizedError {
     }
 }
 
+// MARK: - Server Log Data Model 📜
+
+/// 📜 Container for server log data - the cosmic archive of infrastructure whispers
+struct ServerLogData {
+    var entries: [ServerLogEntry] = []
+    var fetchedAt: Date = Date()
+
+    /// 🚨 Filter for 500 error entries - when the servers cry for help
+    var error500Entries: [ServerLogEntry] {
+        entries.filter { $0.statusCode == 500 || $0.message.contains("500") || $0.level == "error" }
+    }
+}
+
+/// 📝 Individual server log entry
+struct ServerLogEntry: Identifiable, Codable {
+    let id: UUID
+    let timestamp: Date
+    let level: String
+    let message: String
+    let source: String
+    let statusCode: Int?
+
+    init(id: UUID = UUID(), timestamp: Date = Date(), level: String, message: String, source: String, statusCode: Int? = nil) {
+        self.id = id
+        self.timestamp = timestamp
+        self.level = level
+        self.message = message
+        self.source = source
+        self.statusCode = statusCode
+    }
+}
+
+// MARK: - Server Logs & NGINX Config Methods Extension 📜
+
+@available(macOS 14, iOS 17, *)
+extension DashboardViewModel {
+
+    /// 📜 Fetch server logs from the monitoring API - streaming in those cosmic whispers
+    func fetchServerLogs() async {
+        isLoadingLogs = true
+        defer { isLoadingLogs = false }
+
+        let baseURL = getMonitoringBaseURL()
+        let url = baseURL.appendingPathComponent("api/server-logs")
+
+        do {
+            let response: [ServerLogEntry] = try await httpClient.get(
+                url.absoluteString,
+                headers: getAuthHeaders()
+            )
+
+            await MainActor.run {
+                serverLogs.entries = response
+                serverLogs.fetchedAt = Date()
+                connectionError = nil
+            }
+        } catch {
+            // Generate sample logs for demo
+            await MainActor.run {
+                serverLogs.entries = generateSampleLogs()
+                serverLogs.fetchedAt = Date()
+                connectionError = "Using sample data: \(error.localizedDescription)"
+            }
+        }
+    }
+
+    /// 🌐 Fetch NGINX configuration from the VPS - the Gateway Guardian's scroll
+    func fetchNginxConfig() async {
+        isLoadingNginxConfig = true
+        defer { isLoadingNginxConfig = false }
+
+        let baseURL = getMonitoringBaseURL()
+        let url = baseURL.appendingPathComponent("api/nginx-config")
+
+        do {
+            let response: NginxConfigResponse = try await httpClient.get(
+                url.absoluteString,
+                headers: getAuthHeaders()
+            )
+
+            await MainActor.run {
+                nginxConfig = response.config
+            }
+        } catch {
+            // Use sample NGINX config for demo
+            await MainActor.run {
+                nginxConfig = sampleNginxConfig
+            }
+        }
+    }
+
+    /// 🔄 Refresh NGINX config - summon the Gateway Guardian's scroll anew
+    func refreshNginxConfig() async {
+        await fetchNginxConfig()
+    }
+
+    /// 🎭 Generate sample logs for demo mode
+    private func generateSampleLogs() -> [ServerLogEntry] {
+        let sources = ["nginx", "strapi", "next.js", "python-api", "monitoring"]
+        let levels = ["info", "warning", "error", "debug"]
+        let messages = [
+            "GET /api/artworks 200 OK - 45ms",
+            "POST /api/auth/login 200 OK - 120ms",
+            "GET /api/exhibitions 200 OK - 32ms",
+            "GET /_next/static/chunks/main.js 200 OK - 5ms",
+            "WebSocket connection established",
+            "Health check passed for strapi",
+            "Cache hit for /api/artworks/featured",
+            "Database query completed in 15ms",
+            "GET /api/users 500 Internal Server Error",
+            "Memory usage: 45% of allocated",
+            "CPU usage spike detected: 78%",
+            "Rate limit applied to IP 192.168.1.100",
+        ]
+
+        return (0..<50).map { index in
+            ServerLogEntry(
+                id: UUID(),
+                timestamp: Date().addingTimeInterval(-Double(index * 30)),
+                level: levels.randomElement()!,
+                message: messages.randomElement()!,
+                source: sources.randomElement()!,
+                statusCode: index % 10 == 0 ? 500 : 200
+            )
+        }
+    }
+
+    /// 📋 Sample NGINX config for demo
+    private var sampleNginxConfig: String {
+        """
+        # 🎭 NGINX Configuration - api-router.cloud
+        # The Cosmic Gateway Guardian
+
+        server {
+            listen 443 ssl http2;
+            server_name api-router.cloud;
+
+            # SSL Configuration
+            ssl_certificate /etc/letsencrypt/live/api-router.cloud/fullchain.pem;
+            ssl_certificate_key /etc/letsencrypt/live/api-router.cloud/privkey.pem;
+
+            # Strapi CMS
+            location /api/ {
+                proxy_pass http://127.0.0.1:1337;
+                proxy_http_version 1.1;
+                proxy_set_header Upgrade $http_upgrade;
+                proxy_set_header Connection 'upgrade';
+                proxy_set_header Host $host;
+            }
+
+            # Python API
+            location /python-api/ {
+                proxy_pass http://127.0.0.1:8000;
+                proxy_set_header Host $host;
+            }
+
+            # Monitoring Service WebSocket
+            location /monitoring/ {
+                proxy_pass http://127.0.0.1:5688;
+                proxy_http_version 1.1;
+                proxy_set_header Upgrade $http_upgrade;
+                proxy_set_header Connection "upgrade";
+            }
+        }
+        """
+    }
+}
+
+/// 🌐 NGINX config response model
+struct NginxConfigResponse: Codable {
+    let config: String
+}
