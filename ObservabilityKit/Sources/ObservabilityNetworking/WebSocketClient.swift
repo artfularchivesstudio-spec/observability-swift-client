@@ -228,10 +228,12 @@ private struct Handshake: Codable {
 
 // MARK: - Error Handling
 
+/// 🌩️ The Cosmic Error Constellation - When the digital stars temporarily misalign ✨
 @available(macOS 14, iOS 17, *)
 public enum WebSocketError: Error, LocalizedError {
     case alreadyConnected
     case notConnected
+    case connectionFailed(String) // 🆕 For connection establishment failures
     case sendFailed(Error)
     case pingFailed(Error)
     case invalidMessage
@@ -242,6 +244,8 @@ public enum WebSocketError: Error, LocalizedError {
             return "WebSocket is already connected"
         case .notConnected:
             return "WebSocket is not connected"
+        case .connectionFailed(let reason):
+            return "Connection failed: \(reason)"
         case .sendFailed(let error):
             return "Failed to send message: \(error.localizedDescription)"
         case .pingFailed(let error):

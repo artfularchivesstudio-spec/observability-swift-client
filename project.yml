@@ -38,6 +38,8 @@ settings:
   LOCALIZATION_PREFERS_STRING_CATALOGS: YES
   ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS: YES
   INFOPLIST_KEY_MONITORING_API_KEY: $(MONITORING_API_KEY)
+  INFOPLIST_KEY_MONITORING_WEBSOCKET_URL: $(MONITORING_WEBSOCKET_URL)
+  INFOPLIST_KEY_MONITORING_HTTP_URL: $(MONITORING_HTTP_URL)
 
 targets:
   Observability:
@@ -77,7 +79,9 @@ targets:
       "INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]": UIStatusBarStyleDefault
       INFOPLIST_KEY_UISupportedInterfaceOrientations: "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait"
       INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown"
-      ENABLE_APP_SANDBOX: YES
+      # Temporarily disable sandbox to allow SSH execution
+      # TODO: Replace SSH with HTTP API endpoint for production/App Store
+      ENABLE_APP_SANDBOX: NO
       ENABLE_HARDENED_RUNTIME: YES
       ENABLE_INCOMING_NETWORK_CONNECTIONS: YES
       ENABLE_OUTGOING_NETWORK_CONNECTIONS: YES

@@ -21,7 +21,12 @@ public enum PreviewData {
             category: .cms,
             description: "Main content management system",
             icon: "folder.fill",
-            tags: ["production", "critical"]
+            tags: ["production", "critical"],
+            endpoints: [
+                ServiceEndpoint(path: "/api", method: "GET", description: "API root"),
+                ServiceEndpoint(path: "/api/users", method: "GET", description: "Users endpoint"),
+                ServiceEndpoint(path: "/api/content-types", method: "GET", description: "Content types")
+            ]
         ),
         ServiceInfo(
             id: UUID(uuidString: "550e8400-e29b-41d4-a716-446655440001")!,
@@ -32,7 +37,11 @@ public enum PreviewData {
             category: .frontend,
             description: "User-facing web application",
             icon: "globe",
-            tags: ["production", "user-facing"]
+            tags: ["production", "user-facing"],
+            endpoints: [
+                ServiceEndpoint(path: "/", method: "GET", description: "Home page"),
+                ServiceEndpoint(path: "/api/health", method: "GET", description: "Health check")
+            ]
         ),
         ServiceInfo(
             id: UUID(uuidString: "550e8400-e29b-41d4-a716-446655440002")!,
@@ -43,7 +52,11 @@ public enum PreviewData {
             category: .backend,
             description: "Backend API service",
             icon: "server.rack",
-            tags: ["production", "api"]
+            tags: ["production", "api"],
+            endpoints: [
+                ServiceEndpoint(path: "/api/v1/health", method: "GET", description: "Health endpoint"),
+                ServiceEndpoint(path: "/api/v1/users", method: "GET", description: "Users API")
+            ]
         ),
         ServiceInfo(
             id: UUID(uuidString: "550e8400-e29b-41d4-a716-446655440003")!,

@@ -88,6 +88,30 @@ public enum ServiceStatus: Sendable, Codable, Equatable {
     }
 }
 
+/// 🌐 Service endpoint definition - The API route oracle 🔮
+@available(macOS 14, iOS 17, *)
+public struct ServiceEndpoint: Sendable, Codable, Identifiable, Equatable {
+    public let id: UUID
+    public var path: String
+    public var method: String
+    public var description: String?
+    public var requiresAuth: Bool
+    
+    public init(
+        id: UUID = UUID(),
+        path: String,
+        method: String = "GET",
+        description: String? = nil,
+        requiresAuth: Bool = false
+    ) {
+        self.id = id
+        self.path = path
+        self.method = method
+        self.description = description
+        self.requiresAuth = requiresAuth
+    }
+}
+
 /// 🎨 Service identification with metadata
 @available(macOS 14, iOS 17, *)
 public struct ServiceInfo: Sendable, Codable, Identifiable, Equatable {
@@ -100,6 +124,7 @@ public struct ServiceInfo: Sendable, Codable, Identifiable, Equatable {
     public var description: String?
     public var icon: String?
     public var tags: Set<String>
+    public var endpoints: [ServiceEndpoint]
 
     public init(
         id: UUID = UUID(),
@@ -110,7 +135,8 @@ public struct ServiceInfo: Sendable, Codable, Identifiable, Equatable {
         category: ServiceCategory,
         description: String? = nil,
         icon: String? = nil,
-        tags: Set<String> = []
+        tags: Set<String> = [],
+        endpoints: [ServiceEndpoint] = []
     ) {
         self.id = id
         self.name = name
@@ -121,6 +147,7 @@ public struct ServiceInfo: Sendable, Codable, Identifiable, Equatable {
         self.description = description
         self.icon = icon
         self.tags = tags
+        self.endpoints = endpoints
     }
 
     public enum ServiceType: String, Sendable, Codable, CaseIterable {
@@ -222,7 +249,7 @@ public struct HealthCheckResult: Sendable, Codable {
         self.checks = checks
     }
 
-    public enum CheckResult: Sendable, Codable {
+    public enum CheckResult: Sendable, Codable, Equatable {
         case passed
         case failed(ErrorInfo)
         case warning(String)
@@ -237,7 +264,7 @@ public struct HealthCheckResult: Sendable, Codable {
         }
     }
 
-    public struct ErrorInfo: Sendable, Codable {
+    public struct ErrorInfo: Sendable, Codable, Equatable {
         public let code: String
         public let message: String
         public let details: [String: String]?

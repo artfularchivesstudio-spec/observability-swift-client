@@ -295,7 +295,7 @@ public struct MetricPoint: Sendable, Codable {
 /// 📈 Metrics collection with time-based indexing
 @available(macOS 14, iOS 17, *)
 public struct MetricsCollection: Sendable {
-    private let points: [MetricPoint]
+    public let points: [MetricPoint]
 
     public init(points: [MetricPoint] = []) {
         self.points = points.sorted { $0.timestamp < $1.timestamp }

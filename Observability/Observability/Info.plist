@@ -2,6 +2,15 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<!-- 🔐 Monitoring Configuration -->
+	<key>MONITORING_API_KEY</key>
+	<string>observability-secret-key-2025</string>
+	<key>MONITORING_WEBSOCKET_URL</key>
+	<string>wss://api-router.cloud/monitoring/custom/</string>
+	<key>MONITORING_HTTP_URL</key>
+	<string>https://api-router.cloud/monitoring/custom/</string>
+
+	<!-- 📱 Background Modes -->
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>
@@ -9,5 +18,22 @@
 		<string>processing</string>
 		<string>external-accessory</string>
 	</array>
+
+	<!-- 🌐 App Transport Security - Allow WebSocket connections -->
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<false/>
+		<key>NSExceptionDomains</key>
+		<dict>
+			<key>api-router.cloud</key>
+			<dict>
+				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+				<false/>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+			</dict>
+		</dict>
+	</dict>
 </dict>
 </plist>

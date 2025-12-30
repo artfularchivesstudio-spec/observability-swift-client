@@ -214,21 +214,28 @@ To create a comprehensive, cross-platform observability client for Apple platfor
 
 ## Next Steps (Immediate)
 
+### Current Sprint (December 2025)
+1. **✅ Memory Management**: Fixed retain cycles in WebSocket client
+2. **✅ Service Discovery**: Improved NGINX config parsing and naming
+3. **✅ Log Pagination**: Added client-side pagination (50-100 logs initial load)
+4. **🔄 Server-Side Pagination**: Add `skip`/`offset` to API endpoints
+5. **🔄 UI Polish**: Infinite scroll, log filtering, better service cards
+
 ### iOS App Phase 2
-1. **APNS Setup**: Register for push notifications
-2. **Push Server**: Add push endpoint to monitoring service
-3. **Alert Rules**: Configure critical alert push logic
-4. **Live Activities**: Service status in Dynamic Island
-5. **Widgets**: Home screen service health widgets
+6. **APNS Setup**: Register for push notifications
+7. **Push Server**: Add push endpoint to monitoring service
+8. **Alert Rules**: Configure critical alert push logic
+9. **Live Activities**: Service status in Dynamic Island
+10. **Widgets**: Home screen service health widgets
 
 ### Apple Watch
-6. **Basic Watch App**: Show service list
-7. **Complications**: Add to watch faces
-8. **Haptics**: Alert vibrations for critical issues
+11. **Basic Watch App**: Show service list
+12. **Complications**: Add to watch faces
+13. **Haptics**: Alert vibrations for critical issues
 
 ### macOS App
-9. **Menu Bar App**: Always-visible status indicator
-10. **Floating Window**: Optional desktop widget
+14. **Menu Bar App**: Always-visible status indicator
+15. **Floating Window**: Optional desktop widget
 
 ## Parking Lot (Future)
 After Apple ecosystem is complete:

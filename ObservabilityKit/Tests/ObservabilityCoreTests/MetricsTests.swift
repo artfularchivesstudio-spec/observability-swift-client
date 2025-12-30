@@ -127,6 +127,7 @@ final class MetricsTests: XCTestCase {
 
     func testServiceMetricsErrorRate() {
         let metrics = ServiceMetrics(
+            serviceId: UUID(),
             requestCount: 10000,
             errorCount: 100
         )
@@ -136,6 +137,7 @@ final class MetricsTests: XCTestCase {
 
     func testServiceMetricsErrorRateZeroRequests() {
         let metrics = ServiceMetrics(
+            serviceId: UUID(),
             requestCount: 0,
             errorCount: 0
         )
@@ -145,6 +147,7 @@ final class MetricsTests: XCTestCase {
 
     func testServiceMetricsRequestsPerSecond() {
         let metrics = ServiceMetrics(
+            serviceId: UUID(),
             uptime: 3600,
             requestCount: 7200
         )
@@ -154,6 +157,7 @@ final class MetricsTests: XCTestCase {
 
     func testServiceMetricsRequestsPerSecondZeroUptime() {
         let metrics = ServiceMetrics(
+            serviceId: UUID(),
             uptime: 0,
             requestCount: 100
         )
@@ -323,9 +327,9 @@ final class MetricsTests: XCTestCase {
 
     func testMetricsCollectionInitialization() {
         let points = [
-            MetricPoint(value: 10.0, timestamp: Date().addingTimeInterval(-2)),
-            MetricPoint(value: 20.0, timestamp: Date().addingTimeInterval(-1)),
-            MetricPoint(value: 30.0, timestamp: Date())
+            MetricPoint(timestamp: Date().addingTimeInterval(-2), value: 10.0),
+            MetricPoint(timestamp: Date().addingTimeInterval(-1), value: 20.0),
+            MetricPoint(timestamp: Date(), value: 30.0)
         ]
 
         let collection = MetricsCollection(points: points)
@@ -339,19 +343,19 @@ final class MetricsTests: XCTestCase {
     func testMetricsCollectionInTimeRange() {
         let now = Date()
         let points = [
-            MetricPoint(value: 10.0, timestamp: now.addingTimeInterval(-3)),
-            MetricPoint(value: 20.0, timestamp: now.addingTimeInterval(-2)),
-            MetricPoint(value: 30.0, timestamp: now.addingTimeInterval(-1)),
-            MetricPoint(value: 40.0, timestamp: now)
+            MetricPoint(timestamp: now.addingTimeInterval(-3), value: 10.0),
+            MetricPoint(timestamp: now.addingTimeInterval(-2), value: 20.0),
+            MetricPoint(timestamp: now.addingTimeInterval(-1), value: 30.0),
+            MetricPoint(timestamp: now, value: 40.0)
         ]
 
         let collection = MetricsCollection(points: points)
         let range = now.addingTimeInterval(-2.5)...now.addingTimeInterval(-0.5)
-        let filtered = collection.points(in: range)
+        let filteredPoints = collection.points(in: range)
 
-        XCTAssertEqual(filtered.count, 2)
-        XCTAssertEqual(filtered.first?.value, 20.0)
-        XCTAssertEqual(filtered.last?.value, 30.0)
+        XCTAssertEqual(filteredPoints.count, 2)
+        XCTAssertEqual(filteredPoints.first?.value, 20.0)
+        XCTAssertEqual(filteredPoints.last?.value, 30.0)
     }
 
     func testMetricsCollectionAverage() {

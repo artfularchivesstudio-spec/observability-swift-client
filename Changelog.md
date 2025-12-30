@@ -5,6 +5,187 @@ All notable changes to the Observability Swift Client project will be documented
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## December 30, 2025 (Evening Session) - "The Live Streaming Artisanal Experience: Farm-to-Table Logs" 🎭☕️✨
+
+### What We Did (The Craft Brew Journey)
+
+**Live Log Streaming at 10-Second Cadence** 📜⚡️
+- Changed log refresh interval from 30 seconds to 10 seconds - because waiting is so mainstream
+- Logs now fetch immediately on app launch - no more waiting for the first refresh cycle like some kind of peasant
+- Real-time observability is finally... actually real-time (well, every 10 seconds, which is practically instantaneous in artisanal time)
+
+**NGINX Config Moved to Server Logs Section** 🌐📦
+- Consolidated the NGINX configuration view as a subsection within Server Logs - because organization is the new black
+- Added a gorgeous purple-themed UI with network icon - very on-brand, very aesthetic
+- The Gateway Guardian's Scroll now resides within the Log Archive, as foretold by the ancient prophecies
+
+**Comprehensive Endpoint Expansion** 🎯🚀
+- Expanded sample services from "a couple endpoints" to 15+ endpoints per service - finally exhaustive!
+- **Strapi CMS**: 15 endpoints covering API root, content types, artworks, artists, exhibitions, galleries, media library, auth
+- **Next.js Website**: 14 endpoints including pages (gallery, artwork, artist), API routes (search, revalidate, og), auth
+- **Python API**: 16 endpoints with health checks, OpenAPI docs, users CRUD, auth, data processing, ML analysis
+- **Monitoring Service**: 8 endpoints featuring WebSocket, NGINX config, server logs, log streaming, historical logs
+- **NGINX Reverse Proxy**: 8 endpoints showing proxy routes and static file serving
+
+**Lifecycle Notifications System** 🔔🎉
+- Added notifications on app launch ("🎭 Observability Active")
+- WebSocket connection notifications ("🔌 WebSocket Connected" / "⚠️ WebSocket Disconnected")
+- Reconnection attempt notifications with attempt count
+- Health summary notifications after initial health checks
+- Service down notifications when a service goes down
+- New logs notification when errors are detected
+
+**Info.plist API Key Resolution** 🔐
+- Discovered that XcodeGen variable substitution ($(MONITORING_API_KEY)) wasn't working from Secrets.xcconfig
+- Tried the INFOPLIST_KEY_ prefix approach - still didn't substitute
+- Hardcoded values directly in Info.plist as a pragmatic workaround (the artisanal solution)
+- API key authentication now works correctly with the monitoring server
+
+**Server-Side WebSocket Fixes** 🔧
+- Fixed NGINX proxy_pass from `0.0.0.0:5688` to `127.0.0.1:5688` - because binding to all interfaces from a proxy is a rookie move
+- Created custom Next.js server with `ws` library for WebSocket support
+- Next.js App Router doesn't support WebSocket natively (discovered the hard way)
+- Server now properly handles handshake, ping/pong, metrics, logs, and events
+
+### What Remains TODO (The Unfinished Pour-Over)
+
+**WebSocket Connection Stability** 🔌
+- [ ] Connection drops quickly after connecting - possible heartbeat/keepalive issue
+- [ ] Investigate server-side WebSocket ping/pong timing
+- [ ] Add reconnection backoff strategy
+
+**Info.plist Configuration** ⚙️
+- [ ] Investigate why XcodeGen $(VARIABLE) substitution isn't working
+- [ ] Try xcconfig build settings directly
+- [ ] Consider using a build phase script for variable injection
+
+**UI Polish** 🎨
+- [ ] Test NGINX config subsection on iOS
+- [ ] Verify purple theme works in dark mode
+- [ ] Consider collapsible sections for NGINX config
+
+### Reflections from the Hipster Trenches
+
+**Timeline Perspective** ⏰
+
+*Late Afternoon Session* (5:00 PM - 7:00 PM)
+Started with the user reporting "the app not connecting to websockets" - classic infrastructure mystery. SSH'd to the VPS, found the monitoring service was crashing due to missing Next.js build artifacts. Rebuilt, discovered Next.js App Router doesn't do WebSockets, created a custom server.js with the `ws` library. Fixed NGINX proxy_pass from 0.0.0.0 to 127.0.0.1. Victory!
+
+*Evening Enhancements* (7:00 PM - 8:30 PM)
+User noticed endpoints weren't exhaustive - "python api only shows 2 endpoints". Fair point! Expanded every service to have 15+ realistic endpoints. Then came the notification system request - added lifecycle notifications for app launch, WebSocket state changes, health summaries. The Info.plist variable substitution was a red herring - ended up hardcoding values. Sometimes the artisanal solution is "just put it directly in the file."
+
+*Final Polish* (8:30 PM - 9:00 PM)
+"put nginx config under Server Logs" - reorganized the UI. "logs should fetch right away" - done. "every 10 seconds please" - updated the timer. Small changes, big impact.
+
+**Key Learnings** 💡
+1. **Next.js App Router ≠ WebSocket** - need a custom server.js with the `ws` package
+2. **NGINX proxy_pass should use 127.0.0.1** - not 0.0.0.0 for local services
+3. **XcodeGen variable substitution is tricky** - sometimes hardcoding is the pragmatic choice
+4. **10 seconds feels real-time** - 30 seconds feels like watching paint dry
+
+**Philosophical Musings** 🤔
+There's something deeply satisfying about watching logs stream in every 10 seconds. It's like watching a coffee drip from an artisanal pour-over - slow enough to appreciate, fast enough to feel alive. The NGINX config nestled inside the Server Logs section feels right, like a scroll within an archive. Everything in its place.
+
+The WebSocket journey reminded me that infrastructure is layers upon layers. NGINX proxies to Next.js, which now has a custom server.js, which uses the `ws` package. Each layer has its own quirks, its own gotchas. But when they all work together... chef's kiss.
+
+**What's Next** 🔮
+The WebSocket connection stability needs attention - it connects but then drops. Probably a keepalive/heartbeat issue. That, and figuring out why XcodeGen isn't substituting variables in Info.plist. But for now, the app launches, fetches logs immediately, streams every 10 seconds, shows comprehensive endpoints, and sends notifications. That's a good day's work.
+
+---
+
+## December 30, 2025 - "Memory Management & Service Discovery: Before They Were Cool" 🎭✨
+
+### What We Did (The Artisanal Journey)
+
+**Memory Management Mastery** 🧠
+- Fixed that pesky retain cycle in `WebSocketCombineClient` where `deinit` was creating a `Task` that captured `self` strongly (classic rookie mistake, but we're all learning!)
+- Refactored cleanup to be fully synchronous - no more async work in `deinit` (because that's just asking for trouble)
+- Added proper task tracking with `receiveTask` property so we can cancel async work gracefully
+- Updated all closures to use `[weak self]` because strong references are so 2015
+- Created comprehensive memory management documentation (`docs/memory-management-retain-cycles.md`) - because knowledge should be shared, not hoarded
+
+**Service Discovery Enlightenment** 🔍
+- Fixed service naming to extract only the first domain from `server_name` (no more "api-router.cloud www.api-router.cloud" nonsense)
+- Improved service type detection by checking `proxy_pass` destinations first (because actions speak louder than server names)
+- Added smart naming logic: HTTP redirect servers show "(HTTP → HTTPS)", HTTPS servers get clean names
+- Better backend type detection: correctly identifies Next.js (port 3001), Monitoring Service (port 5688), etc.
+- Prevented duplicate NGINX entries by only adding default service if no server blocks discovered
+
+**Log Pagination Revolution** 📄
+- Reduced initial log fetch from 1200+ logs to a modest 50-100 logs (because nobody needs 1530 logs at once, amirite?)
+- Added pagination state tracking (`hasMoreLogs`, `isLoadingMoreLogs`, `logPageSize`)
+- Implemented "Load More Logs" button with proper loading states
+- Created `loadMoreLogs()` function that fetches next page and appends gracefully
+- Note: Server API endpoints may need `skip`/`offset` support for true pagination (currently client-side pagination)
+
+**Decoding Fixes** 🔧
+- Changed decoder strategy from `.convertFromSnakeCase` to `.useDefaultKeys` (API uses camelCase, not snake_case)
+- Made metadata optional in `IngestedLogEntry` with custom decoder for graceful handling
+- Added explicit `CodingKeys` enums to ensure proper field mapping
+- Fixed URL construction to use `URLComponents` instead of `appendingPathComponent` for query params
+
+**Documentation Craftsmanship** 📚
+- Created comprehensive memory management guide covering retain cycles, deinit pitfalls, and best practices
+- Documented the "deinit + Task" problem as a great interview question (because we're all about education)
+- Added visual diagrams, code examples, and real-world scenarios
+- Included debugging tips and common mistakes section
+
+### What Remains TODO (The Unfinished Symphony)
+
+**Server-Side Pagination** 🚀
+- [ ] Add `skip`/`offset` parameters to `/api/server-logs` endpoint
+- [ ] Add `skip`/`offset` parameters to `/api/logs/historical` endpoint
+- [ ] Update server-side log fetching to support pagination
+- [ ] Test pagination with large log volumes (1000+ entries)
+
+**Service Discovery Enhancements** 🎯
+- [ ] Better handling of multiple server blocks with same `server_name`
+- [ ] Detect service types from response headers (X-Powered-By, Server, etc.)
+- [ ] Add service grouping by domain/port combinations
+- [ ] Cache discovered services to reduce NGINX config parsing
+
+**Memory Management Polish** ✨
+- [ ] Add unit tests for retain cycle scenarios
+- [ ] Use Instruments to verify no leaks in WebSocket cleanup
+- [ ] Document Combine subscription cleanup patterns
+- [ ] Add memory profiling to CI/CD pipeline
+
+**UI/UX Improvements** 🎨
+- [ ] Add infinite scroll for logs (instead of "Load More" button)
+- [ ] Show log count indicator ("Showing 50 of 1530 logs")
+- [ ] Add log filtering by source (NGINX vs Observability)
+- [ ] Improve service card layout for better readability
+
+### Reflections from the Digital Trenches
+
+**Timeline Perspective** ⏰
+
+*Morning Session* (9:00 AM - 12:00 PM)
+Started with the user reporting "failed to decode response" - classic case of decoder strategy mismatch. Fixed that quickly, then moved on to service naming issues. The "api-router.cloud www.api-router.cloud" problem was hilarious - like naming your child "John John Smith" because you couldn't decide.
+
+*Afternoon Deep Dive* (1:00 PM - 4:00 PM)
+The retain cycle issue was a beautiful learning moment. That `deinit` + `Task` pattern is so subtle - it looks innocent but creates chaos. Spent quality time understanding why ARC was complaining, then crafted a solution that's both elegant and educational.
+
+*Evening Documentation* (5:00 PM - 6:00 PM)
+Created the memory management doc because this is exactly the kind of thing that should be shared. Turned it into interview-question-worthy material because why not make it useful for others?
+
+**Key Learnings** 💡
+1. **Never create async work in deinit** - this should be tattooed on every Swift developer's forearm
+2. **Service discovery is harder than it looks** - parsing NGINX configs requires understanding the domain (pun intended)
+3. **Pagination is always more complex** - client-side works, but server-side is the real solution
+4. **Documentation is an investment** - spending time on docs pays dividends later
+
+**Philosophical Musings** 🤔
+There's something beautiful about fixing memory management issues. It's like cleaning up after a party - tedious, but necessary, and when you're done, everything feels lighter. The retain cycle fix wasn't just about making code work; it was about understanding the dance between objects and references, between lifecycles and cleanup.
+
+The service naming fix was satisfying because it made the UI actually usable. Before, you couldn't tell services apart. Now, each service has a meaningful name that tells a story. That's good UX, and good UX is art.
+
+**What's Next** 🔮
+The pagination work is half-done. We've got client-side pagination working, but true server-side pagination would be so much better. That's next on the list, along with some UI polish to make the log viewing experience smoother.
+
+The memory management documentation is complete, but we should add tests to prevent regressions. Nothing worse than fixing a bug and having it come back because someone didn't know the pattern.
+
+---
 ## December 29, 2025 - "The Snapshot Chronicles: Where Every Pixel Tells a Story" 📸✨
 
 *In the twilight hours of this digital odyssey, we embarked on a quest to capture the essence of our UI across every dimension - light and dark, iOS and macOS, iPhone and iPad. Because great interfaces deserve great tests, and every variant deserves its moment in the spotlight.*

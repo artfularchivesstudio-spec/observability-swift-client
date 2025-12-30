@@ -25,7 +25,8 @@ public actor HTTPClient {
 
         // Configure decoder
         decoder.dateDecodingStrategy = .iso8601
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        // Don't convert from snake_case - API uses camelCase
+        decoder.keyDecodingStrategy = .useDefaultKeys
     }
 
     // MARK: - Generic Request Method

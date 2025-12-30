@@ -104,6 +104,29 @@ let package = Package(
                 "ObservabilityCommon",
                 .product(name: "SnapshotTesting", package: "swift-snapshot-testing")
             ]
+        ),
+        .testTarget(
+            name: "ObservabilityCoreTests",
+            dependencies: [
+                "ObservabilityCore",
+                "ObservabilityCommon"
+            ]
+        ),
+        .testTarget(
+            name: "ObservabilityNetworkingTests",
+            dependencies: [
+                "ObservabilityNetworking",
+                "ObservabilityCore",
+                "ObservabilityCommon"
+            ]
+        ),
+        .testTarget(
+            name: "ObservabilityUITests",
+            dependencies: [
+                "ObservabilityUI",
+                "ObservabilityCore",
+                "ObservabilityCommon"
+            ]
         )
     ]
 )

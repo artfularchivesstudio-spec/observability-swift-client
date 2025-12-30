@@ -276,7 +276,7 @@ final class ObservabilityKitIntegrationTests: XCTestCase {
 // MARK: - Mock Implementations for Testing
 
 @available(macOS 14, iOS 17, *)
-class MockMetricsCollector: MetricsCollecting {
+final class MockMetricsCollector: MetricsCollecting {
     var shouldFail = false
     var mockSystemMetrics = SystemMetrics(cpuUsage: 50, memoryUsage: 8000)
     var mockServiceMetrics = ServiceMetrics(serviceId: UUID(), requestCount: 1000, errorCount: 10)
@@ -318,7 +318,7 @@ class MockMetricsCollector: MetricsCollecting {
 }
 
 @available(macOS 14, iOS 17, *)
-class MockHealthChecker: HealthChecking {
+final class MockHealthChecker: HealthChecking {
     func performHealthCheck(for serviceId: UUID) async throws -> HealthCheckResult {
         return HealthCheckResult(
             serviceId: serviceId,
@@ -336,17 +336,17 @@ class MockHealthChecker: HealthChecking {
             )
         }
     }
-
-    func performHTTPProbe(url: URL, timeout: TimeInterval) async throws -> HealthChecking.HTTPProbeResult {
-        return HealthChecking.HTTPProbeResult(statusCode: 200, responseTime: 0.05, success: true)
+    
+    func performHTTPProbe(url: URL, timeout: TimeInterval) async throws -> HTTPProbeResult {
+        return HTTPProbeResult(statusCode: 200, responseTime: 0.05, success: true)
     }
-
-    func performDatabaseProbe(dsn: String, timeout: TimeInterval) async throws -> HealthChecking.DatabaseProbeResult {
-        return HealthChecking.DatabaseProbeResult(connected: true, queryTime: 0.01)
+    
+    func performDatabaseProbe(dsn: String, timeout: TimeInterval) async throws -> DatabaseProbeResult {
+        return DatabaseProbeResult(connected: true, queryTime: 0.01)
     }
-
-    func performPortProbe(host: String, port: Int, timeout: TimeInterval) async throws -> HealthChecking.PortProbeResult {
-        return HealthChecking.PortProbeResult(open: true, responseTime: 0.02)
+    
+    func performPortProbe(host: String, port: Int, timeout: TimeInterval) async throws -> PortProbeResult {
+        return PortProbeResult(open: true, responseTime: 0.02)
     }
 }
 

@@ -199,7 +199,7 @@ final class CollectionExtensionsTests: XCTestCase {
 
     func testArrayUniqueNoDuplicates() {
         let numbers = [1, 2, 3, 4, 5]
-        let unique = numbers.unique(by: { $0 })
+        let unique = numbers.unique(by: \.self)
 
         XCTAssertEqual(unique, numbers)
     }
@@ -273,7 +273,7 @@ final class DictionaryExtensionsTests: XCTestCase {
 
     func testDictionaryMapValues() {
         let dict = ["a": 1, "b": 2, "c": 3]
-        let doubled = dict.mapValues { $0 * 2 }
+        let doubled = dict.mapValues { value in value * 2 }
 
         XCTAssertEqual(doubled["a"], 2)
         XCTAssertEqual(doubled["b"], 4)

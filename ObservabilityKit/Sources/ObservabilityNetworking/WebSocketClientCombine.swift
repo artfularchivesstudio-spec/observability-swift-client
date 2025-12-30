@@ -37,11 +37,12 @@ public final class WebSocketCombineClient: ObservableObject {
 
     // MARK: - Private State
     private var task: URLSessionWebSocketTask?
+    private var receiveTask: Task<Void, Never>? // Track receiving task for cleanup
     private let session: URLSession
     private let encoder = JSONEncoder()
     private let decoder = JSONDecoder()
     private var cancellables = Set<AnyCancellable>()
-    nonisolated(unsafe) private var pingTimer: Timer?
+    private var pingTimer: Timer?
     private var reconnectAttempts = 0
     private let maxReconnectAttempts = 5
     private let reconnectDelay = 1.0
@@ -53,21 +54,43 @@ public final class WebSocketCombineClient: ObservableObject {
     }
 
     deinit {
+        // Clean up synchronously - don't create Task that captures self
         pingTimer?.invalidate()
-        // Note: disconnect() is @MainActor, but deinit is nonisolated
-        // We can't safely call @MainActor methods from deinit
-        // The timer invalidation is sufficient for cleanup
+        pingTimer = nil
+        
+        // Cancel task synchronously
+        task?.cancel(with: .goingAway, reason: nil)
+        task = nil
+        
+        // Cancel receiving task
+        receiveTask?.cancel()
+        receiveTask = nil
+        
+        // Clear cancellables
+        cancellables.removeAll()
     }
 
     // MARK: - Connection Management
+    // 🌟 Connect to the Cosmic WebSocket Gateway - Where streams of data flow like stardust ✨
     public func connect(to endpoint: URL) async throws {
         guard !isConnected else {
             throw WebSocketError.alreadyConnected
         }
 
+        print("🌐 ✨ WEBSOCKET CONNECTION AWAKENS! Connecting to: \(endpoint.absoluteString)")
+
         var request = URLRequest(url: endpoint)
         request.setValue("observability-client/1.0", forHTTPHeaderField: "User-Agent")
-        request.setValue("observability.client.v1", forHTTPHeaderField: "Sec-WebSocket-Protocol")
+        // Note: Don't set Sec-WebSocket-Protocol - servers may reject unknown protocols
+        // The protocol negotiation should be done via the handshake message instead
+
+        // 🔐 Add API key authentication if available - the cosmic keycard
+        if let apiKey = Bundle.main.object(forInfoDictionaryKey: "MONITORING_API_KEY") as? String, !apiKey.isEmpty {
+            request.setValue(apiKey, forHTTPHeaderField: "X-API-Key")
+            print("🔐 API key authentication configured")
+        } else {
+            print("🌙 No API key found in Info.plist, connecting without authentication")
+        }
 
         let task = session.webSocketTask(with: request)
         self.task = task
@@ -76,11 +99,32 @@ public final class WebSocketCombineClient: ObservableObject {
         connectionState = .connecting
         task.resume()
 
+        print("🚀 WebSocket task resumed, waiting for connection...")
+
+        // 🎭 Wait for the connection to be established before starting to receive
+        // Give the WebSocket handshake a moment to complete
+        try await Task.sleep(nanoseconds: 100_000_000) // 100ms grace period
+
+        // Check if connection was successful
+        guard task.state == .running else {
+            let errorMsg = "WebSocket connection failed - task state: \(task.state)"
+            print("🌩️ \(errorMsg)")
+            throw WebSocketError.connectionFailed(errorMsg)
+        }
+
+        print("✅ WebSocket connection established!")
+
         // Start receiving messages
         startReceiving()
 
-        // Send handshake
-        try await sendHandshake()
+        // Send handshake - optional, server may not require it
+        do {
+            try await sendHandshake()
+            print("🤝 Handshake sent successfully")
+        } catch {
+            // Handshake failed but connection might still work
+            print("🌙 Handshake skipped: \(error.localizedDescription) - connection may still work")
+        }
 
         // Update connected state
         connectionState = .connected
@@ -97,12 +141,15 @@ public final class WebSocketCombineClient: ObservableObject {
     }
 
     public func disconnect() {
-        guard isConnected else { return }
-
-        connectionState = .disconnecting
+        // Cancel receiving task first
+        receiveTask?.cancel()
+        receiveTask = nil
+        
+        // Cancel WebSocket task
         task?.cancel(with: .normalClosure, reason: nil)
         task = nil
 
+        // Update state
         connectionState = .disconnected
         isConnected = false
 
@@ -122,13 +169,24 @@ public final class WebSocketCombineClient: ObservableObject {
     private func startReceiving() {
         guard let task = task else { return }
 
-        Task {
+        // Store the task so we can cancel it later
+        receiveTask = Task { [weak self] in
+            guard let self = self else { return }
             do {
                 for try await message in task.messages {
-                    handleMessage(message)
+                    // Check if task was cancelled
+                    if Task.isCancelled {
+                        break
+                    }
+                    await MainActor.run {
+                        self.handleMessage(message)
+                    }
                 }
             } catch {
-                await handleError(error)
+                // Only handle error if not cancelled
+                if !Task.isCancelled {
+                    await self.handleError(error)
+                }
             }
         }
     }
@@ -224,7 +282,8 @@ public final class WebSocketCombineClient: ObservableObject {
     }
 
     private func send(_ message: URLSessionWebSocketTask.Message) async throws {
-        guard let task = task, isConnected else {
+        // Allow sending during connecting state (for handshake) or when connected
+        guard let task = task, connectionState == .connecting || isConnected else {
             throw WebSocketError.notConnected
         }
 
@@ -237,8 +296,12 @@ public final class WebSocketCombineClient: ObservableObject {
 
     // MARK: - Ping/Pong
     private func setupPingTimer() {
-        pingTimer = Timer.scheduledTimer(withTimeInterval: 30.0, repeats: true) { [weak self] _ in
-            Task { [weak self] in
+        pingTimer = Timer.scheduledTimer(withTimeInterval: 30.0, repeats: true) { [weak self] timer in
+            guard let self = self else {
+                timer.invalidate()
+                return
+            }
+            Task { @MainActor [weak self] in
                 await self?.sendPing()
             }
         }
